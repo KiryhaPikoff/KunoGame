@@ -1,5 +1,7 @@
 package entity.components;
 
-public class Inventory {
+import item.Item;
 
+public class Inventory {
+	Item[][] array;
 }
