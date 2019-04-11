@@ -1,11 +1,14 @@
 package map;
 
+import java.awt.Graphics;
+
 import utils.Constants;
 import utils.Coordinates;
 import utils.Direction;
+import utils.Drawable;
 import utils.ExcelLoader;
 
-public final class Chunk {
+public final class Chunk implements Drawable {
 	private Tile[][] arrayTiles;
 	private Coordinates coords;
 	
@@ -41,7 +44,17 @@ public final class Chunk {
 		return new Coordinates(newChunkI, newChunkJ, true);
 	}
 	
+	public void paint(Graphics g) {
+		for (int i = 0; i < Constants.HEIGHT_CHUNK; i++) {
+			for (int j = 0; j < Constants.WIDTH_CHUNK; j++) {
+				this.arrayTiles[i][j].paint(g);
+			}
+		}
+	}
+	
 	public int hashCode() {
 		return 10000000 + this.coords.getI() * 10000 + this.coords.getJ();
 	}
+
+
 }

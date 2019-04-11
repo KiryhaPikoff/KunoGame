@@ -1,8 +1,12 @@
 package map;
 
-import utils.Coordinates;
+import java.awt.Graphics;
 
-public final class Tile {
+import utils.Constants;
+import utils.Coordinates;
+import utils.Drawable;
+
+public final class Tile implements Drawable {
 	private TileType type;
 	private Coordinates coords;
 	
@@ -17,5 +21,9 @@ public final class Tile {
 	
 	public void setCoordinates(Coordinates coords) {
 		this.coords = coords;
+	}
+
+	public void paint(Graphics g) {
+		g.drawImage(this.type.getImage(), this.coords.getX(), this.coords.getY(), Constants.SIZE_TILE, Constants.SIZE_TILE, null);
 	}
 }
