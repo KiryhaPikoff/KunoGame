@@ -1,10 +1,10 @@
 package utils;
 
 public final class Coordinates {
-	private int x;
-	private int y;
-	private int i;
-	private int j;
+	private int x;	// координата х в окне (в пикселях)
+	private int y;	// координата y в окне (в пикселях)
+	private int i;	// координата i (высота в тайлах)
+	private int j;	// координата j (ширина в тайлах)
 	
 	public Coordinates(int x, int y) {
 		this.x = x;
@@ -15,6 +15,11 @@ public final class Coordinates {
 	private void calculateIJ() {
 		this.i = this.y / Constants.SIZE_TILE;
 		this.j = this.x / Constants.SIZE_TILE;
+	}
+	
+	private void calculateXY() {
+		this.x = this.j * Constants.SIZE_TILE;
+		this.y = this.i * Constants.SIZE_TILE;
 	}
 	
 	public void setX(int x) {
@@ -35,17 +40,33 @@ public final class Coordinates {
 		return this.x;
 	}
 	
-	public void setPoint(int x, int y) {
+	public void setPointXY(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.calculateIJ();
+	}
+	
+	public void setI(int i) {
+		this.i = i;
+		this.calculateXY();
 	}
 	
 	public int getI() {
 		return this.x;
 	}
 	
+	public void setJ(int j) {
+		this.j = j;
+		this.calculateXY();
+	}
+	
 	public int getJ() {
 		return this.x;
+	}
+	
+	public void setPointIJ(int i, int j) {
+		this.i = i;
+		this.j = j;
+		this.calculateXY();
 	}
 }
