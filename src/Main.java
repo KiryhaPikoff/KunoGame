@@ -1,11 +1,15 @@
-import map.Chunk;
-import map.TileType;
+import java.awt.EventQueue;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Work!");
-		//TileType tilet = TileType.valueOf("ground");
-		Chunk ch = new Chunk("10010002");
-		System.out.println(String.valueOf(ch.hashCode()));
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindow frame = new MainWindow();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }

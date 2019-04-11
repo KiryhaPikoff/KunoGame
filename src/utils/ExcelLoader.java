@@ -53,42 +53,10 @@ public abstract class ExcelLoader {
 			currentRow = currentTable.getRow(i);
 			for(int j = 0; j < Constants.WIDTH_CHUNK; j++) {
 				currentCell = currentRow.getCell(j);
-				String currentCellValue = currentCell.getRawValue();
-				arrayTiles[i][j] = new Tile(TileType.ground, new Coordinates(i, j, true));
+				String currentCellValue = currentCell.getStringCellValue();
+				arrayTiles[i][j] = new Tile(TileType.valueOf(currentCellValue), new Coordinates(i, j, true));
 			}
 		}
 		return arrayTiles;
 	}
-	/*	
-	 * currentTable = currentExcelBook.getSheetAt(0);
-		for(int i = 0; i < Constants.HEIGHT_CHUNK; i++) {
-			currentRow = currentTable.getRow(i);
-			for(int j = 0; j < Constants.WIDTH_CHUNK; j++) {
-				currentCell = currentRow.getCell(j);
-				switch(Integer.parseInt(cell.getRawValue())) {
-					case 0: {
-						array[i][j] = new Tile(TileType.ground, i, j);
-						break;
-					}
-					
-					case 1: {
-						array[i][j] = new Tile(TileType.water, i, j);
-						break;
-					}
-					
-					case 2: {
-						array[i][j] = new Tile(TileType.road, i, j);
-						break;
-					}
-					
-					case 3: {
-						array[i][j] = new Tile(TileType.door, i, j);
-						break;
-					}
-				}
-				
-			}
-		}
-		
-	}*/
 }
