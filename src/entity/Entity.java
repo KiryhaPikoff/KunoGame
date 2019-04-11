@@ -1,7 +1,11 @@
 package entity;
 
+import entity.components.Inventory;
 import entity.components.Stats;
+import utils.Coordinates;
 
 public abstract class Entity {
-	Stats stats;
+	Coordinates coordinate;
+	Stats stat;
+	Inventory inventory;
 }
