@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import map.Tile;
 import map.TileType;
 
 public abstract class ExcelLoader {
@@ -19,18 +20,18 @@ public abstract class ExcelLoader {
 	private static XSSFRow currentRow = null;
 	private static XSSFCell currentCell = null;
 	
-	/*public static void loadChunkInArray(String nameFile, Tile[][] arrayTiles) {
+	public static void loadChunkInArray(String nameFile, Tile[][] arrayTiles) {
 		getConnectionWithExcelFile(nameFile);
 		loadMapInArray(arrayTiles);
 	}
 	
 	private static void getConnectionWithExcelFile(String nameFile) {
 		try {
-			inputExcelFile = new FileInputStream(new File(nameFile));
+			inputExcelFile = new FileInputStream(new File("resources/chunks/" + nameFile + ".xlsx"));
 			currentExcelBook = new XSSFWorkbook (inputExcelFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			System.out.println("Ошибка. Excel " + nameFile + " file не найден.");
+			System.out.println("Ошибка. Excel " + nameFile + " file не найден или путь указан неверно.");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Ошибка считывания файла: " + nameFile);
@@ -52,8 +53,8 @@ public abstract class ExcelLoader {
 			currentRow = currentTable.getRow(i);
 			for(int j = 0; j < Constants.WIDTH_CHUNK; j++) {
 				currentCell = currentRow.getCell(j);
-				int currentCellValue = Integer.parseInt(currentCell.getRawValue());
-				arrayTiles[i][j] = new Tile(TileType.ground, i, j);
+				String currentCellValue = currentCell.getRawValue();
+				arrayTiles[i][j] = new Tile(TileType.ground, new Coordinates(i, j, true));
 			}
 		}
 		return arrayTiles;

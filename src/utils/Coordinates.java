@@ -12,6 +12,12 @@ public final class Coordinates {
 		this.calculateIJ();
 	}
 	
+	public Coordinates(int i, int j, boolean flag) { //бесполезный флаг для различной сигнатуры
+		this.i = i;
+		this.j = j;
+		this.calculateXY();
+	}
+	
 	private void calculateIJ() {
 		this.i = this.y / Constants.SIZE_TILE;
 		this.j = this.x / Constants.SIZE_TILE;
@@ -37,7 +43,7 @@ public final class Coordinates {
 	}
 	
 	public int getY() {
-		return this.x;
+		return this.y;
 	}
 	
 	public void setPointXY(int x, int y) {
@@ -52,7 +58,7 @@ public final class Coordinates {
 	}
 	
 	public int getI() {
-		return this.x;
+		return this.i;
 	}
 	
 	public void setJ(int j) {
@@ -61,7 +67,7 @@ public final class Coordinates {
 	}
 	
 	public int getJ() {
-		return this.x;
+		return this.j;
 	}
 	
 	public void setPointIJ(int i, int j) {

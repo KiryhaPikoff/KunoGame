@@ -1,14 +1,14 @@
 package map;
 
 public enum TileType {
-	ground(0),
-	water(1),
-	road(2),
-	door(3);
+	ground("ground"),
+	water("water"),
+	road("road"),
+	door("door");
 	
-	private Integer type;
+	private String type;
 	
-	TileType(int type) {
+	TileType(String type) {
 		this.type = type;
 	}
 }
