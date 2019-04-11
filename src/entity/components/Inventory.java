@@ -6,8 +6,12 @@ import java.util.List;
 import item.Item;
 
 public class Inventory {
-	List<Item> arrayList = new ArrayList<Item>();
-
+	protected List<Item> arrayList = new ArrayList<Item>();
+	
+	public Inventory() {
+		
+	}
+	
 	public List<Item> getArrayList() {
 		return arrayList;
 	}

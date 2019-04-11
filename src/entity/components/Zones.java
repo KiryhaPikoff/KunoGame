@@ -3,15 +3,15 @@ package entity.components;
 import java.awt.Shape;
 
 public class Zones {
-	private int radiusVisibility;		// радиус видимости
-	private int radiusPursuit;			// радиус преследования
-	private int radiusAttack;			// радиус атаки
+	protected int radiusVisibility;		// радиус видимости
+	protected int radiusPursuit;			// радиус преследования
+	protected int radiusAttack;			// радиус атаки
 	
-	private Shape visibility;			// зона видимости
-	private Shape pursuit;				// зона преследования
-	private Shape attack;				// зона атаки
+	protected Shape visibility;			// зона видимости
+	protected Shape pursuit;				// зона преследования
+	protected Shape attack;				// зона атаки
 	
 	public Zones(int radiusAttack, int radiusVisibility, int radiusPursuit) {
-		
+		// дописать инициализацию зон
 	}
 }

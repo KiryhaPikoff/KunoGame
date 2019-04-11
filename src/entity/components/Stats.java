@@ -2,16 +2,28 @@ package entity.components;
 
 public class Stats {
 	
-	int maxHealPoint;
-	int currentHealPoint;
+	protected int maxHealPoint;
+	protected int currentHealPoint;
 	
-	int maxManaPoint;
-	int currentManaPoint; 
+	protected int maxManaPoint;
+	protected int currentManaPoint; 
 	
-	int attackTime;
-	int attackPower;
+	protected int attackTime;
+	protected int attackPower;
 	
-	int speed;
+	protected int speed;
+	
+	public Stats(int maxHealPoint, int currentHealPoint, int maxManaPoint, int currentManaPoint, 
+				 int attackTime, int attackPower, int speed) {
+		
+		this.maxHealPoint = maxHealPoint;
+		this.currentHealPoint = currentHealPoint;
+		this.maxManaPoint = maxManaPoint;
+		this.currentManaPoint = currentManaPoint;
+		this.attackTime = attackTime;
+		this.attackPower = attackPower;
+		this.speed = speed;
+	}
 	
 	public int getMaxHealPoint() {
 		return maxHealPoint;
