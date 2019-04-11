@@ -20,7 +20,7 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.inventory = new Inventory();
 		this.direction = Direction.STAND;
 		this.attack = Attack.STAND;
-		this.zone = new Zones(25, 200, 0);
+		this.zone = new Zones(25, 200);
 	}
 
 	public void paint(Graphics g) {

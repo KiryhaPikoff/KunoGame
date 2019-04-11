@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,4 +31,6 @@ public class MainWindow extends JFrame {
 		Renderer.drawObject(new Chunk("10000000"));
 		g.drawImage(Renderer.canvas, 10, 32, null);
 	}
+	
+	
 }
