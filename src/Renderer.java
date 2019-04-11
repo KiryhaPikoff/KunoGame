@@ -13,8 +13,6 @@ public class Renderer extends JPanel {
 	
 	public static void drawObject(Object obj) {
 		if(obj instanceof Drawable) {
-			//System.out.println("fewef");
-			//bufferCanvas.;
 			((Drawable) obj).paint(bufferCanvas);
 		}
 	}

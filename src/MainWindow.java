@@ -27,6 +27,6 @@ public class MainWindow extends JFrame {
 	public void paint(Graphics g) {
 		super.paint(g);
 		Renderer.drawObject(new Chunk("10000000"));
-		g.drawImage(Renderer.canvas, 0, 0, null);
+		g.drawImage(Renderer.canvas, 10, 32, null);
 	}
 }
