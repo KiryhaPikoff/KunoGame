@@ -7,9 +7,9 @@ import entity.components.Stats;
 import utils.Coordinates;
 
 public abstract class Entity {
-	Coordinates coordinate;
-	Stats stat;
-	Inventory inventory;
-	Direction direction;
-	Attack attack;
+	private Coordinates coordinate;
+	private Stats stat;
+	private Inventory inventory;
+	private Direction direction;
+	private Attack attack;
 }

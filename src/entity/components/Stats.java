@@ -17,7 +17,6 @@ public class Stats {
 		return maxHealPoint;
 	}
 
-	
 	public void setMaxHealPoint(int maxHealPoint) {
 		this.maxHealPoint = maxHealPoint;
 	}
