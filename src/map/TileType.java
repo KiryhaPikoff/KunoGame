@@ -11,12 +11,4 @@ public enum TileType {
 	TileType(int type) {
 		this.type = type;
 	}
-	
-	public Integer getType() {
-		return this.type;
-	}
-	
-	public void setType(int type) {
-		this.type = type;
-	}
 }
