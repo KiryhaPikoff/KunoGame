@@ -1,6 +1,10 @@
 package entity.components;
 
+import utils.Coordinates;
+
 public class Stats {
+	Coordinates coordinate;
+	
 	int maxHealPoint;
 	int currentHealPoint;
 	
