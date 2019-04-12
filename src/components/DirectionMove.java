@@ -1,6 +1,6 @@
 package components;
 
-public enum Direction {
+public enum DirectionMove {
 	STAND(0, 0),
 	
 	NORTH(0, -1),
@@ -15,7 +15,7 @@ public enum Direction {
 	private final Integer offsetX;  // сдвиг по Х
 	private final Integer offsetY;  // сдвиг по У
 	
-	Direction(Integer offsetX, Integer offsetY) {
+	DirectionMove(Integer offsetX, Integer offsetY) {
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
 	}

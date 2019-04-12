@@ -18,7 +18,7 @@ public class Controller {
 		keyListener = new KeyListener() {
 			public void keyReleased(KeyEvent e) {
 				int keyButton = e.getKeyCode();
-				for(Button button : entity.getButtons()) {
+				for(Button button : entity.getButtonsSpells()) {
 					if(button.getKey() == keyButton) {
 						button.actionReleased();
 						break;
@@ -28,7 +28,7 @@ public class Controller {
 			
 			public void keyPressed(KeyEvent e) {
 				int keyButton = e.getKeyCode();
-				for(Button button : entity.getButtons()) {
+				for(Button button : entity.getButtonsSpells()) {
 					if(button.getKey() == keyButton) {
 						button.actionPressed();
 						break;

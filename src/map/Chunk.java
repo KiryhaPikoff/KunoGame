@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 
 import utils.Constants;
 import components.Coordinates;
-import components.Direction;
+import components.DirectionMove;
 import utils.Drawable;
 import utils.ExcelLoader;
 
@@ -20,7 +20,7 @@ public final class Chunk implements Drawable {
 		this.coords = this.deCode(nameFirstChunk);
 	}
 	
-	public Chunk(int hashCode, Direction direct) {
+	public Chunk(int hashCode, DirectionMove direct) {
 		int newChunkI = (hashCode - 10000000 + direct.getOffsetY() * 10000) / 10000;
 		int newChunkJ = hashCode % 1000 + direct.getOffsetX();
 		this.coords.setPointIJ(newChunkI, newChunkJ);
