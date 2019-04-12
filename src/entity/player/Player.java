@@ -44,13 +44,15 @@ public class Player extends Entity implements Drawable, Moveable {
 	}
 	
 	public void paint(Graphics g) {
-		g.drawImage(this.image, 100, 100, null);
+	//	System.out.println(this.currentCoordinate.getX());
+	//	System.out.println(this.currentCoordinate.getY());
+		g.drawImage(this.image, this.currentCoordinate.getX(), this.currentCoordinate.getY(), null);
 	}
 
 	public void move() {
 		/*this.setCoordInChunk(new Coordinate(getCoordInChunk().getX() + this.getDirection().getOffsetX() * this.getSpeed(),
 			     getCoordInChunk().getY() + this.getDirection().getOffsetY() * this.getSpeed()))*/
-		
+		System.out.println(this.directionMove);
 		this.setCurrentCoordinate(new Coordinates(getCurrentCoordinate().getX() + getDirectionMove().getOffsetX() * getStats().getSpeed(), 
 												  getCurrentCoordinate().getY() + getDirectionMove().getOffsetY() * getStats().getSpeed()));
 	}
