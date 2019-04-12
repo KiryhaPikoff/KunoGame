@@ -13,21 +13,6 @@ import utils.ExcelLoader;
 public final class Chunk implements Drawable {
 	private Tile[][] arrayTiles;
 	private Coordinates coords;
-	private KeyListener KL = new KeyListener() {
-		
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-		}
-		
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			System.out.println("2");
-		}
-		
-		public void keyPressed(KeyEvent e) {
-			// TODO Auto-generated method stub
-		}
-	};
 	
 	public Chunk(String nameFirstChunk) {
 		this.arrayTiles = new Tile[Constants.HEIGHT_CHUNK][Constants.WIDTH_CHUNK];
@@ -53,10 +38,7 @@ public final class Chunk implements Drawable {
 	public Coordinates getCoords() {
 		return this.coords;
 	}
-	
-	public KeyListener getKeyListener() {
-		return this.KL;
-	}
+
 	
 	public void paint(Graphics g) {
 		for (int i = 0; i < Constants.HEIGHT_CHUNK; i++) {

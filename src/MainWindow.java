@@ -7,6 +7,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import entity.Entity;
+import entity.control.Control;
+
 import entity.player.Player;
 import map.Chunk;
 import map.TileType;
@@ -39,6 +42,13 @@ public class MainWindow extends JFrame {
 		setContentPane(contentPane);
 		setResizable(false);
 		setVisible(true);
+	
+		testChunk = new Chunk("10000000");
+		Entity testPlayer = new Player();
+		
+		Control control = new Control();
+		control.addListener(testPlayer);
+		this.addKeyListener(control.getKeyListener());
 	}
 	
 	public void paint(Graphics g) {

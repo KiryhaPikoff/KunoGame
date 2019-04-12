@@ -2,12 +2,12 @@ package entity.player;
 
 import java.awt.Graphics;
 
-import entity.Entity;
 import components.Attack;
 import components.Direction;
 import components.Inventory;
 import components.Stats;
 import components.Zones;
+import entity.Entity;
 import utils.Coordinates;
 import utils.Drawable;
 import utils.ImageLoader;
@@ -23,6 +23,7 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.attack = Attack.STAND;
 		this.zone = new Zones(25, this.currentCoordinate);
 		this.iamge = ImageLoader.loadImage("resources/images/player64.png");
+	//	this.buttons = new Buttons();
 	}
 
 	public void paint(Graphics g) {
