@@ -1,6 +1,6 @@
 package entity;
-
 import java.awt.Image;
+import java.util.List;
 
 import components.Attack;
 import components.Coordinates;
@@ -8,7 +8,7 @@ import components.Direction;
 import components.Inventory;
 import components.Stats;
 import components.Zones;
-import entity.control.Buttons;
+import entity.control.Button;
 
 public abstract class Entity {
 	protected Coordinates currentCoordinate;
@@ -18,15 +18,29 @@ public abstract class Entity {
 	protected Direction direction;
 	protected Attack attack;
 	protected Zones zone;
-	protected Buttons buttons;
-	
+	protected List<Button> buttons;
 	protected Image iamge;
 	
 	public Coordinates getCoordinate() {
+		return this.currentCoordinate;
+	}
+	public List<Button> getButtons() {
+		return buttons;
+	}
+	public Coordinates getCurrentCoordinate() {
 		return currentCoordinate;
 	}
-	public void setCoordinate(Coordinates coordinate) {
-		this.currentCoordinate = coordinate;
+	public void setCurrentCoordinate(Coordinates currentCoordinate) {
+		this.currentCoordinate = currentCoordinate;
+	}
+	public Coordinates getSpawnCoordinate() {
+		return spawnCoordinate;
+	}
+	public void setSpawnCoordinate(Coordinates spawnCoordinate) {
+		this.spawnCoordinate = spawnCoordinate;
+	}
+	public void setButtons(List<Button> buttons) {
+		this.buttons = buttons;
 	}
 	public Stats getStat() {
 		return stat;
@@ -57,11 +71,5 @@ public abstract class Entity {
 	}
 	public void setZone(Zones zone) {
 		this.zone = zone;
-	}
-	public Buttons getButtons() {
-		return buttons;
-	}
-	public void setButtons(Buttons buttons) {
-		this.buttons = buttons;
 	}
 }
