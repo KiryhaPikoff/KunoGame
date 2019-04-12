@@ -1,6 +1,8 @@
 package map;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import utils.Constants;
 import utils.Coordinates;
@@ -11,6 +13,23 @@ import utils.ExcelLoader;
 public final class Chunk implements Drawable {
 	private Tile[][] arrayTiles;
 	private Coordinates coords;
+	private KeyListener KL = new KeyListener() {
+		
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			System.out.println("1");
+		}
+		
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			System.out.println("2");
+		}
+		
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			System.out.println("3");
+		}
+	};
 	
 	public Chunk(String nameFirstChunk) {
 		this.arrayTiles = new Tile[Constants.HEIGHT_CHUNK][Constants.WIDTH_CHUNK];
@@ -37,11 +56,8 @@ public final class Chunk implements Drawable {
 		return this.coords;
 	}
 	
-	private Coordinates deCode(String nameFile) {
-		int hashCode = Integer.parseInt(nameFile);
-		int newChunkI = (hashCode - 10000000) / 10000;
-		int newChunkJ = hashCode % 1000;
-		return new Coordinates(newChunkI, newChunkJ, true);
+	public KeyListener getKeyListener() {
+		return this.KL;
 	}
 	
 	public void paint(Graphics g) {
@@ -52,9 +68,14 @@ public final class Chunk implements Drawable {
 		}
 	}
 	
+	private Coordinates deCode(String nameFile) {
+		int hashCode = Integer.parseInt(nameFile);
+		int newChunkI = (hashCode - 10000000) / 10000;
+		int newChunkJ = hashCode % 1000;
+		return new Coordinates(newChunkI, newChunkJ, true);
+	}
+	
 	public int hashCode() {
 		return 10000000 + this.coords.getI() * 10000 + this.coords.getJ();
 	}
-
-
 }
