@@ -25,7 +25,7 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.iamge = ImageLoader.loadImage("resources/images/player64.png");
 	//	this.buttons = new Buttons();
 	}
-
+	
 	public void paint(Graphics g) {
 		g.drawImage(this.iamge, 100, 100, null);
 	}
@@ -40,3 +40,4 @@ public class Player extends Entity implements Drawable, Moveable {
 		
 	}
 }
+
