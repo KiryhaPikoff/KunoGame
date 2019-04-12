@@ -33,7 +33,9 @@ public class Player extends Entity implements Drawable, Moveable {
 		
 		this.zone = new Zones(25, this.currentCoordinate);
 		this.image = ImageLoader.loadImage("resources/images/player64.png");
+		
 		this.buttonsSpells = new ArrayList<Button>();
+		this.buttonsMove = new ArrayList<Button>();
 		
 		this.initButtonsSpells();
 		this.initButtonsMove();
