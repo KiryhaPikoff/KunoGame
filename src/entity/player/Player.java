@@ -1,6 +1,7 @@
 package entity.player;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +47,14 @@ public class Player extends Entity implements Drawable, Moveable {
 	}
 	
 	private void initButtons() {
-		buttons.add(new Button(87)); // W
-		buttons.add(new Button(65)); // A
-		buttons.add(new Button(83)); // S
-		buttons.add(new Button(68)); // D
+		buttons.add(new Button(KeyEvent.VK_W) {
+			@Override
+			public void actionPressed() {
+				System.out.println("Клавиша W");
+			}
+		});
+		buttons.add(new Button(KeyEvent.VK_A)); 
+		buttons.add(new Button(KeyEvent.VK_S)); 
+		buttons.add(new Button(KeyEvent.VK_D)); 
 	}
 }

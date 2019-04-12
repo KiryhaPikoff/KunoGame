@@ -14,20 +14,22 @@ public class Button {
 	
 	public void actionPressed() {
 		isPressed = true;
-		System.out.println(key + "is Pressed");
+		System.out.println(key + " is Pressed");
+	}
+	
+	public void setKey(int key) {
+		this.key = key;
 	}
 	
 	public int getKey() {
 		return key;
 	}
 	
-	public void setKey(int key) {
-		key = key;
-	}
-	public boolean isPressed() {
-		return isPressed;
-	}
 	public void setPressed(boolean isPressed) {
 		this.isPressed = isPressed;
+	}
+	
+	public boolean isPressed() {
+		return isPressed;
 	}
 }

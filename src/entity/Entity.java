@@ -21,9 +21,6 @@ public abstract class Entity {
 	protected List<Button> buttons;
 	protected Image iamge;
 	
-	public Coordinates getCoordinate() {
-		return this.currentCoordinate;
-	}
 	public List<Button> getButtons() {
 		return buttons;
 	}
