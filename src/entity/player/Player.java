@@ -13,7 +13,6 @@ import components.DirectionPaint;
 import components.Inventory;
 import components.Stats;
 import components.Zones;
-import entity.DirectionMoveChange;
 import entity.Entity;
 import entity.control.Button;
 import utils.Drawable;
@@ -40,6 +39,8 @@ public class Player extends Entity implements Drawable, Moveable {
 		
 		this.initButtonsSpells();
 		this.initButtonsMove();
+		
+		
 
 	}
 	
@@ -58,7 +59,7 @@ public class Player extends Entity implements Drawable, Moveable {
 	}
 	
 	private void initButtonsSpells() {
-		 
+		 // дописать
 	}
 	
 	private void initButtonsMove() {

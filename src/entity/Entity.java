@@ -15,6 +15,7 @@ import entity.control.Button;
 public abstract class Entity {
 	protected Coordinates currentCoordinate;
 	protected Coordinates spawnCoordinate;
+	protected Coordinates tilesetCoords;
 
 	protected Stats stats;
 	
