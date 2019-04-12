@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import entity.Entity;
-
+import entity.control.Controller;
 import entity.player.Player;
 import map.Chunk;
 import map.TileType;
@@ -29,6 +29,8 @@ public class MainWindow extends JFrame {
 	public void testZone() {
 		testChunk = new Chunk("10000000");
 		testPlayer = new Player();
+		Controller.initKeyListener(testPlayer);
+		this.addKeyListener(Controller.keyListener);
 		Renderer.addObject(testChunk);
 		Renderer.addObject(testPlayer);
 		Renderer.start();
