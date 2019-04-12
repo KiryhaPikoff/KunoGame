@@ -15,8 +15,9 @@ import entity.control.Button;
 public abstract class Entity {
 	protected Coordinates currentCoordinate;
 	protected Coordinates spawnCoordinate;
+
+	protected Stats stats;
 	
-	protected Stats stat;
 	protected Inventory inventory;
 	
 	protected DirectionMove directionMove;
@@ -25,6 +26,8 @@ public abstract class Entity {
 	protected Attack attack;
 	
 	protected Zones zone;
+
+	protected Image image;
 	
 	protected List<Button> buttonsSpells;
 	protected List<Button> buttonsMove;
@@ -35,7 +38,6 @@ public abstract class Entity {
 	public void setButtonsMove(List<Button> buttonsMove) {
 		this.buttonsMove = buttonsMove;
 	}
-	protected Image image;
 	
 	public List<Button> getButtonsSpells() {
 		return buttonsSpells;
@@ -55,11 +57,11 @@ public abstract class Entity {
 	public void setButtonsSpells(List<Button> buttons) {
 		this.buttonsSpells = buttons;
 	}
-	public Stats getStat() {
-		return stat;
+	public Stats getStats() {
+		return stats;
 	}
-	public void setStat(Stats stat) {
-		this.stat = stat;
+	public void setStats(Stats stat) {
+		this.stats = stat;
 	}
 	public Inventory getInventory() {
 		return inventory;

@@ -2,8 +2,8 @@ package components;
 
 public class Stats {
 	
-	protected int maxHealPoint;
-	protected int currentHealPoint;
+	protected int maxHealthPoint;
+	protected int currentHealthPoint;
 	
 	protected int maxManaPoint;
 	protected int currentManaPoint; 
@@ -13,11 +13,11 @@ public class Stats {
 	
 	protected int speed;
 	
-	public Stats(int maxHealPoint, int currentHealPoint, int maxManaPoint, int currentManaPoint, 
+	public Stats(int maxHealthPoint, int currentHealthPoint, int maxManaPoint, int currentManaPoint, 
 				 int attackTime, int attackPower, int speed) {
 		
-		this.maxHealPoint = maxHealPoint;
-		this.currentHealPoint = currentHealPoint;
+		this.maxHealthPoint = maxHealthPoint;
+		this.currentHealthPoint = currentHealthPoint;
 		this.maxManaPoint = maxManaPoint;
 		this.currentManaPoint = currentManaPoint;
 		this.attackTime = attackTime;
@@ -25,20 +25,20 @@ public class Stats {
 		this.speed = speed;
 	}
 	
-	public int getMaxHealPoint() {
-		return maxHealPoint;
+	public int getMaxHealthPoint() {
+		return maxHealthPoint;
 	}
 
-	public void setMaxHealPoint(int maxHealPoint) {
-		this.maxHealPoint = maxHealPoint;
+	public void setMaxHealthPoint(int maxHealPoint) {
+		this.maxHealthPoint = maxHealPoint;
 	}
 
-	public int getCurrentHealPoint() {
-		return currentHealPoint;
+	public int getCurrentHealthPoint() {
+		return currentHealthPoint;
 	}
 
-	public void setCurrentHealPoint(int currentHealPoint) {
-		this.currentHealPoint = currentHealPoint;
+	public void setCurrentHealthPoint(int currentHealPoint) {
+		this.currentHealthPoint = currentHealPoint;
 	}
 
 	public int getMaxManaPoint() {

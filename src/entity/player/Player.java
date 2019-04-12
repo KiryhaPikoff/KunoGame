@@ -23,7 +23,7 @@ public class Player extends Entity implements Drawable, Moveable {
 	
 	public Player() {
 		this.currentCoordinate = new Coordinates(100, 100);
-		this.stat = new Stats(200, 200, 100, 100, 1000, 5, 2);
+		this.stats = new Stats(200, 200, 100, 100, 1000, 5, 2);
 		this.inventory = new Inventory();
 		
 		this.directionMove = DirectionMove.STAND;
@@ -39,6 +39,7 @@ public class Player extends Entity implements Drawable, Moveable {
 		
 		this.initButtonsSpells();
 		this.initButtonsMove();
+
 	}
 	
 	public void paint(Graphics g) {
@@ -46,13 +47,7 @@ public class Player extends Entity implements Drawable, Moveable {
 	}
 
 	public void move() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void changeAnimation() {
-		// TODO Auto-generated method stub
-		
+	
 	}
 	
 	private void initButtonsSpells() {
