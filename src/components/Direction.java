@@ -1,4 +1,4 @@
-package utils;
+package components;
 
 public enum Direction {
 	STAND(0, 0),

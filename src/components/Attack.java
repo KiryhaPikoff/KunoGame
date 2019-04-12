@@ -1,4 +1,4 @@
-package entity.components;
+package components;
 
 public enum Attack {
 	STAND,

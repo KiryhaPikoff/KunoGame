@@ -1,4 +1,4 @@
-package entity;
+package components;
 
 public class Control {
 	protected boolean isPressedW;

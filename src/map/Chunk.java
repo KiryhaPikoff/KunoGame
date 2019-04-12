@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 
 import utils.Constants;
 import utils.Coordinates;
-import utils.Direction;
+import components.Direction;
 import utils.Drawable;
 import utils.ExcelLoader;
 
@@ -17,7 +17,6 @@ public final class Chunk implements Drawable {
 		
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("1");
 		}
 		
 		public void keyReleased(KeyEvent e) {
@@ -27,7 +26,6 @@ public final class Chunk implements Drawable {
 		
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("3");
 		}
 	};
 	

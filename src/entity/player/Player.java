@@ -3,13 +3,14 @@ package entity.player;
 import java.awt.Graphics;
 
 import entity.Entity;
-import entity.components.Attack;
-import entity.components.Direction;
-import entity.components.Inventory;
-import entity.components.Stats;
-import entity.components.Zones;
+import components.Attack;
+import components.Direction;
+import components.Inventory;
+import components.Stats;
+import components.Zones;
 import utils.Coordinates;
 import utils.Drawable;
+import utils.ImageLoader;
 import utils.Moveable;
 
 public class Player extends Entity implements Drawable, Moveable {
@@ -21,11 +22,11 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.direction = Direction.STAND;
 		this.attack = Attack.STAND;
 		this.zone = new Zones(25, this.currentCoordinate);
+		this.iamge = ImageLoader.loadImage("resources/images/player64.png");
 	}
 
 	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		g.drawImage(this.iamge, 100, 100, null);
 	}
 
 	public void move() {

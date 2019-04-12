@@ -1,10 +1,12 @@
 package entity;
 
-import entity.components.Attack;
-import entity.components.Direction;
-import entity.components.Inventory;
-import entity.components.Stats;
-import entity.components.Zones;
+import java.awt.Image;
+
+import components.Attack;
+import components.Direction;
+import components.Inventory;
+import components.Stats;
+import components.Zones;
 import utils.Coordinates;
 
 public abstract class Entity {
@@ -15,6 +17,8 @@ public abstract class Entity {
 	protected Direction direction;
 	protected Attack attack;
 	protected Zones zone;
+	
+	protected Image iamge;
 	
 	public Coordinates getCoordinate() {
 		return currentCoordinate;

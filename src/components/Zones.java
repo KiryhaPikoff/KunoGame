@@ -1,4 +1,4 @@
-package entity.components;
+package components;
 
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
