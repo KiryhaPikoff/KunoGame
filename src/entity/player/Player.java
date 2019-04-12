@@ -16,6 +16,7 @@ import components.Stats;
 import components.Zones;
 import entity.Entity;
 import entity.control.Button;
+import map.Chunk;
 import utils.Constants;
 import utils.Drawable;
 import utils.ImageLoader;
@@ -24,7 +25,7 @@ import utils.Moveable;
 public class Player extends Entity implements Drawable, Moveable {
 	
 	public Player() {
-		this.currentCoordinate = new Coordinates(100, 100);
+		this.currentCoordinate = new Coordinates(500, 500);
 		this.stats = new Stats(200, 200, 100, 100, 1000, 5, 2);
 		this.inventory = new Inventory();
 		
@@ -49,9 +50,11 @@ public class Player extends Entity implements Drawable, Moveable {
 		g.drawImage(this.image, this.currentCoordinate.getX() - Constants.SIZE_TILE / 2, this.currentCoordinate.getY() - Constants.SIZE_TILE / 2, null);
 	}
 
-	public void move() {
+	public void move(Chunk currentChunk) {
 		if(movableZone.contains(currentCoordinate.getX() + directionMove.getOffsetX() * stats.getSpeed(),
-								currentCoordinate.getY() + directionMove.getOffsetY() * stats.getSpeed())) {
+								currentCoordinate.getY() + directionMove.getOffsetY() * stats.getSpeed()) &&
+		   currentChunk.getTileXY(currentCoordinate.getX() + directionMove.getOffsetX() * stats.getSpeed(),
+				   				  currentCoordinate.getY() + directionMove.getOffsetY() * stats.getSpeed()).getTileType().isPassable()) {
 			this.setCurrentCoordinate(new Coordinates(getCurrentCoordinate().getX() + getDirectionMove().getOffsetX() * getStats().getSpeed(), 
 					getCurrentCoordinate().getY() + getDirectionMove().getOffsetY() * getStats().getSpeed()));
 		}

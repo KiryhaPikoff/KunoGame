@@ -74,7 +74,7 @@ public class MainWindow extends JFrame {
 		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
-				testPlayer.move();
+				testPlayer.move(testChunk);
 			/*	ChunkChanger.changeChunk(testChunk, testPlayer);
 				System.out.println(testChunk.hashCode());*/
 				if(testChunk.getTileXY(testPlayer.getCurrentCoordinate().getX(), testPlayer.getCurrentCoordinate().getY()).getTileType() == TileType.door) {
