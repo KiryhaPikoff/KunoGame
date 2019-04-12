@@ -1,6 +1,10 @@
 package entity;
 import java.awt.Image;
+
 import java.awt.Rectangle;
+
+import java.awt.image.BufferedImage;
+
 import java.util.List;
 
 import components.Attack;
@@ -29,7 +33,8 @@ public abstract class Entity {
 	
 	protected Zones zone;
 
-	protected Image image;
+	protected BufferedImage tileset;
+	protected BufferedImage image;
 	
 	protected List<Button> buttonsSpells;
 	protected List<Button> buttonsMove;
@@ -103,18 +108,29 @@ public abstract class Entity {
 	public void setCondition(Condition condition) {
 		this.condition = condition;
 	}
-	public Image getImage() {
-		return image;
+	public BufferedImage getImage() {
+		return tileset;
 	}
-	public void setImage(Image image) {
-		this.image = image;
+	public void setImage(BufferedImage image) {
+		this.tileset = image;
 	}
+	public Coordinates getTilesetCoords() {
+		return tilesetCoords;
+	}
+	public void setTilesetCoords(Coordinates tilesetCoords) {
+		this.tilesetCoords = tilesetCoords;
+	}
+	public BufferedImage getTileset() {
+		return tileset;
+	}
+	public void setTileset(BufferedImage tileset) {
+		this.tileset = tileset;
+	}
+
 	public Rectangle getMovableZone() {
 		return movableZone;
 	}
 	public void setMovableZone(Rectangle movableZone) {
 		this.movableZone = movableZone;
 	}
-
-	
 }

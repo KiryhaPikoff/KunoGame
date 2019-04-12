@@ -3,6 +3,7 @@ package entity.player;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,14 +36,16 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.attack = Attack.STAND;
 		
 		this.zone = new Zones(25, this.currentCoordinate);
-		this.image = ImageLoader.loadImage("resources/images/player64.png");
+		
+		this.tileset = (BufferedImage) ImageLoader.loadImage("resources/images/player_tileset.png");
+		this.image = tileset.getSubimage(0, 0, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		
 		this.buttonsSpells = new ArrayList<Button>();
 		this.buttonsMove = new ArrayList<Button>();
 		
 		this.initButtonsSpells();
 		this.initButtonsMove();
-		
+
 		this.movableZone = new Rectangle(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 	}
 	
