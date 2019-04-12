@@ -48,7 +48,11 @@ public class Player extends Entity implements Drawable, Moveable {
 	}
 
 	public void move() {
+		/*this.setCoordInChunk(new Coordinate(getCoordInChunk().getX() + this.getDirection().getOffsetX() * this.getSpeed(),
+			     getCoordInChunk().getY() + this.getDirection().getOffsetY() * this.getSpeed()))*/
 		
+		this.setCurrentCoordinate(new Coordinates(getCurrentCoordinate().getX() + getDirectionMove().getOffsetX() * getStats().getSpeed(), 
+												  getCurrentCoordinate().getY() + getDirectionMove().getOffsetY() * getStats().getSpeed()));
 	}
 	
 	private void initButtonsSpells() {
