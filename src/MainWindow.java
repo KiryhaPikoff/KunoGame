@@ -18,6 +18,7 @@ import entity.control.Controller;
 import entity.player.Player;
 import map.Chunk;
 import map.TileType;
+import utils.Animation;
 import utils.Constants;
 import utils.Drawable;
 
@@ -70,6 +71,7 @@ public class MainWindow extends JFrame {
 		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
+				Animation.animation(testPlayer);
 				testPlayer.move();
 			}
 		});

@@ -2,6 +2,7 @@ package entity.player;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import components.Stats;
 import components.Zones;
 import entity.Entity;
 import entity.control.Button;
+import utils.Constants;
 import utils.Drawable;
 import utils.ImageLoader;
 import utils.Moveable;
@@ -32,7 +34,9 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.attack = Attack.STAND;
 		
 		this.zone = new Zones(25, this.currentCoordinate);
-		this.image = ImageLoader.loadImage("resources/images/player64.png");
+		
+		this.tileset = (BufferedImage) ImageLoader.loadImage("resources/images/player_tileset.png");
+		this.image = tileset.getSubimage(0, 0, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		
 		this.buttonsSpells = new ArrayList<Button>();
 		this.buttonsMove = new ArrayList<Button>();
@@ -40,8 +44,6 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.initButtonsSpells();
 		this.initButtonsMove();
 		
-		
-
 	}
 	
 	public void paint(Graphics g) {
