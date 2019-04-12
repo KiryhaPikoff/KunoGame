@@ -26,19 +26,22 @@ import utils.Moveable;
 public class Player extends Entity implements Drawable, Moveable {
 	
 	public Player() {
+		this.currentFrame = 0;
+		this.isStopAnimation = false;
+		
 		this.currentCoordinate = new Coordinates(500, 500);
 		this.stats = new Stats(200, 200, 100, 100, 1000, 5, 2);
 		this.inventory = new Inventory();
 		
 		this.directionMove = DirectionMove.STAND;
-		this.directionPaint = DirectionPaint.EAST;
+		this.directionPaint = DirectionPaint.SOUTH;
 		this.condition = Condition.GO;
 		this.attack = Attack.STAND;
 		
 		this.zone = new Zones(25, this.currentCoordinate);
 		
 		this.tileset = (BufferedImage) ImageLoader.loadImage("resources/images/player_tileset.png");
-		this.image = tileset.getSubimage(0, 0, Constants.SIZE_TILE, Constants.SIZE_TILE);
+		//this.image = tileset.getSubimage(64, 128, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		
 		this.buttonsSpells = new ArrayList<Button>();
 		this.buttonsMove = new ArrayList<Button>();

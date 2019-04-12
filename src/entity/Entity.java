@@ -18,6 +18,9 @@ import components.Zones;
 import entity.control.Button;
 
 public abstract class Entity {
+	protected int currentFrame;
+	protected boolean isStopAnimation;
+	
 	protected Coordinates currentCoordinate;
 	protected Coordinates spawnCoordinate;
 	protected Coordinates tilesetCoords;
@@ -109,10 +112,10 @@ public abstract class Entity {
 		this.condition = condition;
 	}
 	public BufferedImage getImage() {
-		return tileset;
+		return image;
 	}
 	public void setImage(BufferedImage image) {
-		this.tileset = image;
+		this.image = image;
 	}
 	public Coordinates getTilesetCoords() {
 		return tilesetCoords;
@@ -132,5 +135,18 @@ public abstract class Entity {
 	}
 	public void setMovableZone(Rectangle movableZone) {
 		this.movableZone = movableZone;
+	}
+
+	public int getCurrentFrame() {
+		return currentFrame;
+	}
+	public void setCurrentFrame(int currentFrame) {
+		this.currentFrame = currentFrame;
+	}
+	public boolean isStopAnimation() {
+		return isStopAnimation;
+	}
+	public void setStopAnimation(boolean isStopAnimation) {
+		this.isStopAnimation = isStopAnimation;
 	}
 }

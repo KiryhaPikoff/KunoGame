@@ -40,6 +40,7 @@ public class MainWindow extends JFrame {
 		this.initController();
 		this.initRenderer();
 		this.initMoveTimer();
+		this.initAnimTimer();
 	}
 	
 	public void initWindow() {
@@ -75,7 +76,6 @@ public class MainWindow extends JFrame {
 		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
-				Animation.animation(testPlayer);
 				testPlayer.move(testChunk);
 			/*	ChunkChanger.changeChunk(testChunk, testPlayer);
 				System.out.println(testChunk.hashCode());*/
@@ -108,6 +108,15 @@ public class MainWindow extends JFrame {
 			}
 		});
 		moveTimer.start();
+	}
+	
+	private void initAnimTimer() {
+		Timer animationTimer = new Timer(Constants.ANIMATION_SPEED, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Animation.animation(testPlayer);
+			}
+		});
+		animationTimer.start();
 	}
 	
 	public void paint(Graphics g) {
