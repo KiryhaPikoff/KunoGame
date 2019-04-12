@@ -17,8 +17,8 @@ public class Animation {
 	private Image currentImage;
 	private boolean isStoped;
 	
-	public Animation(Image image) {
-		this.imageSet = image;
+	public Animation(Image tileSet) {
+		this.imageSet = tileSet;
 		this.tilesetCoords = new Coordinates(0, 0);
 		this.currentFrame = 0;		// начинаем с нулевого кадра
 		this.timer = new Timer(1, new ActionListener() {
