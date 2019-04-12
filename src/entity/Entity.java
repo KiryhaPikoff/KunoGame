@@ -5,6 +5,7 @@ import entity.components.Direction;
 import entity.components.Inventory;
 import entity.components.Stats;
 import entity.components.Zones;
+import entity.control.Buttons;
 import utils.Coordinates;
 
 public abstract class Entity {
@@ -15,6 +16,7 @@ public abstract class Entity {
 	protected Direction direction;
 	protected Attack attack;
 	protected Zones zone;
+	protected Buttons buttons;
 	
 	public Coordinates getCoordinate() {
 		return currentCoordinate;
@@ -51,5 +53,11 @@ public abstract class Entity {
 	}
 	public void setZone(Zones zone) {
 		this.zone = zone;
+	}
+	public Buttons getButtons() {
+		return buttons;
+	}
+	public void setButtons(Buttons buttons) {
+		this.buttons = buttons;
 	}
 }

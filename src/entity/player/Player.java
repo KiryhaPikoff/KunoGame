@@ -8,6 +8,7 @@ import entity.components.Direction;
 import entity.components.Inventory;
 import entity.components.Stats;
 import entity.components.Zones;
+import entity.control.Buttons;
 import utils.Coordinates;
 import utils.Drawable;
 import utils.Moveable;
@@ -21,6 +22,7 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.direction = Direction.STAND;
 		this.attack = Attack.STAND;
 		this.zone = new Zones(25, this.currentCoordinate);
+		this.buttons = new Buttons();
 	}
 
 	public void paint(Graphics g) {
