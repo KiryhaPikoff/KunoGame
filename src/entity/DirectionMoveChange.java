@@ -19,6 +19,7 @@ public class DirectionMoveChange {
 		
 		if(entity.getButtonsMove().get(2).isPressed()) {
 			entity.setDirectionMove(DirectionMove.SOUTH);
+			System.out.println("fefwef");
 		}
 		
 		if(entity.getButtonsMove().get(3).isPressed()) {

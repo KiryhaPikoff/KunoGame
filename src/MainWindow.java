@@ -34,7 +34,7 @@ public class MainWindow extends JFrame {
 		this.initEntitys();
 		this.initController();
 		this.initRenderer();
-		this.initTimer();
+		this.initMoveTimer();
 	}
 	
 	public void initWindow() {
@@ -66,7 +66,7 @@ public class MainWindow extends JFrame {
 		Renderer.start();
 	}
 	
-	private void initTimer() {
+	private void initMoveTimer() {
 		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
