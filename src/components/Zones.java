@@ -3,8 +3,6 @@ package components;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
-import utils.Coordinates;
-
 public class Zones {
 	protected int radiusVisibility;		// радиус видимости
 	protected int radiusPursuit;		// радиус преследования

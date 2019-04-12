@@ -1,4 +1,6 @@
-package utils;
+package components;
+
+import utils.Constants;
 
 public final class Coordinates {
 	private int x;	// координата х в окне (в пикселях)

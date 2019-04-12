@@ -3,12 +3,12 @@ package entity;
 import java.awt.Image;
 
 import components.Attack;
+import components.Coordinates;
 import components.Direction;
 import components.Inventory;
 import components.Stats;
 import components.Zones;
 import entity.control.Buttons;
-import utils.Coordinates;
 
 public abstract class Entity {
 	protected Coordinates currentCoordinate;

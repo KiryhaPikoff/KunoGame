@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import utils.Constants;
-import utils.Coordinates;
+import components.Coordinates;
 import components.Direction;
 import utils.Drawable;
 import utils.ExcelLoader;

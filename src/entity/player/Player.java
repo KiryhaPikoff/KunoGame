@@ -3,12 +3,12 @@ package entity.player;
 import java.awt.Graphics;
 
 import components.Attack;
+import components.Coordinates;
 import components.Direction;
 import components.Inventory;
 import components.Stats;
 import components.Zones;
 import entity.Entity;
-import utils.Coordinates;
 import utils.Drawable;
 import utils.ImageLoader;
 import utils.Moveable;

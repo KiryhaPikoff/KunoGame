@@ -2,8 +2,8 @@ package map;
 
 import java.awt.Graphics;
 
+import components.Coordinates;
 import utils.Constants;
-import utils.Coordinates;
 import utils.Drawable;
 
 public final class Tile implements Drawable {
