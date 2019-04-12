@@ -22,6 +22,10 @@ public final class Tile implements Drawable {
 	public void setCoordinates(Coordinates coords) {
 		this.coords = coords;
 	}
+	
+	public TileType getTileType() {
+		return this.type;
+	}
 
 	public void paint(Graphics g) {
 		g.drawImage(this.type.getImage(), this.coords.getX(), this.coords.getY(), Constants.SIZE_TILE, Constants.SIZE_TILE, null);

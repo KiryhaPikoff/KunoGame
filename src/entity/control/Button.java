@@ -14,7 +14,6 @@ public class Button {
 	
 	public void actionPressed() {
 		isPressed = true;
-		System.out.println(key + " is Pressed");
 	}
 	
 	public void setKey(int key) {

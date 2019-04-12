@@ -1,5 +1,6 @@
 package entity;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.util.List;
 
 import components.Attack;
@@ -31,6 +32,8 @@ public abstract class Entity {
 	
 	protected List<Button> buttonsSpells;
 	protected List<Button> buttonsMove;
+	
+	protected Rectangle movableZone;
 	
 	public List<Button> getButtonsMove() {
 		return buttonsMove;
@@ -104,6 +107,12 @@ public abstract class Entity {
 	}
 	public void setImage(Image image) {
 		this.image = image;
+	}
+	public Rectangle getMovableZone() {
+		return movableZone;
+	}
+	public void setMovableZone(Rectangle movableZone) {
+		this.movableZone = movableZone;
 	}
 
 	
