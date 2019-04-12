@@ -1,6 +1,7 @@
 package entity.player;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import components.Stats;
 import components.Zones;
 import entity.Entity;
 import entity.control.Button;
+import utils.Constants;
 import utils.Drawable;
 import utils.ImageLoader;
 import utils.Moveable;
@@ -40,22 +42,19 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.initButtonsSpells();
 		this.initButtonsMove();
 		
-		
-
+		this.movableZone = new Rectangle(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 	}
 	
 	public void paint(Graphics g) {
-	//	System.out.println(this.currentCoordinate.getX());
-	//	System.out.println(this.currentCoordinate.getY());
-		g.drawImage(this.image, this.currentCoordinate.getX(), this.currentCoordinate.getY(), null);
+		g.drawImage(this.image, this.currentCoordinate.getX() - Constants.SIZE_TILE / 2, this.currentCoordinate.getY() - Constants.SIZE_TILE / 2, null);
 	}
 
 	public void move() {
-		/*this.setCoordInChunk(new Coordinate(getCoordInChunk().getX() + this.getDirection().getOffsetX() * this.getSpeed(),
-			     getCoordInChunk().getY() + this.getDirection().getOffsetY() * this.getSpeed()))*/
-		
-		this.setCurrentCoordinate(new Coordinates(getCurrentCoordinate().getX() + getDirectionMove().getOffsetX() * getStats().getSpeed(), 
-												  getCurrentCoordinate().getY() + getDirectionMove().getOffsetY() * getStats().getSpeed()));
+		if(movableZone.contains(currentCoordinate.getX() + directionMove.getOffsetX() * stats.getSpeed(),
+								currentCoordinate.getY() + directionMove.getOffsetY() * stats.getSpeed())) {
+			this.setCurrentCoordinate(new Coordinates(getCurrentCoordinate().getX() + getDirectionMove().getOffsetX() * getStats().getSpeed(), 
+					getCurrentCoordinate().getY() + getDirectionMove().getOffsetY() * getStats().getSpeed()));
+		}
 	}
 	
 	private void initButtonsSpells() {

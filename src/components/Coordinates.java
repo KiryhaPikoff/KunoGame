@@ -8,6 +8,10 @@ public final class Coordinates {
 	private int i;	// координата i (высота в тайлах)
 	private int j;	// координата j (ширина в тайлах)
 	
+	public Coordinates() {
+
+	}
+	
 	public Coordinates(int x, int y) {
 		this.x = x;
 		this.y = y;

@@ -11,15 +11,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import components.Coordinates;
+import components.DirectionMove;
 import components.UI.PlayerInterface;
 import entity.DirectionMoveChange;
 import entity.Entity;
 import entity.control.Controller;
 import entity.player.Player;
 import map.Chunk;
+import map.ChunkChanger;
 import map.TileType;
 import utils.Constants;
 import utils.Drawable;
+import utils.Renderer;
 
 public class MainWindow extends JFrame {
 
@@ -71,6 +75,34 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
 				testPlayer.move();
+			/*	ChunkChanger.changeChunk(testChunk, testPlayer);
+				System.out.println(testChunk.hashCode());*/
+				if(testChunk.getTileXY(testPlayer.getCurrentCoordinate().getX(), testPlayer.getCurrentCoordinate().getY()).getTileType() == TileType.door) {
+					if(testPlayer.getCurrentCoordinate().getX() >= Constants.SIZE_TILE * Constants.WIDTH_CHUNK - 5) {
+						testChunk = new Chunk(testChunk.hashCode(), DirectionMove.EAST);
+						testPlayer.setCurrentCoordinate(new Coordinates(30, testPlayer.getCurrentCoordinate().getY()));
+						Renderer.addObject(testChunk);
+						return;
+					}
+					if(testPlayer.getCurrentCoordinate().getX() <= 5) {
+						testChunk = new Chunk(testChunk.hashCode(), DirectionMove.WEST);
+						testPlayer.setCurrentCoordinate(new Coordinates(Constants.SIZE_TILE * Constants.WIDTH_CHUNK - 30, testPlayer.getCurrentCoordinate().getY()));
+						Renderer.addObject(testChunk);
+						return;
+					}
+					if(testPlayer.getCurrentCoordinate().getY() <= 25) {
+						testChunk = new Chunk(testChunk.hashCode(), DirectionMove.NORTH);
+						testPlayer.setCurrentCoordinate(new Coordinates(testPlayer.getCurrentCoordinate().getX(), Constants.SIZE_TILE * Constants.HEIGHT_CHUNK - 30));
+						Renderer.addObject(testChunk);
+						return;
+					}
+					if(testPlayer.getCurrentCoordinate().getY() >= Constants.SIZE_TILE * Constants.HEIGHT_CHUNK - 5) {
+						testChunk = new Chunk(testChunk.hashCode(), DirectionMove.SOUTH);
+						testPlayer.setCurrentCoordinate(new Coordinates(testPlayer.getCurrentCoordinate().getX(), 30));
+						Renderer.addObject(testChunk);
+						return;
+					}	
+				}
 			}
 		});
 		moveTimer.start();

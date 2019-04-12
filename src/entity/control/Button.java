@@ -14,7 +14,6 @@ public class Button {
 	
 	public void actionPressed() {
 		isPressed = true;
-		
 	}
 	
 	public void setKey(int key) {
