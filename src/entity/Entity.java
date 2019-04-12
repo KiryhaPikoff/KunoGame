@@ -8,7 +8,8 @@ import entity.components.Zones;
 import utils.Coordinates;
 
 public abstract class Entity {
-	protected Coordinates coordinate;
+	protected Coordinates currentCoordinate;
+	protected Coordinates spawnCoordinate;
 	protected Stats stat;
 	protected Inventory inventory;
 	protected Direction direction;
@@ -16,10 +17,10 @@ public abstract class Entity {
 	protected Zones zone;
 	
 	public Coordinates getCoordinate() {
-		return coordinate;
+		return currentCoordinate;
 	}
 	public void setCoordinate(Coordinates coordinate) {
-		this.coordinate = coordinate;
+		this.currentCoordinate = coordinate;
 	}
 	public Stats getStat() {
 		return stat;

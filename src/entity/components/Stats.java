@@ -8,7 +8,7 @@ public class Stats {
 	protected int maxManaPoint;
 	protected int currentManaPoint; 
 	
-	protected int attackTime;
+	protected int attackTime;			// время между атаками
 	protected int attackPower;
 	
 	protected int speed;
