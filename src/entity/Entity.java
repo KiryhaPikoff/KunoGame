@@ -1,11 +1,13 @@
 package entity;
 
+import java.util.List;
+
 import entity.components.Attack;
 import entity.components.Direction;
 import entity.components.Inventory;
 import entity.components.Stats;
 import entity.components.Zones;
-import entity.control.Buttons;
+import entity.control.Button;
 import utils.Coordinates;
 
 public abstract class Entity {
@@ -16,13 +18,25 @@ public abstract class Entity {
 	protected Direction direction;
 	protected Attack attack;
 	protected Zones zone;
-	protected Buttons buttons;
+	protected List<Button> buttons;
 	
-	public Coordinates getCoordinate() {
+	public List<Button> getButtons() {
+		return buttons;
+	}
+	public Coordinates getCurrentCoordinate() {
 		return currentCoordinate;
 	}
-	public void setCoordinate(Coordinates coordinate) {
-		this.currentCoordinate = coordinate;
+	public void setCurrentCoordinate(Coordinates currentCoordinate) {
+		this.currentCoordinate = currentCoordinate;
+	}
+	public Coordinates getSpawnCoordinate() {
+		return spawnCoordinate;
+	}
+	public void setSpawnCoordinate(Coordinates spawnCoordinate) {
+		this.spawnCoordinate = spawnCoordinate;
+	}
+	public void setButtons(List<Button> buttons) {
+		this.buttons = buttons;
 	}
 	public Stats getStat() {
 		return stat;
@@ -53,11 +67,5 @@ public abstract class Entity {
 	}
 	public void setZone(Zones zone) {
 		this.zone = zone;
-	}
-	public Buttons getButtons() {
-		return buttons;
-	}
-	public void setButtons(Buttons buttons) {
-		this.buttons = buttons;
 	}
 }

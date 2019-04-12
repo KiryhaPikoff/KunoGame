@@ -20,54 +20,20 @@ public class Control {
 		}
 		
 		public void keyReleased(KeyEvent e) {
-			switch(e.getKeyCode()) {
-				case KeyEvent.VK_W: { 
-					entity.getButtons().setPressedW(false);
-					break;
-				}
-
-				case KeyEvent.VK_A: {
-					//buttons.setPressedA(false);
-					break;
-				}
-
-				case KeyEvent.VK_S: {
-					//buttons.setPressedS(false);
-					break;
-				}
-
-				case KeyEvent.VK_D: {
-					//buttons.setPressedD(false);
-					break;
-				}
-				
-				case KeyEvent.VK_1: {
-					//buttons.setPressed_1(true);
+			int keyButton = e.getKeyCode();
+			for(Button button : entity.getButtons()) {
+				if(button.getKey() == keyButton) {
+					button.actionReleased();
 					break;
 				}
 			}
 		}
 		
 		public void keyPressed(KeyEvent e) {
-			switch(e.getKeyCode()) {
-				case KeyEvent.VK_W: {
-					entity.getButtons().setPressedW(true); 
-					System.out.println("123");
-					break;
-				}
-
-				case KeyEvent.VK_A: {
-					//buttons.setPressedA(true);
-					break;
-				}
-
-				case KeyEvent.VK_S: {
-					//buttons.setPressedS(true);
-					break;
-				}
-
-				case KeyEvent.VK_D: {
-					//buttons.setPressedD(true);
+			int keyButton = e.getKeyCode();
+			for(Button button : entity.getButtons()) {
+				if(button.getKey() == keyButton) {
+					button.actionPressed();
 					break;
 				}
 			}
