@@ -27,20 +27,9 @@ public class MainWindow extends JFrame {
 	
 	public MainWindow() {
 		this.initWindow();
-		testZone();
-	}
-	
-	public void testZone() {
-		testChunk = new Chunk("10000000");
-		testPlayer = new Player();
-		playerInterface = new PlayerInterface(testPlayer);
-		Controller.setKeyListener(testPlayer);
-		this.addKeyListener(Controller.getKeyListener());
-		Renderer.addObject(testChunk);
-		Renderer.addObject(testPlayer);
-		Renderer.addObject(playerInterface);
-		Renderer.addObject(testPlayer.getInventory());
-		Renderer.start();
+		this.initEntitys();
+		this.initController();
+		this.initRenderer();
 	}
 	
 	public void initWindow() {
@@ -53,9 +42,27 @@ public class MainWindow extends JFrame {
 		setVisible(true);
 	}
 	
+	private void initEntitys() {
+		testChunk = new Chunk("10000000");
+		testPlayer = new Player();
+		playerInterface = new PlayerInterface(testPlayer);
+	}
+	
+	private void initController() {
+		Controller.setKeyListener(testPlayer);
+		this.addKeyListener(Controller.getKeyListener());
+	}
+	
+	private void initRenderer() {
+		Renderer.addObject(testChunk);
+		Renderer.addObject(testPlayer);
+		Renderer.addObject(playerInterface);
+	//	Renderer.addObject(testPlayer.getInventory());
+		Renderer.start();
+	}
+	
 	public void paint(Graphics g) {
 		g.drawImage(Renderer.canvas, 2, 26, null);
 		repaint();
 	}
-	
 }

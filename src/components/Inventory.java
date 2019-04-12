@@ -12,7 +12,6 @@ import utils.ImageLoader;
 public class Inventory implements Drawable {
 	private List<Item> arrayList = new ArrayList<Item>();
 	private Image image;
-	private Image im2;
 	
 	public Inventory() {
 		this.image = ImageLoader.loadImage("resources/images/inventory.png");

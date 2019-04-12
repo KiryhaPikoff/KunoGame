@@ -37,22 +37,11 @@ public class Player extends Entity implements Drawable, Moveable {
 	}
 
 	public void move() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void changeAnimation() {
-		// TODO Auto-generated method stub
-		
+	
 	}
 	
 	private void initButtons() {
-		buttons.add(new Button(KeyEvent.VK_W) {
-			@Override
-			public void actionPressed() {
-				System.out.println("Клавиша W");
-			}
-		});
+		buttons.add(new Button(KeyEvent.VK_W));
 		buttons.add(new Button(KeyEvent.VK_A)); 
 		buttons.add(new Button(KeyEvent.VK_S)); 
 		buttons.add(new Button(KeyEvent.VK_D)); 
