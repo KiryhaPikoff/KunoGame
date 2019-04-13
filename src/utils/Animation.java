@@ -25,6 +25,7 @@ public class Animation {
 				}
 				
 				if(entity.getCurrentFrame() >= 3) {
+					// переписать условие getWidth / TILE_REZOLUT
 					entity.setCurrentFrame(0);
 				}
 				
