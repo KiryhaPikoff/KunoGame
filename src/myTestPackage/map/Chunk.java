@@ -1,4 +1,4 @@
-package map;
+package myTestPackage.map;
 
 import java.awt.Graphics;
 import java.awt.Image;

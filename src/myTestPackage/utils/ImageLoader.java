@@ -1,4 +1,4 @@
-package utils;
+package myTestPackage.utils;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

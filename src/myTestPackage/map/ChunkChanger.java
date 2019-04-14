@@ -1,4 +1,4 @@
-package map;
+package myTestPackage.map;
 
 import components.Coordinates;
 import components.DirectionMove;
