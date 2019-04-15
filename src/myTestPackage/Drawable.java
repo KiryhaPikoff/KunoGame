@@ -1,4 +1,5 @@
 package myTestPackage;
+
 import java.awt.Graphics;
 
 public interface Drawable {

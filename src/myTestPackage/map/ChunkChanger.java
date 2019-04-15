@@ -1,11 +1,12 @@
 package myTestPackage.map;
 
-import components.Coordinates;
 import components.DirectionMove;
-import entity.player.Player;
-import utils.Constants;
-import utils.Renderer;
 
+import myTestPackage.utils.Constants;
+import myTestPackage.components.keyboard.Coordinates;
+
+import myTestPackage.renderer.Renderer;
+/*
 public class ChunkChanger {
 	public static void changeChunk(Chunk currentChunk, Player player) {
 		if(currentChunk.getTileXY(player.getCurrentCoordinate().getX(), player.getCurrentCoordinate().getY()).getTileType() == TileType.door) {
@@ -36,3 +37,4 @@ public class ChunkChanger {
 		}
 	}
 }
+*/

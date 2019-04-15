@@ -6,32 +6,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ResourceBundle.Control;
-
+/*
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import components.Coordinates;
 import components.DirectionMove;
 import components.UI.PlayerInterface;
 import entity.DirectionMoveChange;
 import entity.Entity;
-import entity.control.Controller;
-import entity.player.Player;
-import map.Chunk;
-import map.ChunkChanger;
-import map.TileType;
+import myTestPackage.components.keyboard.Coordinates;
 import utils.Animation;
 import utils.Constants;
 import utils.Drawable;
 import utils.Renderer;
-
+/*
 public class MainWindow extends JFrame {
 
-	private JPanel contentPane;
-	private Chunk testChunk;
-	private Player testPlayer;
-	
+	/*private JPanel contentPane;
+//	private Chunk testChunk;
+//	private Player testPlayer;
+/*	
 	private PlayerInterface playerInterface;
 	
 	public MainWindow() {
@@ -54,31 +49,31 @@ public class MainWindow extends JFrame {
 	}
 	
 	private void initEntitys() {
-		testChunk = new Chunk("10000000");
-		testPlayer = new Player();
-		playerInterface = new PlayerInterface(testPlayer);
+	//	testChunk = new Chunk("10000000");
+	//	testPlayer = new Player();
+	//	playerInterface = new PlayerInterface(testPlayer);
 	}
 	
 	private void initController() {
-		Controller.setKeyListener(testPlayer);
-		this.addKeyListener(Controller.getKeyListener());
+	//	Controller.setKeyListener(testPlayer);
+	//	this.addKeyListener(Controller.getKeyListener());
 	}
-	
+/*	
 	private void initRenderer() {
-		Renderer.addObject(testChunk);
-		Renderer.addObject(testPlayer);
+//		Renderer.addObject(testChunk);
+//		Renderer.addObject(testPlayer);
 		Renderer.addObject(playerInterface);
 	//	Renderer.addObject(testPlayer.getInventory());
 		Renderer.start();
 	}
-	
-	private void initMoveTimer() {
+	*/
+/*	private void initMoveTimer() {
 		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
 				testPlayer.move(testChunk);
 			/*	ChunkChanger.changeChunk(testChunk, testPlayer);
-				System.out.println(testChunk.hashCode());*/
+				System.out.println(testChunk.hashCode());
 				if(testChunk.getTileXY(testPlayer.getCurrentCoordinate().getX(), testPlayer.getCurrentCoordinate().getY()).getTileType() == TileType.door) {
 					if(testPlayer.getCurrentCoordinate().getX() >= Constants.SIZE_TILE * Constants.WIDTH_CHUNK - 5) {
 						testChunk = new Chunk(testChunk.hashCode(), DirectionMove.EAST);
@@ -108,9 +103,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 		moveTimer.start();
-	}
+	}*/
 	
-	private void initAnimTimer() {
+/*	private void initAnimTimer() {
 		Timer animationTimer = new Timer(Constants.ANIMATION_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Animation.animation(testPlayer);
@@ -123,4 +118,4 @@ public class MainWindow extends JFrame {
 		g.drawImage(Renderer.canvas, 2, 26, null);
 		repaint();
 	}
-}
+}*/

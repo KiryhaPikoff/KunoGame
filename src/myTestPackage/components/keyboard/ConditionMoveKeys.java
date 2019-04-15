@@ -4,32 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ConditionMoveKeys {
-	List<KeyboardKey> keys;
 	
-	public ConditionMoveKeys() {
-		this.keys = new ArrayList<KeyboardKey>();
+	private final List<KeyboardKey> keyboardKeys;
+	private final KeyboardKey UP;
+	private final KeyboardKey DOWN;
+	private final KeyboardKey LEFT;
+	private final KeyboardKey RIGHT;
+	
+	public ConditionMoveKeys(KeyboardKey UP, KeyboardKey DOWN, KeyboardKey LEFT, KeyboardKey RIGHT) {
+		this.UP = UP;
+		this.DOWN = DOWN;
+		this.LEFT = LEFT;
+		this.RIGHT = RIGHT;
+		
+		this.keyboardKeys = new ArrayList<KeyboardKey>();
+		this.getKeyboardKeys().add(UP);
+		this.getKeyboardKeys().add(DOWN);
+		this.getKeyboardKeys().add(LEFT);
+		this.getKeyboardKeys().add(RIGHT);
 	}
 	
-	public ConditionMoveKeys(List<KeyboardKey> keys) {
-		this.keys = new ArrayList<KeyboardKey>();
-		this.keys = keys;
+	public KeyboardKey getKeyboardKeyUP() {
+		return this.UP;
 	}
 	
-	public void addKey(KeyboardKey key) {
-		for (KeyboardKey keyboardKey : keys) {
-			if(key.getKey() == keyboardKey.getKey()) {
-				return;
-			}
-		}
-		keys.add(key);
+	public KeyboardKey getKeyboardKeyDOWN() {
+		return this.DOWN;
 	}
 	
-	@Override
-	public String toString() {
-		StringBuilder str = new StringBuilder();
-		for (KeyboardKey keyboardKey : keys) {
-			str.append(keyboardKey.toString() + "\n");
-		}
-		return str.toString();
+	public KeyboardKey getKeyboardKeyLEFT() {
+		return this.LEFT;
+	}
+	
+	public KeyboardKey getKeyboardKeyRIGHT() {
+		return this.RIGHT;
+	}
+
+	public List<KeyboardKey> getKeyboardKeys() {
+		return keyboardKeys;
 	}
 }

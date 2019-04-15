@@ -2,7 +2,7 @@ package myTestPackage.map;
 
 import java.awt.Image;
 
-import utils.ImageLoader;
+import myTestPackage.utils.ImageLoader;
 
 public enum TileType {
 	

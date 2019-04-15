@@ -1,6 +1,6 @@
-package components;
+package myTestPackage.components.keyboard;
 
-import utils.Constants;
+import myTestPackage.utils.Constants;
 
 public final class Coordinates {
 	private int x;	// координата х в окне (в пикселях)

@@ -1,5 +1,5 @@
 package components.UI;
-
+/*
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -27,3 +27,4 @@ public class ManaPointBar extends Bar implements Drawable {
 		g.fillRect(x + 1, y + 1, (this.currentValue  * (width - 1) / this.maxValue), height - 1);
 	}
 }
+*/

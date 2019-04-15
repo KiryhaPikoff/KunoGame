@@ -2,9 +2,9 @@ package myTestPackage.map;
 
 import java.awt.Graphics;
 
-import components.Coordinates;
-import utils.Constants;
-import utils.Drawable;
+import myTestPackage.utils.Constants;
+import myTestPackage.Drawable;
+import myTestPackage.components.keyboard.Coordinates;
 
 public final class Tile implements Drawable {
 	private TileType type;

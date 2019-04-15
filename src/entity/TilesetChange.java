@@ -1,5 +1,5 @@
 package entity;
-
+/*
 public class TilesetChange {
 	public static void changeTileset(Entity entity) {
 		switch(entity.getDirectionPaint()) {
@@ -25,3 +25,4 @@ public class TilesetChange {
 		}
 	}
 }
+*/

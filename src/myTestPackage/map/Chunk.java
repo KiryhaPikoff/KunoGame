@@ -1,28 +1,27 @@
 package myTestPackage.map;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
-import utils.Constants;
-import components.Coordinates;
+import myTestPackage.utils.Constants;
 import components.DirectionMove;
-import utils.Drawable;
-import utils.ExcelLoader;
-import utils.ImageLoader;
+import myTestPackage.Drawable;
+import myTestPackage.components.keyboard.Coordinates;
+import myTestPackage.utils.ExcelLoader;
+import myTestPackage.utils.ImageLoader;
 
 public final class Chunk implements Drawable {
 	private Tile[][] arrayTiles;
 	private Coordinates coords = new Coordinates();
-	public Image renderedChunk = ImageLoader.loadImage("resources/images/default.png");
-	public Graphics bufferChunk = renderedChunk.getGraphics();
+	private BufferedImage renderedChunk = ImageLoader.loadImage("resources/images/default.png");
+	private Graphics bufferChunk = renderedChunk.getGraphics();
 	
 	public Chunk(String nameFirstChunk) {
 		this.arrayTiles = new Tile[Constants.HEIGHT_CHUNK][Constants.WIDTH_CHUNK];
 		ExcelLoader.loadChunkInArray(nameFirstChunk, this.arrayTiles);
 		this.coords = this.deCode(nameFirstChunk);
-		System.out.println(this.hashCode());
 
 		this.render();
 	}
@@ -31,11 +30,9 @@ public final class Chunk implements Drawable {
 		this.arrayTiles = new Tile[Constants.HEIGHT_CHUNK][Constants.WIDTH_CHUNK];
 		int newChunkI = (hashCode - 10000000 + direct.getOffsetY() * 10000) / 10000;
 		int newChunkJ = hashCode % 1000 + direct.getOffsetX();
-		System.out.println(newChunkI + " " + newChunkJ);
 
 		this.coords.setPointIJ(newChunkI, newChunkJ);
 		ExcelLoader.loadChunkInArray(String.valueOf(this.hashCode()), this.arrayTiles);
-		System.out.println(this.coords.getI() + " " + this.coords.getJ());
 		
 		this.render();
 	}
@@ -69,6 +66,10 @@ public final class Chunk implements Drawable {
 		int newChunkI = (hashCode - 10000000) / 10000;
 		int newChunkJ = hashCode % 1000;
 		return new Coordinates(newChunkI, newChunkJ, true);
+	}
+	
+	public BufferedImage getRenderedChunk() {
+		return this.renderedChunk;
 	}
 	
 	public int hashCode() {

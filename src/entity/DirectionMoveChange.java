@@ -1,7 +1,7 @@
 package entity;
 
 import components.DirectionMove;
-
+/*
 public class DirectionMoveChange {
 	public static void changeDirectionMove(Entity entity) {
 		if(entity.getButtonsMove().get(0).isPressed() == false && entity.getButtonsMove().get(1).isPressed() == false &&
@@ -41,3 +41,4 @@ public class DirectionMoveChange {
 		}
 	}
 }
+*/

@@ -2,7 +2,7 @@ package entity;
 
 import components.DirectionMove;
 import components.DirectionPaint;
-
+/*
 public class DirectionPaintChange {
 	public static void paintChange(Entity entity) {
 		if(entity.getButtonsMove().get(0).isPressed() == false && entity.getButtonsMove().get(1).isPressed() == false &&
@@ -45,3 +45,4 @@ public class DirectionPaintChange {
 		}
 	}
 }
+*/
