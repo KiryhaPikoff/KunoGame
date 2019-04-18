@@ -61,7 +61,9 @@ public class MainWindow extends JFrame {
 	
 	private void initController() {
 		Controller.setKeyListener(testPlayer);
+		Controller.setMouseListener(testPlayer);
 		this.addKeyListener(Controller.getKeyListener());
+		this.addMouseListener(Controller.getMouseListener());
 	}
 	
 	private void initRenderer() {

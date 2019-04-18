@@ -22,6 +22,10 @@ public class Animation {
 			
 			changeFrameGo(entity);
 			
+			if (entity.getCondition() == Condition.Attack) {
+				chaneFrameAttack(entity);
+			}
+			
 			entity.setImage(entity.getTileset().getSubimage(entity.getSubImageCoordinate().getX(), entity.getSubImageCoordinate().getY(), Constants.SIZE_TILE, Constants.SIZE_TILE));
 			entity.setCurrentFrame(entity.getCurrentFrame() + 1);
 		}
@@ -67,6 +71,21 @@ public class Animation {
 		
 		if (entity.getCurrentFrame() > 5) {
 			entity.setCurrentFrame(1);
+		}
+		
+		switch(entity.getAttack()) {
+		case HIT:
+			entity.getSubImageCoordinate().setX(4);
+			break;
+		case RETURN:
+			entity.getSubImageCoordinate().setX(5);
+			break;
+		case SWING:
+			entity.getSubImageCoordinate().setX(3);
+			break;
+		default:
+			break;
+		
 		}
 		
 	}
