@@ -23,7 +23,8 @@ public abstract class Entity {
 	
 	protected Coordinates currentCoordinate;
 	protected Coordinates spawnCoordinate;
-	protected Coordinates tilesetCoords;
+	protected Coordinates subImageCoordinate;
+	//protected Coordinates
 
 	protected Stats stats;
 	
@@ -117,11 +118,11 @@ public abstract class Entity {
 	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
-	public Coordinates getTilesetCoords() {
-		return tilesetCoords;
+	public Coordinates getSubImageCoordinate() {
+		return subImageCoordinate;
 	}
-	public void setTilesetCoords(Coordinates tilesetCoords) {
-		this.tilesetCoords = tilesetCoords;
+	public void setSubImageCoordinate(Coordinates tilesetCoords) {
+		this.subImageCoordinate = tilesetCoords;
 	}
 	public BufferedImage getTileset() {
 		return tileset;

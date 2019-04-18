@@ -2,5 +2,5 @@ package components;
 
 public enum Condition {
 	GO,
-	Strike
+	Attack
 }

@@ -36,7 +36,7 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.directionMove = DirectionMove.STAND;
 		this.directionPaint = DirectionPaint.SOUTH;
 		this.condition = Condition.GO;
-		this.attack = Attack.STAND;
+		this.attack = Attack.SWING;
 		
 		this.zone = new Zones(25, this.currentCoordinate);
 		
