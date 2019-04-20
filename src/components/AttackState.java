@@ -1,6 +1,6 @@
 package components;
 
-public enum Attack {
+public enum AttackState {
 	STAND,
 	SWING,
 	HIT,

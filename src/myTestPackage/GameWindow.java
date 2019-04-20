@@ -115,16 +115,20 @@ public class GameWindow extends JFrame {
 			}
 			
 			public void mousePressed(MouseEvent e) {
-				
+
 			}
 			
 			public void mouseExited(MouseEvent e) {
 
 			}
 			
-			
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("fewfewfgggggggggggggggggggggggggggewf");
+				System.out.println(e.getClickCount());
+	
+			}
+			
+			public void mouseDoubleCliced(MouseEvent e) {
+				
 			}
 		};
 		this.addMouseListener(this.playerMouseListener);
