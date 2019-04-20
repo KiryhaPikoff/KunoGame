@@ -3,9 +3,8 @@ package myTestPackage.components.keyboard;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ConditionMoveKeys {
+public final class ConditionMoveKeys extends ConditionKeys {
 	
-	private final List<KeyboardKey> keyboardKeys;
 	private final KeyboardKey UP;
 	private final KeyboardKey DOWN;
 	private final KeyboardKey LEFT;
@@ -38,9 +37,5 @@ public final class ConditionMoveKeys {
 	
 	public KeyboardKey getKeyboardKeyRIGHT() {
 		return this.RIGHT;
-	}
-
-	public List<KeyboardKey> getKeyboardKeys() {
-		return keyboardKeys;
 	}
 }

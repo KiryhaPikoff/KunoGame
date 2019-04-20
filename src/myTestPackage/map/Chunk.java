@@ -6,8 +6,8 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import myTestPackage.utils.Constants;
-import components.DirectionMove;
 import myTestPackage.Drawable;
+import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.keyboard.Coordinates;
 import myTestPackage.utils.ExcelLoader;
 import myTestPackage.utils.ImageLoader;
@@ -26,7 +26,7 @@ public final class Chunk implements Drawable {
 		this.render();
 	}
 	
-	public Chunk(int hashCode, DirectionMove direct) {
+	public Chunk(int hashCode, DirectionMovement direct) {
 		this.arrayTiles = new Tile[Constants.HEIGHT_CHUNK][Constants.WIDTH_CHUNK];
 		int newChunkI = (hashCode - 10000000 + direct.getOffsetY() * 10000) / 10000;
 		int newChunkJ = hashCode % 1000 + direct.getOffsetX();

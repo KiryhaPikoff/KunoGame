@@ -23,11 +23,11 @@ import myTestPackage.mover.Mover;
 import myTestPackage.renderer.Renderer;
 
 public class GameWindow extends JFrame {	
-	private String firstChunk = "10000000";
+	private String nameFirstChunk = "10000000";
 	private Chunk currentChunk;
 	private Player testPlayer;
 	
-	private KeyListener keyListener;
+	private KeyListener playerKeyListener;
 
 	public GameWindow() {
 		this.initWindow();
@@ -46,7 +46,7 @@ public class GameWindow extends JFrame {
 	}
 	
 	public void initGameComponents() {
-		this.currentChunk = new Chunk(this.firstChunk);
+		this.currentChunk = new Chunk(this.nameFirstChunk);
 		this.testPlayer = new Player();
 	}
 	
@@ -57,15 +57,22 @@ public class GameWindow extends JFrame {
 	
 	private void initMover() {
 		Timer moveTimer = new Timer(Constants.DRAWER_SPEED, new ActionListener() {
-			public void actionPerformed(ActionEvent e) { /* здесь можно задать порядок отрисовки объектов(по классам) */
-				Mover.moveObject(testPlayer);
+			public void actionPerformed(ActionEvent e) {
+				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
+					Mover.moveObject(testPlayer);
+				}
+				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть вохможность поменять чанк */
+					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
+					Renderer.chunkImage = currentChunk.getRenderedChunk();
+				}
+				
 			}
 		});
 		moveTimer.start();
 	}
 	
 	private void initKeyListener() { /* Система прослушивания клавиш */
-		this.keyListener = new KeyListener() {
+		this.playerKeyListener = new KeyListener() {
 			public void keyPressed(KeyEvent e) {
 				int numPressedKey = e.getKeyCode();
 				for (KeyboardKey playerKey : testPlayer.getConditionMoveKeys().getKeyboardKeys()) {
@@ -91,7 +98,7 @@ public class GameWindow extends JFrame {
 			}	
 			
 		};
-		this.addKeyListener(this.keyListener);
+		this.addKeyListener(this.playerKeyListener);
 	}
 	
 	public void start() {	

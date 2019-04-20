@@ -18,6 +18,12 @@ public final class Coordinates {
 		this.calculateIJ();
 	}
 	
+	public Coordinates(Coordinates coordinates) {
+		this.x = coordinates.getX();
+		this.y = coordinates.getJ();
+		this.calculateIJ();
+	}
+	
 	public Coordinates(int i, int j, boolean flag) { //бесполезный флаг для различной сигнатуры
 		this.i = i;
 		this.j = j;

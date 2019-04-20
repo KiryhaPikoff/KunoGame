@@ -4,7 +4,7 @@ public abstract class Constants {
 	public static final int WINDOW_POZITION_X = 0;		// На сколько окно с игрой смещено по Х от левого верхнего угла моника
 	public static final int WINDOW_POZITION_Y = 0;		// На сколько окно с игрой смещено по У от левого верхнего угла моника
 	public static final int WINDOW_WIDTH = 1024;		// Ширина окна
-	public static final int WINDOW_HEIGHT = 800;	    // Высота окна
+	public static final int WINDOW_HEIGHT = 795;	    // Высота окна
 	
 	public static final int ANIMATION_SPEED = 100;      // чем ближе к нулю - тем быстрее тикает таймер задаёт скорость анимациям
 	public static final int DRAWER_SPEED = 1;           // чем ближе к нулю - тем быстрее тикает таймер задёт скорость перерисовки окна

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import myTestPackage.Drawable;
+import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.DirectedByKeyboard;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.keyboard.ConditionMoveKeys;
@@ -15,6 +16,7 @@ import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.components.keyboard.KeyboardKeyAction;
 import myTestPackage.entity.Entity;
 import myTestPackage.mover.Movable;
+import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 
 public final class Player extends Entity implements Drawable, DirectedByKeyboard, Movable {
@@ -25,11 +27,16 @@ public final class Player extends Entity implements Drawable, DirectedByKeyboard
 	public Player() {
 		this.initCoordinates();
 		this.initMoveKeys();
+		this.initMovableZone();
 		this.setDirectionMovement(DirectionMovement.STAND);
 	}
 	
 	private void initCoordinates() {
 		this.coordinates = new Coordinates(500, 500);
+	}
+	
+	private void initMovableZone() {
+		this.movableZone = new RectangleZone(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SIZE_TILE / 2);
 	}
 	
 	private void initMoveKeys() {
@@ -58,11 +65,11 @@ public final class Player extends Entity implements Drawable, DirectedByKeyboard
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(this.image, this.coordinates.getX(), this.coordinates.getY(), null);
+		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 	
 	public void move() {
-		this.coordinates.setPointXY(this.coordinates.getX() + this.directionMovement.getOffsetX(), this.coordinates.getY() + this.directionMovement.getOffsetY());
+		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
 	}
 
 	public ConditionMoveKeys getConditionMoveKeys() {
