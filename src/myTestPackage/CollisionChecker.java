@@ -1,6 +1,5 @@
 package myTestPackage;
 
-import myTestPackage.components.keyboard.Coordinates;
 import myTestPackage.entity.Entity;
 import myTestPackage.map.Chunk;
 
@@ -11,7 +10,6 @@ public abstract class CollisionChecker {
 			if(chunk.getTileXY(movableObject.getCoordinates().getX() + movableObject.getDirectionMovement().getOffsetX(), 
 						       movableObject.getCoordinates().getY() + movableObject.getDirectionMovement().getOffsetY() ).getTileType().isPassable() ) /* будет ли тайл проходимым? на негомогу наступит? */{
 			
-				System.out.println(movableObject.getCoordinates().getX() + "  " + movableObject.getCoordinates().getY() );
 				return true;
 			}
 		}

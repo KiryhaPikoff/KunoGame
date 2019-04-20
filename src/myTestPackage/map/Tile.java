@@ -3,8 +3,8 @@ package myTestPackage.map;
 import java.awt.Graphics;
 
 import myTestPackage.utils.Constants;
+import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
-import myTestPackage.components.keyboard.Coordinates;
 
 public final class Tile implements Drawable {
 	private TileType type;

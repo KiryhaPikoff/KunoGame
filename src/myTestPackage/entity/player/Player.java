@@ -6,12 +6,12 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.DirectedByKeyboard;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.keyboard.ConditionMoveKeys;
-import myTestPackage.components.keyboard.Coordinates;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.components.keyboard.KeyboardKeyAction;
 import myTestPackage.entity.Entity;

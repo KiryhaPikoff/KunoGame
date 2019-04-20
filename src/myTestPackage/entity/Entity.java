@@ -2,11 +2,11 @@ package myTestPackage.entity;
 
 import java.awt.Graphics;
 
+import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.Directed;
 import myTestPackage.components.direction.DirectionMovement;
-import myTestPackage.components.keyboard.Coordinates;
 
 public abstract class Entity implements Directed {
 	

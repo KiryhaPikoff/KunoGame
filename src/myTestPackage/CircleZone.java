@@ -2,8 +2,6 @@ package myTestPackage;
 
 import java.awt.Shape;
 
-import myTestPackage.components.keyboard.Coordinates;
-
 public class CircleZone {
 	
 	private Coordinates coordinates; 

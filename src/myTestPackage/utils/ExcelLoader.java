@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import myTestPackage.components.keyboard.Coordinates;
+import myTestPackage.Coordinates;
 import myTestPackage.map.Tile;
 import myTestPackage.map.TileType;
 import myTestPackage.utils.Constants;

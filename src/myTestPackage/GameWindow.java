@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,11 +30,13 @@ public class GameWindow extends JFrame {
 	private Player testPlayer;
 	
 	private KeyListener playerKeyListener;
+	private MouseListener playerMouseListener;
 
 	public GameWindow() {
 		this.initWindow();
 		this.initGameComponents();
 		this.initKeyListener();
+		this.initMouseListener();
 		this.initMover();
 		this.initRender();
 	}
@@ -56,16 +60,15 @@ public class GameWindow extends JFrame {
 	}
 	
 	private void initMover() {
-		Timer moveTimer = new Timer(Constants.DRAWER_SPEED, new ActionListener() {
+		Timer moveTimer = new Timer(0, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					Mover.moveObject(testPlayer);
 				}
-				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть вохможность поменять чанк */
+				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
 					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
-					Renderer.chunkImage = currentChunk.getRenderedChunk();
+					Renderer.addObject(currentChunk);
 				}
-				
 			}
 		});
 		moveTimer.start();
@@ -99,6 +102,32 @@ public class GameWindow extends JFrame {
 			
 		};
 		this.addKeyListener(this.playerKeyListener);
+	}
+	
+	private void initMouseListener() {
+		this.playerMouseListener = new MouseListener() {
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+
+			}
+			
+			public void mousePressed(MouseEvent e) {
+				
+			}
+			
+			public void mouseExited(MouseEvent e) {
+
+			}
+			
+			
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("fewfewfgggggggggggggggggggggggggggewf");
+			}
+		};
+		this.addMouseListener(this.playerMouseListener);
 	}
 	
 	public void start() {	

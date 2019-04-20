@@ -36,17 +36,15 @@ public abstract class Renderer extends JPanel {
 	}
 	
 	public static void addObject(Object object) { 
-		if(object instanceof Drawable) {
-			System.out.println("fwefwefwefewf");
-			entitysList.add(object);
-		}
 		if(object instanceof Chunk) {
 			chunkImage = ((Chunk) object).getRenderedChunk();
 			return;
 		}
+		if(object instanceof Drawable) {
+			entitysList.add(object);
+		}
 	}
-	/*
-	public static void deleteObject(Object object) {
+/*	public static void deleteObject(Object object) {
 		if(object instanceof Drawable) {
 			entitysList.remove(object);
 		}

@@ -2,8 +2,6 @@ package myTestPackage;
 
 import java.awt.Rectangle;
 
-import myTestPackage.components.keyboard.Coordinates;
-
 public class RectangleZone {
 	
 	private int x;

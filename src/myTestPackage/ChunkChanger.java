@@ -19,7 +19,7 @@ public class ChunkChanger {
 			if(player.getCoordinates().getY() <= 25) {
 				return DirectionMovement.NORTH;
 			}
-			if(player.getCoordinates().getY() >= Constants.SIZE_TILE * Constants.HEIGHT_CHUNK - 5) {
+			if(player.getCoordinates().getY() >= Constants.SIZE_TILE * Constants.HEIGHT_CHUNK - 15) {
 				return DirectionMovement.SOUTH;
 			}	
 		}
@@ -31,17 +31,21 @@ public class ChunkChanger {
 		switch(direction) {
 			case EAST: {
 				player.getCoordinates().setX(30);
+				return new Chunk(chunk.hashCode(), direction);
 			}
 			case WEST: {
 				player.getCoordinates().setX(Constants.SIZE_TILE * Constants.WIDTH_CHUNK - 30);
+				return new Chunk(chunk.hashCode(), direction);
 			}
 			case NORTH: {
 				player.getCoordinates().setY(Constants.SIZE_TILE * Constants.HEIGHT_CHUNK - 30);
+				return new Chunk(chunk.hashCode(), direction);
 			}
 			case SOUTH: {
 				player.getCoordinates().setY(30);	
+				return new Chunk(chunk.hashCode(), direction);
 			}
+			default: return chunk;
 		}
-		return new Chunk(chunk.hashCode(), direction);
 	}
 }

@@ -6,9 +6,9 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import myTestPackage.utils.Constants;
+import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.components.direction.DirectionMovement;
-import myTestPackage.components.keyboard.Coordinates;
 import myTestPackage.utils.ExcelLoader;
 import myTestPackage.utils.ImageLoader;
 

@@ -1,4 +1,4 @@
-package myTestPackage.components.keyboard;
+package myTestPackage;
 
 import myTestPackage.utils.Constants;
 
