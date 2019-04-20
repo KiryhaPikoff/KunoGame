@@ -18,13 +18,16 @@ import components.Zones;
 import entity.control.Button;
 
 public abstract class Entity {
-	protected int currentFrame;
+	protected int currentFrame; 
+	
+	protected int startFrameCondition;
+	protected int finishFrameCondition;
+	
 	protected boolean isStopAnimation;
 	
 	protected Coordinates currentCoordinate;
 	protected Coordinates spawnCoordinate;
 	protected Coordinates subImageCoordinate;
-	//protected Coordinates
 
 	protected Stats stats;
 	
@@ -150,4 +153,17 @@ public abstract class Entity {
 	public void setStopAnimation(boolean isStopAnimation) {
 		this.isStopAnimation = isStopAnimation;
 	}
+	public int getStartFrameCondition() {
+		return startFrameCondition;
+	}
+	public void setStartFrameCondition(int startFrameCondition) {
+		this.startFrameCondition = startFrameCondition;
+	}
+	public int getFinishFrameCondition() {
+		return finishFrameCondition;
+	}
+	public void setFinishFrameCondition(int finishFrameCondition) {
+		this.finishFrameCondition = finishFrameCondition;
+	}
+	
 }

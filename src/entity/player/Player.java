@@ -27,6 +27,10 @@ public class Player extends Entity implements Drawable, Moveable {
 	
 	public Player() {
 		this.currentFrame = 0;
+		
+		this.startFrameCondition = 0;
+		this.finishFrameCondition = 2;
+		
 		this.isStopAnimation = false;
 		
 		this.currentCoordinate = new Coordinates(500, 500);

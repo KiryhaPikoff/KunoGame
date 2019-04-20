@@ -25,6 +25,10 @@ public class Stats {
 		this.speed = speed;
 	}
 	
+	public Stats() {
+		
+	}
+	
 	public int getMaxHealthPoint() {
 		return maxHealthPoint;
 	}

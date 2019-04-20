@@ -5,42 +5,41 @@ import components.DirectionPaint;
 
 public class DirectionPaintChange {
 	public static void paintChange(Entity entity) {
-		if(entity.getButtonsMove().get(0).isPressed() == false && entity.getButtonsMove().get(1).isPressed() == false &&
-				entity.getButtonsMove().get(2).isPressed() == false && entity.getButtonsMove().get(3).isPressed() == false) {
+		if(entity.getDirectionMove() == DirectionMove.STAND) {
 			//entity.setDirectionPaint(DirectionPaint.STAND);
 			entity.setStopAnimation(true);
 		} else {
 			entity.setStopAnimation(false);
 		}
 		
-		if(entity.getButtonsMove().get(0).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.NORTH) {
 			entity.setDirectionPaint(DirectionPaint.NORTH);
 		}
 		
-		if(entity.getButtonsMove().get(1).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.WEST) {
 			entity.setDirectionPaint(DirectionPaint.WEST);
 		}
 		
-		if(entity.getButtonsMove().get(2).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.SOUTH) {
 			entity.setDirectionPaint(DirectionPaint.SOUTH);
 		}
 		
-		if(entity.getButtonsMove().get(3).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.EAST) {
 			entity.setDirectionPaint(DirectionPaint.EAST);
 		}
 		
-		if(entity.getButtonsMove().get(0).isPressed() && entity.getButtonsMove().get(1).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.NORTH_WEST) {
 			entity.setDirectionPaint(DirectionPaint.WEST);
 		}
 		
-		if(entity.getButtonsMove().get(0).isPressed() && entity.getButtonsMove().get(3).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.NORTH_EAST) {
 			entity.setDirectionPaint(DirectionPaint.EAST);
 		}
 
-		if(entity.getButtonsMove().get(2).isPressed() && entity.getButtonsMove().get(1).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.SOUTH_WEST) {
 			entity.setDirectionPaint(DirectionPaint.WEST);
 		}
-		if(entity.getButtonsMove().get(2).isPressed() && entity.getButtonsMove().get(3).isPressed()) {
+		if(entity.getDirectionMove() == DirectionMove.SOUTH_EAST) {
 			entity.setDirectionPaint(DirectionPaint.EAST);
 		}
 	}
