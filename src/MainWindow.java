@@ -17,6 +17,7 @@ import components.UI.PlayerInterface;
 import entity.DirectionMoveChange;
 import entity.Entity;
 import entity.control.Controller;
+import entity.monster.Skelet;
 import entity.player.Player;
 import map.Chunk;
 import map.ChunkChanger;
@@ -31,6 +32,7 @@ public class MainWindow extends JFrame {
 	private JPanel contentPane;
 	private Chunk testChunk;
 	private Player testPlayer;
+	private Skelet testSkelet;
 	
 	private PlayerInterface playerInterface;
 	
@@ -56,6 +58,7 @@ public class MainWindow extends JFrame {
 	private void initEntitys() {
 		testChunk = new Chunk("10000000");
 		testPlayer = new Player();
+		testSkelet = new Skelet();
 		playerInterface = new PlayerInterface(testPlayer);
 	}
 	
@@ -69,6 +72,7 @@ public class MainWindow extends JFrame {
 	private void initRenderer() {
 		Renderer.addObject(testChunk);
 		Renderer.addObject(testPlayer);
+		Renderer.addObject(testSkelet);
 		Renderer.addObject(playerInterface);
 	//	Renderer.addObject(testPlayer.getInventory());
 		Renderer.start();
@@ -116,6 +120,7 @@ public class MainWindow extends JFrame {
 		Timer animationTimer = new Timer(Constants.ANIMATION_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Animation.animation(testPlayer);
+				Animation.animation(testSkelet);
 			}
 		});
 		animationTimer.start();
