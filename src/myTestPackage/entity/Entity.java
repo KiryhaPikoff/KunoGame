@@ -6,9 +6,12 @@ import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.Directed;
+import myTestPackage.components.direction.DirectedByKeyboard;
 import myTestPackage.components.direction.DirectionMovement;
+import myTestPackage.mover.Movable;
+import myTestPackage.renderer.Animated;
 
-public abstract class Entity implements Directed {
+public abstract class Entity implements Directed, Drawable, DirectedByKeyboard, Movable, Animated {
 	
 	protected Coordinates coordinates;
 	protected DirectionMovement directionMovement;

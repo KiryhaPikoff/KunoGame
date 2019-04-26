@@ -16,19 +16,34 @@ import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.components.keyboard.KeyboardKeyAction;
 import myTestPackage.entity.Entity;
 import myTestPackage.mover.Movable;
+import myTestPackage.renderer.Animated;
+import myTestPackage.renderer.Animation;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 
-public final class Player extends Entity implements Drawable, DirectedByKeyboard, Movable {
+public final class Player extends Entity {
 
 	private ConditionMoveKeys conditionMoveKeys;
 	private BufferedImage image = ImageLoader.loadImage("resources/images/player64.png");
+	private Animation animUP;
+	private Animation animDOWN;
+	private Animation animLEFT;
+	private Animation animRIGHT;
+	
 	
 	public Player() {
 		this.initCoordinates();
+		this.initAnimations();
 		this.initMoveKeys();
 		this.initMovableZone();
 		this.setDirectionMovement(DirectionMovement.STAND);
+	}
+	
+	private void initAnimations() {
+		animUP = new Animation("resources/images/player_up.png");
+		animDOWN = new Animation("resources/images/player_down.png");
+		animLEFT = new Animation("resources/images/player_left.png");
+		animRIGHT = new Animation("resources/images/player_right.png");
 	}
 	
 	private void initCoordinates() {
@@ -62,6 +77,38 @@ public final class Player extends Entity implements Drawable, DirectedByKeyboard
 			!conditionMoveKeys.getKeyboardKeyDOWN().isPressed() &&
 			!conditionMoveKeys.getKeyboardKeyLEFT().isPressed() && 
 			!conditionMoveKeys.getKeyboardKeyRIGHT().isPressed()) this.setDirectionMovement(DirectionMovement.STAND);
+	}
+	
+	public void updateAnimation() {
+		switch(this.directionMovement) {
+			case NORTH: {
+				this.animUP.update();
+				this.image = this.animUP.getCurrentImage();
+				break;
+			}
+				
+			case SOUTH: {
+				this.animDOWN.update();
+				this.image = this.animDOWN.getCurrentImage();
+				break;
+			}
+			
+			case WEST:
+			case NORTH_WEST:
+			case SOUTH_WEST: {
+				this.animLEFT.update();
+				this.image = this.animLEFT.getCurrentImage();
+				break;
+			}
+			
+			case EAST: 
+			case NORTH_EAST:
+			case SOUTH_EAST: {
+				this.animRIGHT.update();
+				this.image = this.animRIGHT.getCurrentImage();
+				break;
+			}
+		} 
 	}
 
 	public void paint(Graphics g) {

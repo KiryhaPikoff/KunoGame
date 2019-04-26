@@ -22,6 +22,7 @@ import myTestPackage.entity.player.Player;
 import myTestPackage.entity.Entity;
 import myTestPackage.map.Chunk;
 import myTestPackage.mover.Mover;
+import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
 
 public class GameWindow extends JFrame {	
@@ -38,6 +39,7 @@ public class GameWindow extends JFrame {
 		this.initKeyListener();
 		this.initMouseListener();
 		this.initMover();
+		this.initAnimationUpdater();
 		this.initRender();
 	}
 	
@@ -47,6 +49,12 @@ public class GameWindow extends JFrame {
 				  Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 		setResizable(false);
 		setVisible(true);
+	}
+	
+	public void initAnimationUpdater() {
+		AnimationUpdater.startUpdAllAnimations();
+		
+		AnimationUpdater.addEntity(this.testPlayer);
 	}
 	
 	public void initGameComponents() {
@@ -60,7 +68,7 @@ public class GameWindow extends JFrame {
 	}
 	
 	private void initMover() {
-		Timer moveTimer = new Timer(0, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					Mover.moveObject(testPlayer);
