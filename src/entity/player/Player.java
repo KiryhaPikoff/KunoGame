@@ -45,7 +45,6 @@ public class Player extends Entity implements Drawable, Moveable {
 		this.zone = new Zones(25, this.currentCoordinate);
 		
 		this.tileset = (BufferedImage) ImageLoader.loadImage("resources/images/player_tileset.png");
-		//this.image = tileset.getSubimage(64, 128, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		
 		this.buttonsSpells = new ArrayList<Button>();
 		this.buttonsMove = new ArrayList<Button>();

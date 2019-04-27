@@ -32,4 +32,28 @@ public class Zones {
 				spawnCoordinate.getY() - radiusPursuit,
 				radiusPursuit * 2, radiusPursuit * 2);
 	}
+	
+	public Shape getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(Shape visibility) {
+		this.visibility = visibility;
+	}
+
+	public Shape getPursuit() {
+		return pursuit;
+	}
+
+	public void setPursuit(Shape pursuit) {
+		this.pursuit = pursuit;
+	}
+
+	public Shape getAttack() {
+		return attack;
+	}
+
+	public void setAttack(Shape attack) {
+		this.attack = attack;
+	}
 }

@@ -6,7 +6,6 @@ import components.DirectionPaint;
 public class DirectionPaintChange {
 	public static void paintChange(Entity entity) {
 		if(entity.getDirectionMove() == DirectionMove.STAND) {
-			//entity.setDirectionPaint(DirectionPaint.STAND);
 			entity.setStopAnimation(true);
 		} else {
 			entity.setStopAnimation(false);

@@ -16,6 +16,7 @@ import components.DirectionMove;
 import components.UI.PlayerInterface;
 import entity.DirectionMoveChange;
 import entity.Entity;
+import entity.InteractionMonsterPlayer;
 import entity.control.Controller;
 import entity.monster.Skelet;
 import entity.player.Player;
@@ -43,6 +44,7 @@ public class MainWindow extends JFrame {
 		this.initRenderer();
 		this.initMoveTimer();
 		this.initAnimTimer();
+		this.initInteractionMonsterPlayer();
 	}
 	
 	public void initWindow() {
@@ -82,9 +84,9 @@ public class MainWindow extends JFrame {
 		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DirectionMoveChange.changeDirectionMove(testPlayer);
+				InteractionMonsterPlayer.interaction(testSkelet, testPlayer);
 				testPlayer.move(testChunk);
-			/*	ChunkChanger.changeChunk(testChunk, testPlayer);
-				System.out.println(testChunk.hashCode());*/
+				testSkelet.move(testChunk);
 				if(testChunk.getTileXY(testPlayer.getCurrentCoordinate().getX(), testPlayer.getCurrentCoordinate().getY()).getTileType() == TileType.door) {
 					if(testPlayer.getCurrentCoordinate().getX() >= Constants.SIZE_TILE * Constants.WIDTH_CHUNK - 5) {
 						testChunk = new Chunk(testChunk.hashCode(), DirectionMove.EAST);
@@ -124,6 +126,10 @@ public class MainWindow extends JFrame {
 			}
 		});
 		animationTimer.start();
+	}
+	
+	private void initInteractionMonsterPlayer() {
+		//
 	}
 	
 	public void paint(Graphics g) {

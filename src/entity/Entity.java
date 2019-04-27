@@ -38,6 +38,9 @@ public abstract class Entity {
 	protected Condition condition;
 	protected Attack attack;
 	
+	protected boolean isVisibility;
+	protected boolean isPursuit;
+	
 	protected Zones zone;
 
 	protected BufferedImage tileset;
@@ -165,5 +168,16 @@ public abstract class Entity {
 	public void setFinishFrameCondition(int finishFrameCondition) {
 		this.finishFrameCondition = finishFrameCondition;
 	}
-	
+	public boolean isVisibility() {
+		return isVisibility;
+	}
+	public void setVisibility(boolean isVisibility) {
+		this.isVisibility = isVisibility;
+	}
+	public boolean isPursuit() {
+		return isPursuit;
+	}
+	public void setPursuit(boolean isPursuit) {
+		this.isPursuit = isPursuit;
+	}
 }

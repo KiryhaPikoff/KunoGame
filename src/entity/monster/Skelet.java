@@ -10,6 +10,7 @@ import components.DirectionMove;
 import components.DirectionPaint;
 import components.Inventory;
 import components.Stats;
+import components.Zones;
 import entity.Entity;
 import map.Chunk;
 import utils.Constants;
@@ -23,7 +24,9 @@ public class Skelet extends Entity implements Drawable, Moveable{
 		this.currentFrame = 0;
 		this.isStopAnimation = false;
 		
-		this.currentCoordinate = new Coordinates(200, 200);
+		this.currentCoordinate = new Coordinates(100, 600);
+		this.spawnCoordinate = new Coordinates(currentCoordinate.getI(), currentCoordinate.getJ(), true);
+		
 		this.stats = new Stats();
 		
 		stats.setMaxHealthPoint(500);
@@ -36,6 +39,8 @@ public class Skelet extends Entity implements Drawable, Moveable{
 		
 		this.inventory = new Inventory();
 		
+		this.zone = new Zones(25, 300, 500, this.currentCoordinate, this.spawnCoordinate);
+		
 		this.directionMove = DirectionMove.STAND;
 		this.directionPaint = DirectionPaint.EAST;
 		this.condition = Condition.GO;
@@ -45,8 +50,8 @@ public class Skelet extends Entity implements Drawable, Moveable{
 	}
 
 	public void move(Chunk currentChunk) {
-		// TODO Auto-generated method stub
-		
+			this.setCurrentCoordinate(new Coordinates(getCurrentCoordinate().getX() + getDirectionMove().getOffsetX() * getStats().getSpeed(), 
+				getCurrentCoordinate().getY() + getDirectionMove().getOffsetY() * getStats().getSpeed()));
 	}
 
 	public void paint(Graphics g) {
