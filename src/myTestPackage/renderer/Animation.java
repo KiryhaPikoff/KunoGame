@@ -11,8 +11,8 @@ public final class Animation {
 	private int currentFrame;
 	private int maxFrames;
 	
-	public Animation(String tileSetFilePath) {
-		this.tileSet = ImageLoader.loadImage(tileSetFilePath);
+	public Animation(BufferedImage tileSet) {
+		this.tileSet = tileSet;
 		this.maxFrames = tileSet.getWidth() / Constants.RESOLUTION_TILE;
 	}
 	

@@ -1,21 +1,33 @@
 package myTestPackage.entity;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.Directed;
-import myTestPackage.components.direction.DirectedByKeyboard;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.mover.Movable;
 import myTestPackage.renderer.Animated;
+import myTestPackage.renderer.Animation;
+import myTestPackage.utils.ImageLoader;
 
-public abstract class Entity implements Directed, Drawable, DirectedByKeyboard, Movable, Animated {
+public abstract class Entity implements Directed, Drawable, Movable, Animated {
+	
+	private String name;
 	
 	protected Coordinates coordinates;
 	protected DirectionMovement directionMovement;
 	protected RectangleZone movableZone;
+	
+	protected BufferedImage image;
+	protected Animation animUP;
+	protected Animation animDOWN;
+	protected Animation animLEFT;
+	protected Animation animRIGHT;
+	
+//	protected Entity target;
 
 	public Coordinates getCoordinates() {
 		return coordinates;
@@ -39,5 +51,13 @@ public abstract class Entity implements Directed, Drawable, DirectedByKeyboard, 
 
 	public void setMovableZone(RectangleZone movableZone) {
 		this.movableZone = movableZone;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

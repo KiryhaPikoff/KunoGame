@@ -9,7 +9,6 @@ import java.util.List;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
-import myTestPackage.components.direction.DirectedByKeyboard;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.keyboard.ConditionMoveKeys;
 import myTestPackage.components.keyboard.KeyboardKey;
@@ -20,19 +19,16 @@ import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
+import myTestPackage.utils.ImageStorage;
 
 public final class Player extends Entity {
 
 	private ConditionMoveKeys conditionMoveKeys;
-	private BufferedImage image = ImageLoader.loadImage("resources/images/player64.png");
-	private Animation animUP;
-	private Animation animDOWN;
-	private Animation animLEFT;
-	private Animation animRIGHT;
 	
-	
-	public Player() {
-		this.initCoordinates();
+	public Player(Coordinates coordinates) {
+		this.coordinates = new Coordinates();
+		this.coordinates = coordinates;
+		
 		this.initAnimations();
 		this.initMoveKeys();
 		this.initMovableZone();
@@ -40,14 +36,11 @@ public final class Player extends Entity {
 	}
 	
 	private void initAnimations() {
-		animUP = new Animation("resources/images/player_up.png");
-		animDOWN = new Animation("resources/images/player_down.png");
-		animLEFT = new Animation("resources/images/player_left.png");
-		animRIGHT = new Animation("resources/images/player_right.png");
-	}
-	
-	private void initCoordinates() {
-		this.coordinates = new Coordinates(500, 500);
+		this.image = ImageStorage.PLAYER_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE);
+		animUP = new Animation(ImageStorage.PLAYER_TS_UP);
+		animDOWN = new Animation(ImageStorage.PLAYER_TS_DOWN);
+		animLEFT = new Animation(ImageStorage.PLAYER_TS_LEFT);
+		animRIGHT = new Animation(ImageStorage.PLAYER_TS_RIGHT);
 	}
 	
 	private void initMovableZone() {

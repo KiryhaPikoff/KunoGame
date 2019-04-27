@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +22,9 @@ import myTestPackage.components.direction.DirectionChanger;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.entity.player.Player;
 import myTestPackage.entity.Entity;
+import myTestPackage.entity.Monster.Monster;
+import myTestPackage.entity.Monster.MonsterFabrica;
+import myTestPackage.entity.Monster.Spawner;
 import myTestPackage.map.Chunk;
 import myTestPackage.mover.Mover;
 import myTestPackage.renderer.AnimationUpdater;
@@ -29,18 +34,40 @@ public class GameWindow extends JFrame {
 	private String nameFirstChunk = "10000000";
 	private Chunk currentChunk;
 	private Player testPlayer;
+	private Monster testMonster;
+	private List<Monster> monsterList = new ArrayList<Monster>();
 	
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
 
 	public GameWindow() {
 		this.initWindow();
+		AnimationUpdater.startUpdAllAnimations();
+		Mover.startRandomizeDirectionsForMonsters();
 		this.initGameComponents();
 		this.initKeyListener();
 		this.initMouseListener();
 		this.initMover();
-		this.initAnimationUpdater();
-		this.initRender();
+		
+	}
+	
+	private void spawnMonster() {
+		Monster tempMonster = Spawner.spawnMonster(currentChunk);
+		monsterList.add(tempMonster);
+		Mover.addEntity(tempMonster);
+		AnimationUpdater.addEntity(tempMonster);
+		Renderer.addObject(tempMonster);
+	}
+	
+	private void spawnPlayer() {
+		this.testPlayer = new Player(new Coordinates(500, 500));
+		Renderer.addObject(testPlayer);
+		AnimationUpdater.addEntity(this.testPlayer);
+	}
+	
+	private void initFirstChunk() {
+		this.currentChunk = new Chunk(this.nameFirstChunk);
+		Renderer.addObject(currentChunk);
 	}
 	
 	private void initWindow() {
@@ -51,20 +78,27 @@ public class GameWindow extends JFrame {
 		setVisible(true);
 	}
 	
-	public void initAnimationUpdater() {
-		AnimationUpdater.startUpdAllAnimations();
-		
-		AnimationUpdater.addEntity(this.testPlayer);
-	}
-	
 	public void initGameComponents() {
-		this.currentChunk = new Chunk(this.nameFirstChunk);
-		this.testPlayer = new Player();
-	}
-	
-	private void initRender() {
-		Renderer.addObject(currentChunk);
-		Renderer.addObject(testPlayer);
+		this.initFirstChunk();
+		this.spawnPlayer();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		this.spawnMonster();
+		
 	}
 	
 	private void initMover() {
@@ -73,6 +107,13 @@ public class GameWindow extends JFrame {
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					Mover.moveObject(testPlayer);
 				}
+				
+				for (Monster monster : monsterList) {
+					if (CollisionChecker.canMove(monster, currentChunk)) {
+						Mover.moveObject(monster);
+					}
+				}
+
 				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
 					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
 					Renderer.addObject(currentChunk);
