@@ -1,8 +1,10 @@
 package myTestPackage.entity.Monster;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.DirectionMovement;
@@ -14,11 +16,16 @@ import myTestPackage.utils.ImageLoader;
 import myTestPackage.utils.ImageStorage;
 
 public class Monster extends Entity {
+	
+	// Player target;
 
 	public Monster() {
 		this.coordinates = new Coordinates();
 		
 		this.initCoordinates();
+		
+		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
+		
 		this.initMovableZone();
 		this.setDirectionMovement(DirectionMovement.STAND);
 	}
@@ -42,6 +49,7 @@ public class Monster extends Entity {
 	
 	public void move() {
 		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
+		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
 	}
 
 	public void changeDirection() {
@@ -81,6 +89,9 @@ public class Monster extends Entity {
 	}
 
 	public void paint(Graphics g) {
+		if(this.isTarget()) {
+			g.drawImage(ImageStorage.TARGET, this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, null);
+		}
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 }

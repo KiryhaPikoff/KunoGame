@@ -1,7 +1,5 @@
 package myTestPackage;
 
-import java.awt.Shape;
-
 public class CircleZone {
 	
 	private Coordinates coordinates; 
@@ -10,6 +8,14 @@ public class CircleZone {
 	public CircleZone(int radius, Coordinates coordinates) {
 		this.radius = radius;
 		this.coordinates = new Coordinates(coordinates);
+	}
+	
+	public void updateCoordinates(int x, int y) {
+		this.coordinates = new Coordinates(x, y);
+	}
+	
+	public void updateCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
 	}
 	
 	public boolean inZone(int x, int y) {

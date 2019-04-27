@@ -1,11 +1,13 @@
 package myTestPackage.entity.player;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
@@ -14,6 +16,7 @@ import myTestPackage.components.keyboard.ConditionMoveKeys;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.components.keyboard.KeyboardKeyAction;
 import myTestPackage.entity.Entity;
+import myTestPackage.entity.Monster.Monster;
 import myTestPackage.mover.Movable;
 import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
@@ -24,10 +27,13 @@ import myTestPackage.utils.ImageStorage;
 public final class Player extends Entity {
 
 	private ConditionMoveKeys conditionMoveKeys;
+	private Entity target;
 	
 	public Player(Coordinates coordinates) {
 		this.coordinates = new Coordinates();
 		this.coordinates = coordinates;
+		
+		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
 		
 		this.initAnimations();
 		this.initMoveKeys();
@@ -105,14 +111,27 @@ public final class Player extends Entity {
 	}
 
 	public void paint(Graphics g) {
+		if(this.isTarget()) {
+			g.setColor(new Color(69, 200, 36));
+			g.drawOval(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, Constants.SIZE_TILE, Constants.SIZE_TILE);
+		}
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 	
 	public void move() {
 		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
+		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
 	}
 
 	public ConditionMoveKeys getConditionMoveKeys() {
 		return conditionMoveKeys;
+	}
+
+	public Entity getTarget() {
+		return target;
+	}
+
+	public void setTarget(Entity target) {
+		this.target = target;
 	}
 }

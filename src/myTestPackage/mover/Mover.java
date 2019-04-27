@@ -20,7 +20,7 @@ public abstract class Mover {
 	}
 	
 	public static void startRandomizeDirectionsForMonsters() {
-		Timer randTimer = new Timer(2000, new ActionListener() {
+		Timer randTimer = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Entity entity : entityList) {
 					entity.changeDirection();
@@ -30,7 +30,7 @@ public abstract class Mover {
 		randTimer.start();
 	}
 	
-	public static void addEntity(Entity entity) {
+	public static void addEntityToChangeDirectionList(Entity entity) {
 		if(!entityList.contains(entity)) {			
 			entityList.add(entity);
 		}

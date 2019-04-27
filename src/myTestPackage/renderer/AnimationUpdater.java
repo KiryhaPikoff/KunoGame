@@ -31,4 +31,10 @@ public abstract class AnimationUpdater {
 			animList.add(entity);
 		}
 	}
+	
+	public static void deleteEntity(Entity entity) {
+		if(animList.contains(entity)) {
+			animList.remove(entity);
+		}
+	}
 }

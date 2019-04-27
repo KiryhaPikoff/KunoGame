@@ -20,4 +20,6 @@ public abstract class ImageStorage {
 	public static final BufferedImage MONSTER_MUSCULE_FEAR_TS_DOWN = ImageLoader.loadImage("resources/images/musculeFear_down.png");
 	public static final BufferedImage MONSTER_MUSCULE_FEAR_TS_LEFT = ImageLoader.loadImage("resources/images/musculeFear_left.png");
 	public static final BufferedImage MONSTER_MUSCULE_FEAR_TS_RIGHT = ImageLoader.loadImage("resources/images/musculeFear_right.png");
+
+	public static final BufferedImage TARGET = ImageLoader.loadImage("resources/images/target.png");
 }

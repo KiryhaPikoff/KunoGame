@@ -3,6 +3,7 @@ package myTestPackage.entity;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
@@ -15,7 +16,10 @@ import myTestPackage.utils.ImageLoader;
 
 public abstract class Entity implements Directed, Drawable, Movable, Animated {
 	
-	private String name;
+	protected String name;
+	private boolean isTarget = false;
+	
+	private CircleZone thisCoordZone; // зона для выделения по кликам
 	
 	protected Coordinates coordinates;
 	protected DirectionMovement directionMovement;
@@ -59,5 +63,21 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public CircleZone getThisCoordZone() {
+		return thisCoordZone;
+	}
+
+	public void setThisCoordZone(CircleZone thisCoordZone) {
+		this.thisCoordZone = thisCoordZone;
+	}
+
+	public boolean isTarget() {
+		return isTarget;
+	}
+
+	public void setTarget(boolean isTarget) {
+		this.isTarget = isTarget;
 	}
 }

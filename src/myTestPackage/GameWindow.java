@@ -47,14 +47,14 @@ public class GameWindow extends JFrame {
 		this.initGameComponents();
 		this.initKeyListener();
 		this.initMouseListener();
-		this.initMover();
+		this.initPhysicTimer();
 		
 	}
 	
 	private void spawnMonster() {
 		Monster tempMonster = Spawner.spawnMonster(currentChunk);
 		monsterList.add(tempMonster);
-		Mover.addEntity(tempMonster);
+		Mover.addEntityToChangeDirectionList(tempMonster);
 		AnimationUpdater.addEntity(tempMonster);
 		Renderer.addObject(tempMonster);
 	}
@@ -86,23 +86,11 @@ public class GameWindow extends JFrame {
 		this.spawnMonster();
 		this.spawnMonster();
 		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		
+		this.spawnMonster();		
 	}
 	
-	private void initMover() {
-		Timer moveTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+	private void initPhysicTimer() {
+		Timer physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					Mover.moveObject(testPlayer);
@@ -120,7 +108,7 @@ public class GameWindow extends JFrame {
 				}
 			}
 		});
-		moveTimer.start();
+		physicTimer.start();
 	}
 	
 	private void initKeyListener() { /* Система прослушивания клавиш */
@@ -155,34 +143,47 @@ public class GameWindow extends JFrame {
 	
 	private void initMouseListener() {
 		this.playerMouseListener = new MouseListener() {
+			
 			public void mouseReleased(MouseEvent e) {
+				if(e.getButton() == MouseEvent.BUTTON3) { // ПКМ
+					System.out.println(e.getX() + " " + e.getY());
+					System.out.println();
+					for (Monster monster : monsterList) {
+						System.out.println(monster.getCoordinates().getX() + " " + monster.getCoordinates().getY());
+						if(monster.getThisCoordZone().inZone(e.getX() - Constants.SIZE_TILE / 2, e.getY() - Constants.SIZE_TILE / 2 - 26)) {
+							if(testPlayer.getTarget() != null) {
+								testPlayer.getTarget().setTarget(false);
+							}
+							monster.setTarget(true);
+							testPlayer.setTarget(monster);
+						}
+					}
+				}
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
 				
 			}
-			
-			public void mouseEntered(MouseEvent e) {
 
-			}
-			
 			public void mousePressed(MouseEvent e) {
-
+				// TODO Auto-generated method stub
+				
 			}
-			
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
 			public void mouseExited(MouseEvent e) {
-
-			}
-			
-			public void mouseClicked(MouseEvent e) {
-				System.out.println(e.getClickCount());
-	
-			}
-			
-			public void mouseDoubleCliced(MouseEvent e) {
+				// TODO Auto-generated method stub
 				
 			}
 		};
 		this.addMouseListener(this.playerMouseListener);
 	}
-	
+
 	public void start() {	
 		Renderer.start();
 	}
