@@ -1,15 +1,17 @@
-package myTestPackage.entity.Monster;
+package myTestPackage.entity.monster;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.direction.DirectionRandomizer;
 import myTestPackage.entity.Entity;
+import myTestPackage.entity.components.Stats;
 import myTestPackage.renderer.Animation;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
@@ -21,6 +23,7 @@ public class Monster extends Entity {
 
 	public Monster() {
 		this.coordinates = new Coordinates();
+		this.stats = new Stats();
 		
 		this.initCoordinates();
 		

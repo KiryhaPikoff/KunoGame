@@ -44,11 +44,11 @@ public abstract class Renderer extends JPanel {
 			entitysList.add(object);
 		}
 	}
-/*	public static void deleteObject(Object object) {
+	public static void deleteObject(Object object) {
 		if(object instanceof Drawable) {
 			entitysList.remove(object);
 		}
-	}*/
+	}
 	/*
 	public static void deleteObjects(List<Object> objects) {
 		for (Object object : objects) {			

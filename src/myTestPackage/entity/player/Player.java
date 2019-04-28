@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
@@ -16,7 +17,8 @@ import myTestPackage.components.keyboard.ConditionMoveKeys;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.components.keyboard.KeyboardKeyAction;
 import myTestPackage.entity.Entity;
-import myTestPackage.entity.Monster.Monster;
+import myTestPackage.entity.components.Stats;
+import myTestPackage.entity.monster.Monster;
 import myTestPackage.mover.Movable;
 import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
@@ -27,18 +29,40 @@ import myTestPackage.utils.ImageStorage;
 public final class Player extends Entity {
 
 	private ConditionMoveKeys conditionMoveKeys;
-	private Entity target;
+	private List<KeyboardKey> conditionSpellKeys;
 	
 	public Player(Coordinates coordinates) {
 		this.coordinates = new Coordinates();
 		this.coordinates = coordinates;
 		
+		this.stats = new Stats();
+		this.stats.setMaxHealthPoints(30);
+		this.stats.setCurrentHealthPoints(30);
+		this.stats.setDamage(5);
+		
+		this.action = Action.MOVE;
+		this.setConditionSpellKeys(new ArrayList<KeyboardKey>());
+		this.initKeyButtons();
+		
 		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
 		
 		this.initAnimations();
 		this.initMoveKeys();
-		this.initMovableZone();
+		this.movableZone = new RectangleZone(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SIZE_TILE / 2);
 		this.setDirectionMovement(DirectionMovement.STAND);
+	}
+	
+	private void initKeyButtons() {
+		KeyboardKey key1 = new KeyboardKey(49/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
+			public void execute() {
+				target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
+				if (target.getStats().getCurrentHealthPoints() <= 0) {
+					target.setAction(Action.DEAD);
+				}
+			}
+		}); 
+		
+		this.getConditionSpellKeys().add(key1);
 	}
 	
 	private void initAnimations() {
@@ -47,10 +71,6 @@ public final class Player extends Entity {
 		animDOWN = new Animation(ImageStorage.PLAYER_TS_DOWN);
 		animLEFT = new Animation(ImageStorage.PLAYER_TS_LEFT);
 		animRIGHT = new Animation(ImageStorage.PLAYER_TS_RIGHT);
-	}
-	
-	private void initMovableZone() {
-		this.movableZone = new RectangleZone(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SIZE_TILE / 2);
 	}
 	
 	private void initMoveKeys() {
@@ -79,35 +99,37 @@ public final class Player extends Entity {
 	}
 	
 	public void updateAnimation() {
-		switch(this.directionMovement) {
-			case NORTH: {
-				this.animUP.update();
-				this.image = this.animUP.getCurrentImage();
-				break;
-			}
+		if(this.action == Action.MOVE) {	
+			switch(this.directionMovement) {
+				case NORTH: {
+					this.animUP.update();
+					this.image = this.animUP.getCurrentImage();
+					break;
+				}
+					
+				case SOUTH: {
+					this.animDOWN.update();
+					this.image = this.animDOWN.getCurrentImage();
+					break;
+				}
 				
-			case SOUTH: {
-				this.animDOWN.update();
-				this.image = this.animDOWN.getCurrentImage();
-				break;
-			}
-			
-			case WEST:
-			case NORTH_WEST:
-			case SOUTH_WEST: {
-				this.animLEFT.update();
-				this.image = this.animLEFT.getCurrentImage();
-				break;
-			}
-			
-			case EAST: 
-			case NORTH_EAST:
-			case SOUTH_EAST: {
-				this.animRIGHT.update();
-				this.image = this.animRIGHT.getCurrentImage();
-				break;
-			}
-		} 
+				case WEST:
+				case NORTH_WEST:
+				case SOUTH_WEST: {
+					this.animLEFT.update();
+					this.image = this.animLEFT.getCurrentImage();
+					break;
+				}
+				
+				case EAST: 
+				case NORTH_EAST:
+				case SOUTH_EAST: {
+					this.animRIGHT.update();
+					this.image = this.animRIGHT.getCurrentImage();
+					break;
+				}
+			} 
+		}
 	}
 
 	public void paint(Graphics g) {
@@ -119,19 +141,21 @@ public final class Player extends Entity {
 	}
 	
 	public void move() {
-		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
-		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
+		if(this.action == Action.MOVE) {			
+			this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
+			this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
+		}
 	}
 
 	public ConditionMoveKeys getConditionMoveKeys() {
 		return conditionMoveKeys;
 	}
 
-	public Entity getTarget() {
-		return target;
+	public List<KeyboardKey> getConditionSpellKeys() {
+		return conditionSpellKeys;
 	}
 
-	public void setTarget(Entity target) {
-		this.target = target;
+	public void setConditionSpellKeys(List<KeyboardKey> conditionSpellKeys) {
+		this.conditionSpellKeys = conditionSpellKeys;
 	}
 }

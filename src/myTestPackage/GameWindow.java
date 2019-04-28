@@ -22,10 +22,11 @@ import myTestPackage.components.direction.DirectionChanger;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.entity.player.Player;
 import myTestPackage.entity.Entity;
-import myTestPackage.entity.Monster.Monster;
-import myTestPackage.entity.Monster.MonsterFabrica;
-import myTestPackage.entity.Monster.Spawner;
+import myTestPackage.entity.monster.Monster;
+import myTestPackage.entity.monster.MonsterFabrica;
+import myTestPackage.entity.monster.Spawner;
 import myTestPackage.map.Chunk;
+import myTestPackage.mover.Movable;
 import myTestPackage.mover.Mover;
 import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
@@ -57,6 +58,12 @@ public class GameWindow extends JFrame {
 		Mover.addEntityToChangeDirectionList(tempMonster);
 		AnimationUpdater.addEntity(tempMonster);
 		Renderer.addObject(tempMonster);
+	}
+	
+	private void deleteMonster(Monster monster) {
+		Renderer.deleteObject(monster);
+		Mover.deleteEntity(monster);
+		AnimationUpdater.deleteEntity(monster);
 	}
 	
 	private void spawnPlayer() {
@@ -97,6 +104,14 @@ public class GameWindow extends JFrame {
 				}
 				
 				for (Monster monster : monsterList) {
+					if(monster.getAction() == Action.DEAD) {
+						System.out.println("OK!!");
+						deleteMonster(monster);
+					
+						monsterList.remove(monster);
+						continue;
+					}
+					
 					if (CollisionChecker.canMove(monster, currentChunk)) {
 						Mover.moveObject(monster);
 					}
@@ -116,7 +131,7 @@ public class GameWindow extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				int numPressedKey = e.getKeyCode();
 				for (KeyboardKey playerKey : testPlayer.getConditionMoveKeys().getKeyboardKeys()) {
-					if(numPressedKey == playerKey.getKey()) {
+					if(numPressedKey == playerKey.getID()) {
 						if(!playerKey.isPressed()) {
 							playerKey.setPressed(true);
 							DirectionChanger.changeObjectDirection(testPlayer);
@@ -127,9 +142,15 @@ public class GameWindow extends JFrame {
 			public void keyReleased(KeyEvent e) {
 				int numPressedKey = e.getKeyCode();
 				for (KeyboardKey playerKey : testPlayer.getConditionMoveKeys().getKeyboardKeys()) {
-					if(numPressedKey == playerKey.getKey()) {
+					if(numPressedKey == playerKey.getID()) {
 						playerKey.setPressed(false);
 						DirectionChanger.changeObjectDirection(testPlayer);
+					}
+				}
+				
+				for (KeyboardKey playerKey : testPlayer.getConditionSpellKeys()) {
+					if(numPressedKey == playerKey.getID()) {
+						playerKey.execute();
 					}
 				}
 			}
@@ -146,16 +167,14 @@ public class GameWindow extends JFrame {
 			
 			public void mouseReleased(MouseEvent e) {
 				if(e.getButton() == MouseEvent.BUTTON3) { // ПКМ
-					System.out.println(e.getX() + " " + e.getY());
-					System.out.println();
 					for (Monster monster : monsterList) {
-						System.out.println(monster.getCoordinates().getX() + " " + monster.getCoordinates().getY());
 						if(monster.getThisCoordZone().inZone(e.getX() - Constants.SIZE_TILE / 2, e.getY() - Constants.SIZE_TILE / 2 - 26)) {
 							if(testPlayer.getTarget() != null) {
 								testPlayer.getTarget().setTarget(false);
 							}
 							monster.setTarget(true);
 							testPlayer.setTarget(monster);
+							break;
 						}
 					}
 				}

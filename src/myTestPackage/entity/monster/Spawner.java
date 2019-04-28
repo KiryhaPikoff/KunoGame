@@ -1,4 +1,4 @@
-package myTestPackage.entity.Monster;
+package myTestPackage.entity.monster;
 
 import myTestPackage.Coordinates;
 import myTestPackage.map.Chunk;

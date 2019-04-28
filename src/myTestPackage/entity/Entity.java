@@ -3,12 +3,14 @@ package myTestPackage.entity;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.direction.Directed;
 import myTestPackage.components.direction.DirectionMovement;
+import myTestPackage.entity.components.Stats;
 import myTestPackage.mover.Movable;
 import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
@@ -17,13 +19,16 @@ import myTestPackage.utils.ImageLoader;
 public abstract class Entity implements Directed, Drawable, Movable, Animated {
 	
 	protected String name;
-	private boolean isTarget = false;
+	protected boolean isTarget = false;
 	
-	private CircleZone thisCoordZone; // зона для выделения по кликам
+	protected CircleZone thisCoordZone; // зона для выделения по кликам
+	protected RectangleZone movableZone;
 	
+	protected Action action;
+	
+	protected Stats stats;
 	protected Coordinates coordinates;
 	protected DirectionMovement directionMovement;
-	protected RectangleZone movableZone;
 	
 	protected BufferedImage image;
 	protected Animation animUP;
@@ -31,7 +36,7 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated {
 	protected Animation animLEFT;
 	protected Animation animRIGHT;
 	
-//	protected Entity target;
+	protected Entity target;
 
 	public Coordinates getCoordinates() {
 		return coordinates;
@@ -79,5 +84,29 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated {
 
 	public void setTarget(boolean isTarget) {
 		this.isTarget = isTarget;
+	}
+
+	public Stats getStats() {
+		return stats;
+	}
+
+	public void setStats(Stats stats) {
+		this.stats = stats;
+	}
+
+	public Action getAction() {
+		return action;
+	}
+
+	public void setAction(Action action) {
+		this.action = action;
+	}
+
+	public Entity getTarget() {
+		return target;
+	}
+
+	public void setTarget(Entity target) {
+		this.target = target;
 	}
 }
