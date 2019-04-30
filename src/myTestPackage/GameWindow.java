@@ -64,6 +64,7 @@ public class GameWindow extends JFrame {
 		Renderer.deleteObject(monster);
 		Mover.deleteEntity(monster);
 		AnimationUpdater.deleteEntity(monster);
+		this.monsterList.remove(monster);
 	}
 	
 	private void spawnPlayer() {
@@ -103,13 +104,12 @@ public class GameWindow extends JFrame {
 					Mover.moveObject(testPlayer);
 				}
 				
+				
 				for (Monster monster : monsterList) {
 					if(monster.getAction() == Action.DEAD) {
 						System.out.println("OK!!");
 						deleteMonster(monster);
-					
-						monsterList.remove(monster);
-						continue;
+						break;
 					}
 					
 					if (CollisionChecker.canMove(monster, currentChunk)) {
