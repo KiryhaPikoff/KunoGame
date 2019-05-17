@@ -1,6 +1,6 @@
 package myTestPackage.entity;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
@@ -9,6 +9,7 @@ import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
+import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.Directed;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.entity.components.Stats;
@@ -24,6 +25,9 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	
 	protected CircleZone thisCoordZone; // зона для выделения по кликам
 	protected RectangleZone movableZone;
+	protected Shape attackZone;
+
+	protected HealthPointsBar healthPointsBar;
 	
 	protected Action action;
 	
@@ -109,5 +113,13 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 
 	public void setTarget(Entity target) {
 		this.target = target;
+	}
+
+	public Shape getAttackZone() {
+		return attackZone;
+	}
+
+	public void setAttackZone(Shape attackZone) {
+		this.attackZone = attackZone;
 	}
 }

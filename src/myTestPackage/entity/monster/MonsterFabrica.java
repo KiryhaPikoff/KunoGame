@@ -14,7 +14,8 @@ public abstract class MonsterFabrica {
 				ImageStorage.MONSTER_DODYA_TS_LEFT,
 				ImageStorage.MONSTER_DODYA_TS_RIGHT);
 		dodya.setName("dodya");
-		
+
+		dodya.getStats().setRadius(10);
 		dodya.getStats().setMaxHealthPoints(16);
 		dodya.getStats().setCurrentHealthPoints(16);
 		dodya.getStats().setDamage(2);
@@ -31,7 +32,8 @@ public abstract class MonsterFabrica {
 				ImageStorage.MONSTER_MUSCULE_FEAR_TS_LEFT,
 				ImageStorage.MONSTER_MUSCULE_FEAR_TS_RIGHT);
 		muskuleFear.setName("muskuleFear");
-		
+
+		muskuleFear.getStats().setRadius(12);
 		muskuleFear.getStats().setMaxHealthPoints(12);
 		muskuleFear.getStats().setCurrentHealthPoints(12);
 		muskuleFear.getStats().setDamage(4);

@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class Stats implements Serializable {
 	private int currentHealthPoints;
 	private int maxHealthPoints;
+
+	private int radius;
 	
 	private int damage;
 	
@@ -34,5 +36,13 @@ public class Stats implements Serializable {
 
 	public void setDamage(int damage) {
 		this.damage = damage;
+	}
+
+	public int getRadius() {
+		return radius;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
 	}
 }

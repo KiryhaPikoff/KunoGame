@@ -13,6 +13,7 @@ import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
+import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.keyboard.ConditionMoveKeys;
 import myTestPackage.components.keyboard.KeyboardKey;
@@ -35,6 +36,8 @@ public final class Player extends Entity implements Serializable {
 	public Player(Coordinates coordinates) {
 		this.coordinates = new Coordinates();
 		this.coordinates = coordinates;
+
+		this.healthPointsBar = new HealthPointsBar(this);
 		
 		this.stats = new Stats();
 		this.stats.setMaxHealthPoints(30);
@@ -142,6 +145,7 @@ public final class Player extends Entity implements Serializable {
 			g.setColor(new Color(69, 200, 36));
 			g.drawOval(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		}
+		healthPointsBar.paint(g);
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 	

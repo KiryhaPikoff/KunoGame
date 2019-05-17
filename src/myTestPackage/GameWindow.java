@@ -112,9 +112,7 @@ public class GameWindow extends JFrame implements Serializable {
 						System.out.println("OK!!");
 						deleteMonster(monster);
 
-						monsterList.remove(monster);
-						testPlayer.setTarget(null);
-						continue;
+						break;
 
 					}
 					

@@ -1,21 +1,20 @@
 package myTestPackage.entity.monster;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
-import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.RectangleZone;
+import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.direction.DirectionRandomizer;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.components.Stats;
 import myTestPackage.renderer.Animation;
 import myTestPackage.utils.Constants;
-import myTestPackage.utils.ImageLoader;
 import myTestPackage.utils.ImageStorage;
+
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
 
 public class Monster extends Entity {
 	
@@ -24,8 +23,11 @@ public class Monster extends Entity {
 	public Monster() {
 		this.coordinates = new Coordinates();
 		this.stats = new Stats();
+
+		this.healthPointsBar = new HealthPointsBar(this);
 		
 		this.initCoordinates();
+		this.initAttackZone();
 		
 		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
 		
@@ -49,10 +51,20 @@ public class Monster extends Entity {
 	private void initMovableZone() {
 		this.movableZone = new RectangleZone(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SIZE_TILE / 2);
 	}
+
+	private void initAttackZone() {
+		this.attackZone = new Ellipse2D.Float(this.getCoordinates().getX() + this.getStats().getRadius(),
+												this.getCoordinates().getY() + this.getStats().getRadius(),
+													this.getStats().getRadius(),
+													this.getStats().getRadius());
+	}
 	
 	public void move() {
 		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
 		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
+		this.initAttackZone();
+
+
 	}
 
 	public void changeDirection() {
@@ -95,6 +107,7 @@ public class Monster extends Entity {
 		if(this.isTarget()) {
 			g.drawImage(ImageStorage.TARGET, this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, null);
 		}
+		healthPointsBar.paint(g);
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 }
