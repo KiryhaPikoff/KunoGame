@@ -11,6 +11,7 @@ import myTestPackage.components.direction.DirectionRandomizer;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.components.Stats;
 import myTestPackage.renderer.Animation;
+import myTestPackage.utils.AttackTimer;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageStorage;
 
@@ -26,10 +27,14 @@ public class Monster extends Entity {
 		this.target = null;
 		this.action = Action.MOVE;
 
+		this.attackTimer = new AttackTimer(2000, this);
+
 		this.healthPointsBar = new HealthPointsBar(this);
-		
-		this.initCoordinates();
+
+		this.initPursuitZone();
 		this.initAttackZone();
+
+		this.initCoordinates();
 		
 		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
 		
@@ -54,16 +59,23 @@ public class Monster extends Entity {
 		this.movableZone = new RectangleZone(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SIZE_TILE / 2);
 	}
 
+	private void initPursuitZone() {
+		this.pursuitZone = new Ellipse2D.Float(this.getCoordinates().getX() - this.getStats().getRadiusPursuit() / 2,
+												this.getCoordinates().getY() - this.getStats().getRadiusPursuit() / 2,
+													this.getStats().getRadiusPursuit(),
+													this.getStats().getRadiusPursuit());
+	}
 	private void initAttackZone() {
-		this.attackZone = new Ellipse2D.Float(this.getCoordinates().getX() - this.getStats().getRadius() / 2,
-												this.getCoordinates().getY() - this.getStats().getRadius() / 2,
-													this.getStats().getRadius(),
-													this.getStats().getRadius());
+		this.attackZone = new Ellipse2D.Float(this.getCoordinates().getX() - this.getStats().getRadiusAttack() / 2,
+												this.getCoordinates().getY() - this.getStats().getRadiusAttack() / 2,
+													this.getStats().getRadiusAttack(),
+													this.getStats().getRadiusAttack());
 	}
 	
 	public void move() {
 		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
 		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
+		this.initPursuitZone();
 		this.initAttackZone();
 	}
 
@@ -72,6 +84,18 @@ public class Monster extends Entity {
 			this.directionMovement = DirectionRandomizer.rand();
 		} else {					// если у нас есть таргет, то преследуем его
 			this.directionMovement = DirectionPursuit.chase(this, target);
+		}
+	}
+
+	public void attack() {
+		target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - this.getStats().getDamage());
+	}
+
+	public void controlAttackTimer() {
+		if (this.getTarget() == null) {
+			attackTimer.stopAttackTimer();
+		} else {
+			attackTimer.startAttackTimer();
 		}
 	}
 
@@ -113,10 +137,14 @@ public class Monster extends Entity {
 		}
 		healthPointsBar.paint(g);
 		g.setColor(Color.BLACK);
-		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadius() / 2,
-				this.getCoordinates().getY() - this.getStats().getRadius() / 2,
-				this.getStats().getRadius(),
-				this.getStats().getRadius());
+		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadiusPursuit() / 2,
+				this.getCoordinates().getY() - this.getStats().getRadiusPursuit() / 2,
+				this.getStats().getRadiusPursuit(),
+				this.getStats().getRadiusPursuit());
+		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadiusAttack() / 2,
+				this.getCoordinates().getY() - this.getStats().getRadiusAttack() / 2,
+				this.getStats().getRadiusAttack(),
+				this.getStats().getRadiusAttack());
 
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}

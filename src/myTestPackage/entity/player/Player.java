@@ -167,4 +167,8 @@ public final class Player extends Entity implements Serializable {
 	public void setConditionSpellKeys(List<KeyboardKey> conditionSpellKeys) {
 		this.conditionSpellKeys = conditionSpellKeys;
 	}
+
+	public void attack() {
+
+	}
 }

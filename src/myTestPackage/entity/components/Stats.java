@@ -6,7 +6,8 @@ public class Stats implements Serializable {
 	private int currentHealthPoints;
 	private int maxHealthPoints;
 
-	private int radius;
+	private int radiusPursuit;
+	private int radiusAttack;
 	
 	private int damage;
 	
@@ -38,11 +39,19 @@ public class Stats implements Serializable {
 		this.damage = damage;
 	}
 
-	public int getRadius() {
-		return radius;
+	public int getRadiusPursuit() {
+		return radiusPursuit;
 	}
 
-	public void setRadius(int radius) {
-		this.radius = radius;
+	public void setRadiusPursuit(int radiusPursuit) {
+		this.radiusPursuit = radiusPursuit;
+	}
+
+	public int getRadiusAttack() {
+		return radiusAttack;
+	}
+
+	public void setRadiusAttack(int radiusAttack) {
+		this.radiusAttack = radiusAttack;
 	}
 }

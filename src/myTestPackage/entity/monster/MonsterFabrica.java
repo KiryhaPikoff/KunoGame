@@ -1,6 +1,5 @@
 package myTestPackage.entity.monster;
 
-import myTestPackage.Coordinates;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageStorage;
 
@@ -15,7 +14,8 @@ public abstract class MonsterFabrica {
 				ImageStorage.MONSTER_DODYA_TS_RIGHT);
 		dodya.setName("dodya");
 
-		dodya.getStats().setRadius(200);
+		dodya.getStats().setRadiusAttack(100);
+		dodya.getStats().setRadiusPursuit(200);
 		dodya.getStats().setMaxHealthPoints(16);
 		dodya.getStats().setCurrentHealthPoints(16);
 		dodya.getStats().setDamage(2);
@@ -33,7 +33,8 @@ public abstract class MonsterFabrica {
 				ImageStorage.MONSTER_MUSCULE_FEAR_TS_RIGHT);
 		muskuleFear.setName("muskuleFear");
 
-		muskuleFear.getStats().setRadius(200);
+		muskuleFear.getStats().setRadiusAttack(100);
+		muskuleFear.getStats().setRadiusPursuit(200);
 		muskuleFear.getStats().setMaxHealthPoints(12);
 		muskuleFear.getStats().setCurrentHealthPoints(12);
 		muskuleFear.getStats().setDamage(4);

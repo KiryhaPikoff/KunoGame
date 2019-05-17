@@ -13,21 +13,25 @@ import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.Directed;
 import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.entity.components.Stats;
+import myTestPackage.entity.monster.Attacking;
 import myTestPackage.mover.Movable;
 import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
-import myTestPackage.utils.ImageLoader;
+import myTestPackage.utils.AttackTimer;
 
-public abstract class Entity implements Directed, Drawable, Movable, Animated, Serializable{
+public abstract class Entity implements Directed, Drawable, Movable, Animated, Serializable, Attacking {
 	
 	protected String name;
 	protected boolean isTarget = false;
 	
 	protected CircleZone thisCoordZone; // зона для выделения по кликам
 	protected RectangleZone movableZone;
+
+	protected Shape pursuitZone;
 	protected Shape attackZone;
 
 	protected HealthPointsBar healthPointsBar;
+	protected AttackTimer attackTimer;
 	
 	protected Action action;
 	
@@ -115,6 +119,14 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 		this.target = target;
 	}
 
+	public Shape getPursuitZone() {
+		return pursuitZone;
+	}
+
+	public void setPursuitZone(Shape pursuitZone) {
+		this.pursuitZone = pursuitZone;
+	}
+
 	public Shape getAttackZone() {
 		return attackZone;
 	}
@@ -122,4 +134,5 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	public void setAttackZone(Shape attackZone) {
 		this.attackZone = attackZone;
 	}
+
 }

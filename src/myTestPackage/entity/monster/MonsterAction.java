@@ -1,20 +1,22 @@
 package myTestPackage.entity.monster;
 
-import myTestPackage.Action;
 import myTestPackage.entity.Entity;
-import myTestPackage.entity.player.Player;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MonsterAction {
+    private static List<Entity> entityList = new ArrayList<Entity>();
+
     public static void interaction(Entity monster, Entity player) {
-        if (monster.getAttackZone().contains(player.getCoordinates().getX(), player.getCoordinates().getY())) {
+        if (monster.getPursuitZone().contains(player.getCoordinates().getX(), player.getCoordinates().getY())) {
             monster.setTarget(player);
-           // monster.setAction(Action.PURSUIT);
         } else {
-           // monster.setAction(Action.MOVE);
             monster.setTarget(null);
         }
     }
+
 }
