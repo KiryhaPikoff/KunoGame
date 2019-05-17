@@ -1,13 +1,14 @@
 package myTestPackage.renderer;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 
-public final class Animation {
-	private BufferedImage tileSet;
-	private BufferedImage currentImage;
+public final class Animation implements Serializable {
+	private transient BufferedImage tileSet;
+	private transient BufferedImage currentImage;
 	private int currentFrame;
 	private int maxFrames;
 	

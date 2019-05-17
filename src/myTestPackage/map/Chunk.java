@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import myTestPackage.utils.Constants;
 import myTestPackage.Coordinates;
@@ -12,7 +13,7 @@ import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.utils.ExcelLoader;
 import myTestPackage.utils.ImageLoader;
 
-public final class Chunk implements Drawable {
+public final class Chunk implements Drawable, Serializable {
 	private Tile[][] arrayTiles;
 	private Coordinates coords = new Coordinates();
 	private BufferedImage renderedChunk = ImageLoader.loadImage("resources/images/default.png");

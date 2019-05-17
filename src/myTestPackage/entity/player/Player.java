@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 import myTestPackage.utils.ImageStorage;
 
-public final class Player extends Entity {
+public final class Player extends Entity implements Serializable {
 
 	private ConditionMoveKeys conditionMoveKeys;
 	private List<KeyboardKey> conditionSpellKeys;
@@ -39,6 +40,8 @@ public final class Player extends Entity {
 		this.stats.setMaxHealthPoints(30);
 		this.stats.setCurrentHealthPoints(30);
 		this.stats.setDamage(5);
+		
+		this.target = null;
 		
 		this.action = Action.MOVE;
 		this.setConditionSpellKeys(new ArrayList<KeyboardKey>());
@@ -55,9 +58,11 @@ public final class Player extends Entity {
 	private void initKeyButtons() {
 		KeyboardKey key1 = new KeyboardKey(49/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
 			public void execute() {
-				target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
-				if (target.getStats().getCurrentHealthPoints() <= 0) {
-					target.setAction(Action.DEAD);
+				if(target != null) {
+					target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
+					if (target.getStats().getCurrentHealthPoints() <= 0) {
+						target.setAction(Action.DEAD);
+					}
 				}
 			}
 		}); 

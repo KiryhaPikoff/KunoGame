@@ -1,6 +1,8 @@
 package myTestPackage.components.keyboard;
 
-public final class KeyboardKey implements KeyboardKeyAction {
+import java.io.Serializable;
+
+public final class KeyboardKey implements KeyboardKeyAction, Serializable {
 	private final int id; // номер клавиши
 	private final KeyboardKeyAction action; 
 	private boolean isPressed;

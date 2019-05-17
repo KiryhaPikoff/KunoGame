@@ -1,8 +1,9 @@
 package myTestPackage;
 
 import java.awt.Rectangle;
+import java.io.Serializable;
 
-public class RectangleZone {
+public class RectangleZone implements Serializable {
 	
 	private int x;
 	private int y;

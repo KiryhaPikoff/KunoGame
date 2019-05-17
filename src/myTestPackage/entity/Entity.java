@@ -2,6 +2,7 @@ package myTestPackage.entity;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import myTestPackage.Action;
 import myTestPackage.CircleZone;
@@ -16,7 +17,7 @@ import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
 import myTestPackage.utils.ImageLoader;
 
-public abstract class Entity implements Directed, Drawable, Movable, Animated {
+public abstract class Entity implements Directed, Drawable, Movable, Animated, Serializable{
 	
 	protected String name;
 	protected boolean isTarget = false;
@@ -29,8 +30,8 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated {
 	protected Stats stats;
 	protected Coordinates coordinates;
 	protected DirectionMovement directionMovement;
-	
-	protected BufferedImage image;
+
+	protected transient BufferedImage image;
 	protected Animation animUP;
 	protected Animation animDOWN;
 	protected Animation animLEFT;

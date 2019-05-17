@@ -1,12 +1,13 @@
 package myTestPackage.map;
 
 import java.awt.Graphics;
+import java.io.Serializable;
 
 import myTestPackage.utils.Constants;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 
-public final class Tile implements Drawable {
+public final class Tile implements Drawable, Serializable {
 	private TileType type;
 	private Coordinates coords;
 	

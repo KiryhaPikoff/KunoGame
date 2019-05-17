@@ -1,9 +1,10 @@
 package myTestPackage.components.keyboard;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ConditionMoveKeys extends ConditionKeys {
+public final class ConditionMoveKeys extends ConditionKeys implements Serializable {
 	
 	private final KeyboardKey UP;
 	private final KeyboardKey DOWN;

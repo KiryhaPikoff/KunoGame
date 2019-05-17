@@ -1,6 +1,8 @@
 package myTestPackage.entity.components;
 
-public class Stats {
+import java.io.Serializable;
+
+public class Stats implements Serializable {
 	private int currentHealthPoints;
 	private int maxHealthPoints;
 	

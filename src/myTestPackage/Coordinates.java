@@ -2,7 +2,9 @@ package myTestPackage;
 
 import myTestPackage.utils.Constants;
 
-public final class Coordinates {
+import java.io.Serializable;
+
+public final class Coordinates implements Serializable {
 	private int x;	// координата х в окне (в пикселях)
 	private int y;	// координата y в окне (в пикселях)
 	private int i;	// координата i (высота в тайлах)

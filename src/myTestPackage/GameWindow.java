@@ -9,14 +9,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import myTestPackage.entity.components.Stats;
 import myTestPackage.utils.Constants;
 import myTestPackage.components.direction.DirectionChanger;
 import myTestPackage.components.keyboard.KeyboardKey;
@@ -31,7 +31,7 @@ import myTestPackage.mover.Mover;
 import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
 
-public class GameWindow extends JFrame {	
+public class GameWindow extends JFrame implements Serializable {
 	private String nameFirstChunk = "10000000";
 	private Chunk currentChunk;
 	private Player testPlayer;
@@ -107,8 +107,8 @@ public class GameWindow extends JFrame {
 					if(monster.getAction() == Action.DEAD) {
 						System.out.println("OK!!");
 						deleteMonster(monster);
-					
 						monsterList.remove(monster);
+						testPlayer.setTarget(null);
 						continue;
 					}
 					
@@ -152,6 +152,14 @@ public class GameWindow extends JFrame {
 					if(numPressedKey == playerKey.getID()) {
 						playerKey.execute();
 					}
+				}
+
+				if(e.getKeyCode() == 112) {
+					saveGame();
+				}
+
+				if(e.getKeyCode() == 113) {
+					loadGame();
 				}
 			}
 			public void keyTyped(KeyEvent e) {
@@ -210,5 +218,31 @@ public class GameWindow extends JFrame {
 	public void paint(Graphics g) {
 		g.drawImage(Renderer.canvas, 2, 26, null);
 		repaint();
+	}
+
+	public void saveGame() {
+		try {
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("save.txt")));
+			objectOutputStream.writeObject(testPlayer.getCoordinates());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadGame() {
+		ObjectInputStream objectInputStream = null;
+		try {
+			objectInputStream = new ObjectInputStream(new FileInputStream(new File("save.txt")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			testPlayer.setCoordinates((Coordinates)objectInputStream.readObject());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -14,7 +14,7 @@ public enum TileType {
 	treeEl("treeEl", ImageLoader.loadImage("resources/images/treeEl_1_64.png"), false);
 	
 	private String type;
-	private Image image;
+	transient Image image;
 	private boolean isPassable;
 	
 	TileType(String type, Image image, boolean isPassable) {

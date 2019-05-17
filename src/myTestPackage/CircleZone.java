@@ -1,6 +1,8 @@
 package myTestPackage;
 
-public class CircleZone {
+import java.io.Serializable;
+
+public class CircleZone implements Serializable {
 	
 	private Coordinates coordinates; 
 	private int radius;

@@ -17,11 +17,11 @@ import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 
 public abstract class Renderer extends JPanel {
-	public static Image canvas = ImageLoader.loadImage("resources/images/default.png");  // холст 2ой буферизации, он в итоге отрис. на экран
-	public static Graphics bufferCanvas = canvas.getGraphics();
-	
-	public static Image chunkImage;  // срендереная картинка чанка
-	public static List<Object> entitysList = new ArrayList<Object>();
+	transient public static Image canvas = ImageLoader.loadImage("resources/images/default.png");  // холст 2ой буферизации, он в итоге отрис. на экран
+	transient public static Graphics bufferCanvas = canvas.getGraphics();
+
+	transient public static Image chunkImage;  // срендереная картинка чанка
+	transient public static List<Object> entitysList = new ArrayList<Object>();
 	
 	public static void start() {
 		Timer drawTimer = new Timer(Constants.DRAWER_SPEED, new ActionListener() {
