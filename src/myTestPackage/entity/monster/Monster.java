@@ -1,10 +1,12 @@
 package myTestPackage.entity.monster;
 
+import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.DirectionMovement;
+import myTestPackage.components.direction.DirectionPursuit;
 import myTestPackage.components.direction.DirectionRandomizer;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.components.Stats;
@@ -17,12 +19,12 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 
 public class Monster extends Entity {
-	
-	// Player target;
 
 	public Monster() {
 		this.coordinates = new Coordinates();
 		this.stats = new Stats();
+		this.target = null;
+		this.action = Action.MOVE;
 
 		this.healthPointsBar = new HealthPointsBar(this);
 		
@@ -53,8 +55,8 @@ public class Monster extends Entity {
 	}
 
 	private void initAttackZone() {
-		this.attackZone = new Ellipse2D.Float(this.getCoordinates().getX() + this.getStats().getRadius(),
-												this.getCoordinates().getY() + this.getStats().getRadius(),
+		this.attackZone = new Ellipse2D.Float(this.getCoordinates().getX() - this.getStats().getRadius() / 2,
+												this.getCoordinates().getY() - this.getStats().getRadius() / 2,
 													this.getStats().getRadius(),
 													this.getStats().getRadius());
 	}
@@ -63,12 +65,14 @@ public class Monster extends Entity {
 		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
 		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
 		this.initAttackZone();
-
-
 	}
 
 	public void changeDirection() {
-		this.directionMovement = DirectionRandomizer.rand();
+		if (this.target == null) {	// если у нас нет таргета, то просто ходим по карте
+			this.directionMovement = DirectionRandomizer.rand();
+		} else {					// если у нас есть таргет, то преследуем его
+			this.directionMovement = DirectionPursuit.chase(this, target);
+		}
 	}
 
 	public void updateAnimation() {
@@ -108,6 +112,12 @@ public class Monster extends Entity {
 			g.drawImage(ImageStorage.TARGET, this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, null);
 		}
 		healthPointsBar.paint(g);
+		g.setColor(Color.BLACK);
+		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadius() / 2,
+				this.getCoordinates().getY() - this.getStats().getRadius() / 2,
+				this.getStats().getRadius(),
+				this.getStats().getRadius());
+
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 }

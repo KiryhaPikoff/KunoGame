@@ -17,6 +17,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import myTestPackage.entity.components.Stats;
+import myTestPackage.entity.monster.MonsterAction;
 import myTestPackage.utils.Constants;
 import myTestPackage.components.direction.DirectionChanger;
 import myTestPackage.components.keyboard.KeyboardKey;
@@ -37,7 +38,6 @@ public class GameWindow extends JFrame implements Serializable {
 	private String nameFirstChunk = "10000000";
 	private Chunk currentChunk;
 	private Player testPlayer;
-	private Monster testMonster;
 	private List<Monster> monsterList = new ArrayList<Monster>();
 	
 	private KeyListener playerKeyListener;
@@ -108,6 +108,7 @@ public class GameWindow extends JFrame implements Serializable {
 				
 				
 				for (Monster monster : monsterList) {
+                    MonsterAction.interaction(monster, testPlayer);
 					if(monster.getAction() == Action.DEAD) {
 						System.out.println("OK!!");
 						deleteMonster(monster);
@@ -119,6 +120,8 @@ public class GameWindow extends JFrame implements Serializable {
 					if (CollisionChecker.canMove(monster, currentChunk)) {
 						Mover.moveObject(monster);
 					}
+
+
 				}
 
 				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
