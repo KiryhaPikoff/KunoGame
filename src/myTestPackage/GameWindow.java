@@ -31,6 +31,8 @@ import myTestPackage.mover.Mover;
 import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
 
+import static javax.swing.text.html.HTML.Tag.HEAD;
+
 public class GameWindow extends JFrame implements Serializable {
 	private String nameFirstChunk = "10000000";
 	private Chunk currentChunk;
@@ -64,6 +66,7 @@ public class GameWindow extends JFrame implements Serializable {
 		Renderer.deleteObject(monster);
 		Mover.deleteEntity(monster);
 		AnimationUpdater.deleteEntity(monster);
+		this.monsterList.remove(monster);
 	}
 	
 	private void spawnPlayer() {
@@ -103,13 +106,16 @@ public class GameWindow extends JFrame implements Serializable {
 					Mover.moveObject(testPlayer);
 				}
 				
+				
 				for (Monster monster : monsterList) {
 					if(monster.getAction() == Action.DEAD) {
 						System.out.println("OK!!");
 						deleteMonster(monster);
+
 						monsterList.remove(monster);
 						testPlayer.setTarget(null);
 						continue;
+
 					}
 					
 					if (CollisionChecker.canMove(monster, currentChunk)) {

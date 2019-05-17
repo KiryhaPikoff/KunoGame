@@ -2,38 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="144cb143-c260-4e7b-ab36-aa9827c02aef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_8_beta4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_8_beta4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_8_beta4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Kuno.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/CircleZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/CircleZone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/RectangleZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/RectangleZone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/components/keyboard/ConditionMoveKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/components/keyboard/ConditionMoveKeys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/components/keyboard/KeyboardKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/components/keyboard/KeyboardKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/components/Stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/components/Stats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/map/Chunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/map/Chunk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/map/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/map/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/map/TileType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/renderer/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/renderer/Animation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/renderer/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myTestPackage/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/utils/Constants.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,8 +23,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="245" column="9" lean-forward="true" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="113" selection-start-line="113" selection-end-line="113" />
+              <folding>
+                <element signature="e#2988#3979#0" expanded="true" />
+                <element signature="e#3978#3979#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -336,7 +311,7 @@
     <frame x="0" y="27" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25201938" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25201938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -364,6 +339,35 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25201938" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3290938" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3290938" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32956383" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/map/Chunk.java">
@@ -420,8 +424,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="245" column="9" lean-forward="true" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+          <folding>
+            <element signature="e#2988#3979#0" expanded="true" />
+            <element signature="e#3978#3979#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
