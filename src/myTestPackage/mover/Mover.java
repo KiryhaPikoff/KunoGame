@@ -20,7 +20,7 @@ public abstract class Mover {
 	}
 	
 	public static void startRandomizeDirectionsForMonsters() {
-		Timer randTimer = new Timer(1, new ActionListener() {
+		Timer randTimer = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Entity entity : entityList) {
 					entity.changeDirection();

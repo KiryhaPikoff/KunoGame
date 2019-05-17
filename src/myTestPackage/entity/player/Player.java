@@ -18,6 +18,7 @@ import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.components.keyboard.ConditionMoveKeys;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.components.keyboard.KeyboardKeyAction;
+import myTestPackage.entity.Bullet;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.components.Stats;
 import myTestPackage.entity.monster.Monster;
@@ -32,13 +33,15 @@ public final class Player extends Entity implements Serializable {
 
 	private ConditionMoveKeys conditionMoveKeys;
 	private List<KeyboardKey> conditionSpellKeys;
-	
+	private List<Bullet> bulletList;
+
 	public Player(Coordinates coordinates) {
 		this.coordinates = new Coordinates();
 		this.coordinates = coordinates;
 
 		this.healthPointsBar = new HealthPointsBar(this);
-		
+		this.bulletList = new ArrayList<Bullet>();
+
 		this.stats = new Stats();
 		this.stats.setMaxHealthPoints(30);
 		this.stats.setCurrentHealthPoints(30);
@@ -61,6 +64,7 @@ public final class Player extends Entity implements Serializable {
 	private void initKeyButtons() {
 		KeyboardKey key1 = new KeyboardKey(49/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
 			public void execute() {
+				bulletList.add(new Bullet(getPlayer(), target, 10));
 				if(target != null) {
 					target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
 					if (target.getStats().getCurrentHealthPoints() <= 0) {
@@ -145,6 +149,11 @@ public final class Player extends Entity implements Serializable {
 			g.setColor(new Color(69, 200, 36));
 			g.drawOval(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		}
+
+		for (Bullet elem : bulletList) {
+			elem.paint(g);
+		}
+
 		healthPointsBar.paint(g);
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
@@ -154,6 +163,22 @@ public final class Player extends Entity implements Serializable {
 			this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
 			this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
 		}
+
+		if (target != null) {
+			int i = 0;
+			while (i < bulletList.size()) {
+				if (target.getAttackZone().contains(bulletList.get(i).getCoordinates().getX(), bulletList.get(i).getCoordinates().getY()) ||
+					target.getAction() == Action.DEAD) {
+					bulletList.remove(i);
+				} else {
+					bulletList.get(i).move();
+					i++;
+				}
+			}
+		}
+
+
+
 	}
 
 	public ConditionMoveKeys getConditionMoveKeys() {
@@ -166,6 +191,10 @@ public final class Player extends Entity implements Serializable {
 
 	public void setConditionSpellKeys(List<KeyboardKey> conditionSpellKeys) {
 		this.conditionSpellKeys = conditionSpellKeys;
+	}
+
+	private Player getPlayer() {
+		return this;
 	}
 
 	public void attack() {
