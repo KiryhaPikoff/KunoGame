@@ -11,9 +11,9 @@ public abstract class MonsterAction {
     public static void interaction(Entity monster, Entity player) {
         if (monster.getAttackZone().contains(player.getCoordinates().getX(), player.getCoordinates().getY())) {
             monster.setTarget(player);
-            monster.setAction(Action.PURSUIT);
+           // monster.setAction(Action.PURSUIT);
         } else {
-            monster.setAction(Action.MOVE);
+           // monster.setAction(Action.MOVE);
             monster.setTarget(null);
         }
     }
