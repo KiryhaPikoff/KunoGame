@@ -92,7 +92,7 @@ public class Monster extends Entity {
 	}
 
 	public void controlAttackTimer() {
-		if (this.getTarget() == null) {
+		if (this.getTarget() == null || this.action == Action.DEAD) {
 			attackTimer.stopAttackTimer();
 		} else {
 			attackTimer.startAttackTimer();

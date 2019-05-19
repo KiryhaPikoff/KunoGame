@@ -91,19 +91,52 @@ public class GameWindow extends JFrame implements Serializable {
 	public void initGameComponents() {
 		this.initFirstChunk();
 		this.spawnPlayer();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();
-		this.spawnMonster();		
+
+		spawnMonster();
+		spawnMonster();
+		spawnMonster();
+		spawnMonster();
+
 	}
 	
 	private void initPhysicTimer() {
 		Timer physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
+				if(testPlayer.getStats().getCurrentHealthPoints() <= 0) {
+					//System.exit(1);
+				}
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					Mover.moveObject(testPlayer);
+				}
+
+				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
+					SaveLoadGame.saveMonster(monsterList, currentChunk);
+					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
+					Renderer.addObject(currentChunk);
+
+
+					while (0 < monsterList.size()) {
+						deleteMonster(monsterList.get(0));
+					}
+
+					try {
+						SaveLoadGame.loadMonster(monsterList, currentChunk);
+
+						for (Monster monster : monsterList) {
+							Mover.addEntityToChangeDirectionList(monster);
+							AnimationUpdater.addEntity(monster);
+							Renderer.addObject(monster);
+						}
+					} catch (Exception e1) {
+						System.out.println("нет файла с монстрами на чанке " + currentChunk.hashCode());
+						spawnMonster();
+						spawnMonster();
+						spawnMonster();
+						spawnMonster();
+
+					}
+
+
 				}
 				
 				
@@ -113,9 +146,7 @@ public class GameWindow extends JFrame implements Serializable {
 					if(monster.getAction() == Action.DEAD) {
 						System.out.println("OK!!");
 						deleteMonster(monster);
-
 						break;
-
 					}
 					
 					if (CollisionChecker.canMove(monster, currentChunk)) {
@@ -125,10 +156,7 @@ public class GameWindow extends JFrame implements Serializable {
 
 				}
 
-				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
-					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
-					Renderer.addObject(currentChunk);
-				}
+
 			}
 		});
 		physicTimer.start();

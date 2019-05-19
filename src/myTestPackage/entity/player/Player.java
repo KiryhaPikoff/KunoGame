@@ -62,7 +62,7 @@ public final class Player extends Entity implements Serializable {
 	}
 	
 	private void initKeyButtons() {
-		KeyboardKey key1 = new KeyboardKey(49/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
+		KeyboardKey key1 = new KeyboardKey(32/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
 			public void execute() {
 				bulletList.add(new Bullet(getPlayer(), target, 10));
 				if(target != null) {
