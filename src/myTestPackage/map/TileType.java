@@ -6,12 +6,12 @@ import myTestPackage.utils.ImageLoader;
 
 public enum TileType {
 	
-	ground("ground", ImageLoader.loadImage("resources/images/ground64t.png"), true),
-	water("water", ImageLoader.loadImage("resources/images/water64t.png"), false),
-	road("road", ImageLoader.loadImage("resources/images/road64t.png"), true),
-	door("door", ImageLoader.loadImage("resources/images/road64t.png"), true),
-	treeLi("treeLi", ImageLoader.loadImage("resources/images/treeListv_1_64.png"), false),
-	treeEl("treeEl", ImageLoader.loadImage("resources/images/treeEl_1_64.png"), false);
+	ground("ground", ImageLoader.loadImage("resources/images/ground64.png"), true),
+	water("water", ImageLoader.loadImage("resources/images/water64.png"), false),
+	road("road", ImageLoader.loadImage("resources/images/road64.png"), true),
+	door("door", ImageLoader.loadImage("resources/images/road64.png"), true),
+	treeLi("treeLi", ImageLoader.loadImage("resources/images/treeListv_1_64_ch.png"), false),
+	treeEl("treeEl", ImageLoader.loadImage("resources/images/treeEl_1_64_ch.png"), false);
 	
 	private String type;
 	transient Image image;
