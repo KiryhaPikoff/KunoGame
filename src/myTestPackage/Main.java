@@ -1,9 +1,25 @@
 package myTestPackage;
-import java.awt.EventQueue;
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
+
+	public Main() {
+		JFrame frame = new JFrame();
+		frame = new GameWindow();
+	}
+
 	public static void main(String[] args) {
-		GameWindow game = new GameWindow();
-		game.start();
+
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main window = new Main();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }

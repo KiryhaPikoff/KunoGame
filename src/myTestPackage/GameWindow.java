@@ -1,44 +1,31 @@
 package myTestPackage;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.Timer;
 
-import myTestPackage.entity.components.Stats;
 import myTestPackage.entity.monster.MonsterAction;
 import myTestPackage.utils.Constants;
 import myTestPackage.components.direction.DirectionChanger;
 import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.entity.player.Player;
-import myTestPackage.entity.Entity;
 import myTestPackage.entity.monster.Monster;
-import myTestPackage.entity.monster.MonsterFabrica;
 import myTestPackage.entity.monster.Spawner;
 import myTestPackage.map.Chunk;
-import myTestPackage.mover.Movable;
 import myTestPackage.mover.Mover;
 import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
-
-import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class GameWindow extends JFrame implements Serializable {
 	private String nameFirstChunk = "10000000";
 	private Chunk currentChunk;
 	private Player testPlayer;
 	private List<Monster> monsterList = new ArrayList<Monster>();
+	private Collection<Integer> chunkHashCodeList = new HashSet<Integer>();
 	
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
@@ -51,7 +38,11 @@ public class GameWindow extends JFrame implements Serializable {
 		this.initKeyListener();
 		this.initMouseListener();
 		this.initPhysicTimer();
-		
+		this.start();
+	}
+
+	private void init() {
+
 	}
 	
 	private void spawnMonster() {
@@ -82,20 +73,20 @@ public class GameWindow extends JFrame implements Serializable {
 	}
 	
 	private void initWindow() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(Constants.WINDOW_POZITION_X, Constants.WINDOW_POZITION_Y,
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(Constants.WINDOW_POZITION_X, Constants.WINDOW_POZITION_Y,
 				  Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
-		setResizable(false);
-		setVisible(true);
+		this.setResizable(false);
+		this.setVisible(true);
 	}
 	
 	public void initGameComponents() {
 		this.initFirstChunk();
 		this.spawnPlayer();
 
-		//spawnMonster();
-		//spawnMonster();
-		//spawnMonster();
+		spawnMonster();
+		spawnMonster();
+		spawnMonster();
 		spawnMonster();
 
 	}
@@ -112,9 +103,14 @@ public class GameWindow extends JFrame implements Serializable {
 
 				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
 					SaveLoadGame.saveMonster(monsterList, currentChunk);
+
+					if (!chunkHashCodeList.contains(currentChunk.hashCode())) {
+						chunkHashCodeList.add(currentChunk.hashCode());
+						System.out.println("Save " + currentChunk.hashCode());
+					}
+
 					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
 					Renderer.addObject(currentChunk);
-
 
 					while (0 < monsterList.size()) {
 						deleteMonster(monsterList.get(0));
@@ -122,6 +118,8 @@ public class GameWindow extends JFrame implements Serializable {
 
 					try {
 						SaveLoadGame.loadMonster(monsterList, currentChunk);
+
+
 
 						for (Monster monster : monsterList) {
 							Mover.addEntityToChangeDirectionList(monster);
@@ -191,13 +189,6 @@ public class GameWindow extends JFrame implements Serializable {
 					}
 				}
 
-				if(e.getKeyCode() == 112) {
-					saveGame();
-				}
-
-				if(e.getKeyCode() == 113) {
-					loadGame();
-				}
 			}
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
@@ -248,6 +239,8 @@ public class GameWindow extends JFrame implements Serializable {
 		this.addMouseListener(this.playerMouseListener);
 	}
 
+	//public void
+
 	public void start() {	
 		Renderer.start();
 	}
@@ -257,29 +250,4 @@ public class GameWindow extends JFrame implements Serializable {
 		repaint();
 	}
 
-	public void saveGame() {
-		try {
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("save.txt")));
-			objectOutputStream.writeObject(testPlayer.getCoordinates());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void loadGame() {
-		ObjectInputStream objectInputStream = null;
-		try {
-			objectInputStream = new ObjectInputStream(new FileInputStream(new File("save.txt")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			testPlayer.setCoordinates((Coordinates)objectInputStream.readObject());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
 }
