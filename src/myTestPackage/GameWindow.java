@@ -66,6 +66,7 @@ public class GameWindow extends JFrame implements Serializable {
 		Renderer.deleteObject(monster);
 		Mover.deleteEntity(monster);
 		AnimationUpdater.deleteEntity(monster);
+		monster.getAttackTimer().stopAttackTimer();
 		this.monsterList.remove(monster);
 	}
 	

@@ -28,11 +28,14 @@ public class AttackTimer {
         if (!this.isStart) {
             attackTimer.start();
         }
+
+        isStart = true;
     }
     public void stopAttackTimer() {
         if (this.isStart) {
             attackTimer.stop();
         }
+        isStart = false;
     }
 
     public boolean isStart() {

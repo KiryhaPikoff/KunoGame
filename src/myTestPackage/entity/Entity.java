@@ -136,6 +136,14 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 		this.attackZone = attackZone;
 	}
 
+	public AttackTimer getAttackTimer() {
+		return attackTimer;
+	}
+
+	public void setAttackTimer(AttackTimer attackTimer) {
+		this.attackTimer = attackTimer;
+	}
+
 	public boolean isCanAttack() {
 		return canAttack;
 	}

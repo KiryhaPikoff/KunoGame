@@ -47,6 +47,6 @@ public abstract class SaveLoadGame {
             monsterList.add(monster);
         }
 
-        }
+    }
 
 }
