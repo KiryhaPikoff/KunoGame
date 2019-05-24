@@ -22,11 +22,11 @@ public class Bullet {
 
     public void move() {
         if (finishEntity != null) {
-            Integer dx = finishEntity.getCoordinates().getX() + Constants.SIZE_TILE / 2 - startEntity.getCoordinates().getX();
-            Integer dy = finishEntity.getCoordinates().getY() + Constants.SIZE_TILE / 2 - startEntity.getCoordinates().getY();
+            Integer dx = (finishEntity.getCoordinates().getX() + (Constants.SIZE_TILE / 2)) - startEntity.getCoordinates().getX();
+            Integer dy = (finishEntity.getCoordinates().getY() + (Constants.SIZE_TILE / 2)) - startEntity.getCoordinates().getY();
 
-            this.getCoordinates().setX((int) (this.getCoordinates().getX() + (this.speed * dx) / Math.sqrt(Double.valueOf(dx * dx + dy * dy))));
-            this.getCoordinates().setY((int) (this.getCoordinates().getY() + (this.speed * dy) / Math.sqrt(Double.valueOf(dx * dx + dy * dy))));
+            this.getCoordinates().setX((int) (this.getCoordinates().getX() + (this.speed * dx) / Math.sqrt((double) (dx * dx + dy * dy))));
+            this.getCoordinates().setY((int) (this.getCoordinates().getY() + (this.speed * dy) / Math.sqrt((double) (dx * dx + dy * dy))));
         }
     }
 
@@ -35,27 +35,11 @@ public class Bullet {
                 sizeBullet, sizeBullet);
     }
 
-    public myTestPackage.Coordinates getCoordinates() {
+    public Coordinates getCoordinates() {
         return coordinates;
     }
 
     public void setCoordinates(myTestPackage.Coordinates coordinates) {
         this.coordinates = coordinates;
-    }
-
-    public Entity getStartEntity() {
-        return startEntity;
-    }
-
-    public void setStartEntity(Entity startEntity) {
-        this.startEntity = startEntity;
-    }
-
-    public Entity getFinishEntity() {
-        return finishEntity;
-    }
-
-    public void setFinishEntity(Entity finishEntity) {
-        this.finishEntity = finishEntity;
     }
 }

@@ -3,7 +3,6 @@ package myTestPackage.entity.player;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.List;
 import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
-import myTestPackage.Drawable;
 import myTestPackage.RectangleZone;
 import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.DirectionMovement;
@@ -21,12 +19,8 @@ import myTestPackage.components.keyboard.KeyboardKeyAction;
 import myTestPackage.entity.Bullet;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.components.Stats;
-import myTestPackage.entity.monster.Monster;
-import myTestPackage.mover.Movable;
-import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
 import myTestPackage.utils.Constants;
-import myTestPackage.utils.ImageLoader;
 import myTestPackage.utils.ImageStorage;
 
 public final class Player extends Entity implements Serializable {
@@ -189,7 +183,7 @@ public final class Player extends Entity implements Serializable {
 		return conditionSpellKeys;
 	}
 
-	public void setConditionSpellKeys(List<KeyboardKey> conditionSpellKeys) {
+	private void setConditionSpellKeys(List<KeyboardKey> conditionSpellKeys) {
 		this.conditionSpellKeys = conditionSpellKeys;
 	}
 
