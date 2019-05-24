@@ -1,37 +1,40 @@
 package myTestPackage;
 
-import java.awt.Graphics;
-import java.awt.event.*;
-import java.io.*;
-import java.util.*;
-
-import javax.swing.*;
-import javax.swing.Timer;
-
-import myTestPackage.entity.monster.MonsterAction;
-import myTestPackage.utils.Constants;
 import myTestPackage.components.direction.DirectionChanger;
 import myTestPackage.components.keyboard.KeyboardKey;
-import myTestPackage.entity.player.Player;
+
 import myTestPackage.entity.monster.Monster;
+import myTestPackage.entity.monster.MonsterAction;
 import myTestPackage.entity.monster.Spawner;
+import myTestPackage.entity.player.Player;
 import myTestPackage.map.Chunk;
 import myTestPackage.mover.Mover;
 import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
+import myTestPackage.utils.Constants;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 public class GameWindow extends JFrame implements Serializable {
-	private String nameFirstChunk = "10000000";
+	private String nameFirstChunk;
 	private Chunk currentChunk;
 	private Player testPlayer;
-	private List<Monster> monsterList = new ArrayList<Monster>();
-	private Collection<Integer> chunkHashCodeList = new HashSet<Integer>();
+	private List<Monster> monsterList;
+	private Collection<Integer> chunkHashCodeList;
 
 	private Renderer renderer;
 	private Mover mover;
 	private AnimationUpdater animationUpdater;
     private Timer physicTimer;
-	
+
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
 
@@ -40,6 +43,11 @@ public class GameWindow extends JFrame implements Serializable {
 		renderer.start();
 		mover = new Mover();
 		animationUpdater = new AnimationUpdater();
+
+        monsterList = new ArrayList<Monster>();
+        chunkHashCodeList = new HashSet<Integer>();
+        nameFirstChunk = "10000000";
+
         this.initWindow();
 		this.initGameComponents();
 		this.initKeyListener();
@@ -120,11 +128,12 @@ public class GameWindow extends JFrame implements Serializable {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(Constants.WINDOW_POZITION_X, Constants.WINDOW_POZITION_Y,
 				  Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
+        this.getContentPane().setLayout(null);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
 	
-	public void initGameComponents() {
+	private void initGameComponents() {
 		this.initFirstChunk();
 		this.spawnPlayer();
 
@@ -139,7 +148,7 @@ public class GameWindow extends JFrame implements Serializable {
 		physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
 				if(testPlayer.getStats().getCurrentHealthPoints() <= 0) {
-					//System.exit(1);
+					System.exit(1);
 				}
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					mover.moveObject(testPlayer);
@@ -214,7 +223,7 @@ public class GameWindow extends JFrame implements Serializable {
 						if(!playerKey.isPressed()) {
 							playerKey.setPressed(true);
 							DirectionChanger.changeObjectDirection(testPlayer);
-						} 
+						}
 					}
 				}
 			}
@@ -226,7 +235,7 @@ public class GameWindow extends JFrame implements Serializable {
 						DirectionChanger.changeObjectDirection(testPlayer);
 					}
 				}
-				
+
 				for (KeyboardKey playerKey : testPlayer.getConditionSpellKeys()) {
 					if(numPressedKey == playerKey.getID()) {
 						playerKey.execute();
@@ -243,8 +252,8 @@ public class GameWindow extends JFrame implements Serializable {
 			}
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-			}	
-			
+			}
+
 		};
 		this.addKeyListener(this.playerKeyListener);
 	}
@@ -292,21 +301,23 @@ public class GameWindow extends JFrame implements Serializable {
 
 	//public void
 
-	public void start() {
+	private void start() {
 		mover.start();
 		physicTimer.start();
 		animationUpdater.start();
-
 	}
 
-	public void finish() {
+	private void finish() {
 	    mover.stop();
 	    physicTimer.stop();
 	    animationUpdater.stop();
+	   // LoginScreenPanel panel = new LoginScreenPanel(new Coordinates(200, 200));
+	    //this.getContentPane().add(panel);
+	    //renderer.addObject(panel);
     }
 	
 	public void paint(Graphics g) {
-		g.drawImage(Renderer.canvas, 2, 26, null);
+		g.drawImage(renderer.canvas, 2, 26, null);
 		repaint();
 	}
 
