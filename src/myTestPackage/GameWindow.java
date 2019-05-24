@@ -38,11 +38,48 @@ public class GameWindow extends JFrame implements Serializable {
 		this.initKeyListener();
 		this.initMouseListener();
 		this.initPhysicTimer();
+		this.initWindowListener();
 		this.start();
 	}
 
-	private void init() {
+	private void initWindowListener() {
+		this.addWindowListener(new WindowListener() {
 
+			public void windowOpened(WindowEvent e) {
+
+			}
+
+			public void windowClosing(WindowEvent e) {
+				for (Integer hashCode : chunkHashCodeList) {
+					File file = new File("resources/saves/tempSave/" + hashCode + ".txt");
+                    if(file.delete()){
+                        System.out.println(file.getName() + " is deleted!");
+                    }else{
+                        System.out.println("Delete failed: File didn't delete");
+                    }
+				}
+			}
+
+			public void windowClosed(WindowEvent e) {
+
+			}
+
+			public void windowIconified(WindowEvent e) {
+
+			}
+
+			public void windowDeiconified(WindowEvent e) {
+
+			}
+
+			public void windowActivated(WindowEvent e) {
+
+			}
+
+			public void windowDeactivated(WindowEvent e) {
+
+			}
+		});
 	}
 	
 	private void spawnMonster() {
