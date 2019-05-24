@@ -29,17 +29,17 @@ public class GameWindow extends JFrame implements Serializable {
 
 	private Renderer renderer;
 	private Mover mover;
-    Timer physicTimer;
+	private AnimationUpdater animationUpdater;
+    private Timer physicTimer;
 	
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
 
 	public GameWindow() {
-		this.initWindow();
-		chunkHashCodeList.add(Integer.parseInt(nameFirstChunk));
 		renderer = new Renderer();
 		mover = new Mover();
-		AnimationUpdater.startUpdAllAnimations();
+		animationUpdater = new AnimationUpdater();
+        this.initWindow();
 		this.initGameComponents();
 		this.initKeyListener();
 		this.initMouseListener();
@@ -92,14 +92,14 @@ public class GameWindow extends JFrame implements Serializable {
 		Monster tempMonster = Spawner.spawnMonster(currentChunk);
 		monsterList.add(tempMonster);
 		mover.addEntityToChangeDirectionList(tempMonster);
-		AnimationUpdater.addEntity(tempMonster);
+		animationUpdater.addEntity(tempMonster);
 		renderer.addObject(tempMonster);
 	}
 	
 	private void deleteMonster(Monster monster) {
 		renderer.deleteObject(monster);
 		mover.deleteEntity(monster);
-		AnimationUpdater.deleteEntity(monster);
+		animationUpdater.deleteEntity(monster);
 		monster.getAttackTimer().stopAttackTimer();
 		this.monsterList.remove(monster);
 	}
@@ -107,7 +107,7 @@ public class GameWindow extends JFrame implements Serializable {
 	private void spawnPlayer() {
 		this.testPlayer = new Player(new Coordinates(500, 500));
 		renderer.addObject(testPlayer);
-		AnimationUpdater.addEntity(this.testPlayer);
+		animationUpdater.addEntity(this.testPlayer);
 	}
 	
 	private void initFirstChunk() {
@@ -166,7 +166,7 @@ public class GameWindow extends JFrame implements Serializable {
 
 						for (Monster monster : monsterList) {
 							mover.addEntityToChangeDirectionList(monster);
-							AnimationUpdater.addEntity(monster);
+							animationUpdater.addEntity(monster);
 							renderer.addObject(monster);
 						}
 					} catch (Exception e1) {
@@ -291,17 +291,18 @@ public class GameWindow extends JFrame implements Serializable {
 
 	//public void
 
-	public void start() {	
+	public void start() {
 		renderer.start();
 		mover.start();
 		physicTimer.start();
+		animationUpdater.start();
 
 	}
 
 	public void finish() {
-	    renderer.stop();
 	    mover.stop();
 	    physicTimer.stop();
+	    animationUpdater.stop();
     }
 	
 	public void paint(Graphics g) {

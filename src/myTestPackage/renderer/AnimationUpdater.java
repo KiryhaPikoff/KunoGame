@@ -10,29 +10,41 @@ import javax.swing.Timer;
 import myTestPackage.entity.Entity;
 import myTestPackage.utils.Constants;
 
-public abstract class AnimationUpdater {
-	private static List<Entity> animList;
-	
-	public static void startUpdAllAnimations() {
-		animList = new ArrayList<Entity>();
-		
-		Timer timer = new Timer(Constants.ANIMATION_SPEED, new ActionListener() {
+public class AnimationUpdater {
+	private List<Entity> animList;
+	Timer animTimer;
+
+	public AnimationUpdater() {
+		this.animList = new ArrayList<Entity>();
+		this.initAnimTimer();
+	}
+
+	public void initAnimTimer() {
+		animTimer = new Timer(Constants.ANIMATION_SPEED, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (Entity entity : animList) {
 					entity.updateAnimation();
 				}		
 			}
 		});
-		timer.start();
+
+	}
+
+	public void start() {
+		animTimer.start();
+	}
+
+	public void stop() {
+		animTimer.stop();
 	}
 	
-	public static void addEntity(Entity entity) {
+	public void addEntity(Entity entity) {
 		if(!animList.contains(entity)) {
 			animList.add(entity);
 		}
 	}
 	
-	public static void deleteEntity(Entity entity) {
+	public void deleteEntity(Entity entity) {
 		if(animList.contains(entity)) {
 			animList.remove(entity);
 		}
