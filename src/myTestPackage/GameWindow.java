@@ -37,6 +37,7 @@ public class GameWindow extends JFrame implements Serializable {
 
 	public GameWindow() {
 		renderer = new Renderer();
+		renderer.start();
 		mover = new Mover();
 		animationUpdater = new AnimationUpdater();
         this.initWindow();
@@ -292,7 +293,6 @@ public class GameWindow extends JFrame implements Serializable {
 	//public void
 
 	public void start() {
-		renderer.start();
 		mover.start();
 		physicTimer.start();
 		animationUpdater.start();

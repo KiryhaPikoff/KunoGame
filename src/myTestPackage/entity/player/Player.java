@@ -59,12 +59,7 @@ public final class Player extends Entity implements Serializable {
 		KeyboardKey key1 = new KeyboardKey(32/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
 			public void execute() {
 				bulletList.add(new Bullet(getPlayer(), target, 10));
-				if(target != null) {
-					target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
-					if (target.getStats().getCurrentHealthPoints() <= 0) {
-						target.setAction(Action.DEAD);
-					}
-				}
+
 			}
 		}); 
 		
@@ -161,10 +156,13 @@ public final class Player extends Entity implements Serializable {
 		if (target != null) {
 			int i = 0;
 			while (i < bulletList.size()) {
-				if (target.getAttackZone().contains(bulletList.get(i).getCoordinates().getX(), bulletList.get(i).getCoordinates().getY()) ||
-					target.getAction() == Action.DEAD) {
+				if (target.getAttackZone().contains(bulletList.get(i).getCoordinates().getX(), bulletList.get(i).getCoordinates().getY())) {
+					target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
 					bulletList.remove(i);
 				} else {
+					if (target.getStats().getCurrentHealthPoints() <= 0) {
+						target.setAction(Action.DEAD);
+					}
 					bulletList.get(i).move();
 					i++;
 				}
