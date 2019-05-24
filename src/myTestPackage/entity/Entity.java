@@ -23,6 +23,7 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	
 	protected String name;
 	protected boolean isTarget = false;
+	protected boolean canAttack = false;
 	
 	protected CircleZone thisCoordZone; // зона для выделения по кликам
 	protected RectangleZone movableZone;
@@ -135,4 +136,11 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 		this.attackZone = attackZone;
 	}
 
+	public boolean isCanAttack() {
+		return canAttack;
+	}
+
+	public void setCanAttack(boolean canAttack) {
+		this.canAttack = canAttack;
+	}
 }

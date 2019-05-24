@@ -92,9 +92,9 @@ public class GameWindow extends JFrame implements Serializable {
 		this.initFirstChunk();
 		this.spawnPlayer();
 
-		spawnMonster();
-		spawnMonster();
-		spawnMonster();
+		//spawnMonster();
+		//spawnMonster();
+		//spawnMonster();
 		spawnMonster();
 
 	}
@@ -141,8 +141,7 @@ public class GameWindow extends JFrame implements Serializable {
 				
 				
 				for (Monster monster : monsterList) {
-                    MonsterAction.interaction(monster, testPlayer);
-                    monster.controlAttackTimer();
+
 					if(monster.getAction() == Action.DEAD) {
 						System.out.println("OK!!");
 						deleteMonster(monster);
@@ -153,7 +152,8 @@ public class GameWindow extends JFrame implements Serializable {
 						Mover.moveObject(monster);
 					}
 
-
+					MonsterAction.interaction(monster, testPlayer);
+					monster.controlAttackTimer();
 				}
 
 
