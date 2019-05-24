@@ -26,14 +26,20 @@ public class GameWindow extends JFrame implements Serializable {
 	private Player testPlayer;
 	private List<Monster> monsterList = new ArrayList<Monster>();
 	private Collection<Integer> chunkHashCodeList = new HashSet<Integer>();
+
+	private Renderer renderer;
+	private Mover mover;
+    Timer physicTimer;
 	
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
 
 	public GameWindow() {
 		this.initWindow();
+		chunkHashCodeList.add(Integer.parseInt(nameFirstChunk));
+		renderer = new Renderer();
+		mover = new Mover();
 		AnimationUpdater.startUpdAllAnimations();
-		Mover.startRandomizeDirectionsForMonsters();
 		this.initGameComponents();
 		this.initKeyListener();
 		this.initMouseListener();
@@ -51,7 +57,7 @@ public class GameWindow extends JFrame implements Serializable {
 
 			public void windowClosing(WindowEvent e) {
 				for (Integer hashCode : chunkHashCodeList) {
-					File file = new File("resources/saves/tempSave/" + hashCode + ".txt");
+					File file = new File("resources//saves//tempSave//" + hashCode + ".txt");
                     if(file.delete()){
                         System.out.println(file.getName() + " is deleted!");
                     }else{
@@ -85,14 +91,14 @@ public class GameWindow extends JFrame implements Serializable {
 	private void spawnMonster() {
 		Monster tempMonster = Spawner.spawnMonster(currentChunk);
 		monsterList.add(tempMonster);
-		Mover.addEntityToChangeDirectionList(tempMonster);
+		mover.addEntityToChangeDirectionList(tempMonster);
 		AnimationUpdater.addEntity(tempMonster);
-		Renderer.addObject(tempMonster);
+		renderer.addObject(tempMonster);
 	}
 	
 	private void deleteMonster(Monster monster) {
-		Renderer.deleteObject(monster);
-		Mover.deleteEntity(monster);
+		renderer.deleteObject(monster);
+		mover.deleteEntity(monster);
 		AnimationUpdater.deleteEntity(monster);
 		monster.getAttackTimer().stopAttackTimer();
 		this.monsterList.remove(monster);
@@ -100,13 +106,13 @@ public class GameWindow extends JFrame implements Serializable {
 	
 	private void spawnPlayer() {
 		this.testPlayer = new Player(new Coordinates(500, 500));
-		Renderer.addObject(testPlayer);
+		renderer.addObject(testPlayer);
 		AnimationUpdater.addEntity(this.testPlayer);
 	}
 	
 	private void initFirstChunk() {
 		this.currentChunk = new Chunk(this.nameFirstChunk);
-		Renderer.addObject(currentChunk);
+		renderer.addObject(currentChunk);
 	}
 	
 	private void initWindow() {
@@ -129,13 +135,13 @@ public class GameWindow extends JFrame implements Serializable {
 	}
 	
 	private void initPhysicTimer() {
-		Timer physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+		physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
 				if(testPlayer.getStats().getCurrentHealthPoints() <= 0) {
 					//System.exit(1);
 				}
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
-					Mover.moveObject(testPlayer);
+					mover.moveObject(testPlayer);
 				}
 
 				if(ChunkChanger.canChangeChunk(currentChunk, testPlayer) != null) { /* типо если есть возможность поменять чанк */
@@ -147,7 +153,7 @@ public class GameWindow extends JFrame implements Serializable {
 					}
 
 					currentChunk = ChunkChanger.changeChunk(currentChunk, ChunkChanger.canChangeChunk(currentChunk, testPlayer), testPlayer);
-					Renderer.addObject(currentChunk);
+					renderer.addObject(currentChunk);
 
 					while (0 < monsterList.size()) {
 						deleteMonster(monsterList.get(0));
@@ -159,9 +165,9 @@ public class GameWindow extends JFrame implements Serializable {
 
 
 						for (Monster monster : monsterList) {
-							Mover.addEntityToChangeDirectionList(monster);
+							mover.addEntityToChangeDirectionList(monster);
 							AnimationUpdater.addEntity(monster);
-							Renderer.addObject(monster);
+							renderer.addObject(monster);
 						}
 					} catch (Exception e1) {
 						System.out.println("нет файла с монстрами на чанке " + currentChunk.hashCode());
@@ -185,7 +191,7 @@ public class GameWindow extends JFrame implements Serializable {
 					}
 					
 					if (CollisionChecker.canMove(monster, currentChunk)) {
-						Mover.moveObject(monster);
+						mover.moveObject(monster);
 					}
 
 					MonsterAction.interaction(monster, testPlayer);
@@ -226,6 +232,13 @@ public class GameWindow extends JFrame implements Serializable {
 					}
 				}
 
+                if (e.getKeyCode() == 112) {
+                    start();
+                }
+
+                if (e.getKeyCode() == 113) {
+                    finish();
+                }
 			}
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
@@ -279,8 +292,17 @@ public class GameWindow extends JFrame implements Serializable {
 	//public void
 
 	public void start() {	
-		Renderer.start();
+		renderer.start();
+		mover.start();
+		physicTimer.start();
+
 	}
+
+	public void finish() {
+	    renderer.stop();
+	    mover.stop();
+	    physicTimer.stop();
+    }
 	
 	public void paint(Graphics g) {
 		g.drawImage(Renderer.canvas, 2, 26, null);

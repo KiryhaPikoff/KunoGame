@@ -12,31 +12,42 @@ import myTestPackage.entity.Entity;
 import myTestPackage.map.Chunk;
 import myTestPackage.utils.Constants;
 
-public abstract class Mover {
-	private static List<Entity> entityList = new ArrayList<Entity>();
-	
-	public static void moveObject(Movable object) {
+public class Mover {
+	private List<Entity> entityList = new ArrayList<Entity>();
+	public void moveObject(Movable object) {
 		object.move();
 	}
+    Timer randTimer;
+
+	public Mover() {
+	    this.initRandTimer();
+    }
+
+	private void initRandTimer() {
+        randTimer = new Timer(1, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for (Entity entity : entityList) {
+                    entity.changeDirection();
+                }
+            }
+        });
+    }
 	
-	public static void startRandomizeDirectionsForMonsters() {
-		Timer randTimer = new Timer(1, new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				for (Entity entity : entityList) {
-					entity.changeDirection();
-				}
-			}
-		});
+	public void start() {
 		randTimer.start();
 	}
+
+	public void stop() {
+	    randTimer.stop();
+    }
 	
-	public static void addEntityToChangeDirectionList(Entity entity) {
+	public void addEntityToChangeDirectionList(Entity entity) {
 		if(!entityList.contains(entity)) {			
 			entityList.add(entity);
 		}
 	}
 	
-	public static void deleteEntity(Entity entity) {
+	public void deleteEntity(Entity entity) {
 		if(entityList.contains(entity)) {			
 			entityList.remove(entity);
 		}
