@@ -3,7 +3,6 @@ package myTestPackage;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.monster.Monster;
 import myTestPackage.entity.monster.MonsterFabrica;
-import myTestPackage.entity.player.Player;
 import myTestPackage.map.Chunk;
 
 import java.io.*;
@@ -32,7 +31,7 @@ public abstract class SaveLoadGame {
 
     public static void loadMonster(List<Monster> monsterList, Chunk currentChunk) throws IOException, ClassNotFoundException {
 
-        ObjectInputStream objectInputStream = null;
+        ObjectInputStream objectInputStream;
 
         objectInputStream = new ObjectInputStream(new FileInputStream(new File("resources/saves/tempSave/" + currentChunk.hashCode() + ".txt")));
 
@@ -70,7 +69,7 @@ public abstract class SaveLoadGame {
     }
 
     public static void loadAllGame(Entity player, List<Monster> monsterList, Chunk currentChunk) throws IOException, ClassNotFoundException {
-        ObjectInputStream objectInputStream = null;
+        ObjectInputStream objectInputStream;
         File file;
 
         file = new File("resources/saves/globalSave/player.txt");

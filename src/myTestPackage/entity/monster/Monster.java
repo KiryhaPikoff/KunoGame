@@ -1,5 +1,7 @@
 package myTestPackage.entity.monster;
 
+
+
 import myTestPackage.Action;
 import myTestPackage.CircleZone;
 import myTestPackage.Coordinates;
@@ -21,8 +23,8 @@ import java.awt.image.BufferedImage;
 
 public class Monster extends Entity {
 
-	public Monster() {
-		this.coordinates = new Coordinates();
+	Monster() {
+		this.coordinates = new  Coordinates();
 		this.stats = new Stats();
 		this.target = null;
 		this.action = Action.MOVE;
@@ -42,7 +44,7 @@ public class Monster extends Entity {
 		this.setDirectionMovement(DirectionMovement.STAND);
 	}
 	
-	public void initGraphics(BufferedImage stand, BufferedImage up, BufferedImage down, BufferedImage left, BufferedImage right) {
+	void initGraphics(BufferedImage stand, BufferedImage up, BufferedImage down, BufferedImage left, BufferedImage right) {
 		this.image = stand;
 		
 		animUP = new Animation(up);
