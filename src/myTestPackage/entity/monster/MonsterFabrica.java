@@ -19,6 +19,7 @@ public abstract class MonsterFabrica {
 		dodya.getStats().setMaxHealthPoints(16);
 		dodya.getStats().setCurrentHealthPoints(16);
 		dodya.getStats().setDamage(2);
+		dodya.setScore(5);
 		
 		return dodya;
 	}
@@ -38,6 +39,7 @@ public abstract class MonsterFabrica {
 		muskuleFear.getStats().setMaxHealthPoints(12);
 		muskuleFear.getStats().setCurrentHealthPoints(12);
 		muskuleFear.getStats().setDamage(4);
+		muskuleFear.setScore(5);
 		
 		return muskuleFear;
 	}
@@ -57,6 +59,7 @@ public abstract class MonsterFabrica {
 		grifon.getStats().setMaxHealthPoints(300);
 		grifon.getStats().setCurrentHealthPoints(300);
 		grifon.getStats().setDamage(15);
+		grifon.setScore(20);
 		
 		return grifon;
 	}
@@ -76,6 +79,7 @@ public abstract class MonsterFabrica {
 		ogr.getStats().setMaxHealthPoints(300);
 		ogr.getStats().setCurrentHealthPoints(300);
 		ogr.getStats().setDamage(15);
+		ogr.setScore(20);
 		
 		return ogr;
 	}
@@ -95,6 +99,7 @@ public abstract class MonsterFabrica {
 		metalBoss.getStats().setMaxHealthPoints(300);
 		metalBoss.getStats().setCurrentHealthPoints(300);
 		metalBoss.getStats().setDamage(15);
+		metalBoss.setScore(20);
 		
 		return metalBoss;
 	}

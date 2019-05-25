@@ -26,6 +26,10 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	protected String name;
 	protected boolean isTarget = false;
 	protected boolean canAttack = false;
+
+	protected int score;
+
+	protected Font scoreFont;
 	
 	protected CircleZone thisCoordZone; // зона для выделения по кликам
 	protected RectangleZone movableZone;
@@ -173,5 +177,13 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 
 	public void setCanAttack(boolean canAttack) {
 		this.canAttack = canAttack;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 }

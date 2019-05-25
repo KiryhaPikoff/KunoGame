@@ -20,7 +20,7 @@ public class AttackTimer {
     private void startAttackSpeed(final Entity entity) {
         this.attackTimer = new Timer(attackSpeed, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                entity.attack();
+                entity.setCanAttack(true);
             }
         });
     }

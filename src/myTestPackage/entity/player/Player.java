@@ -1,7 +1,6 @@
 package myTestPackage.entity.player;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ import myTestPackage.entity.Bullet;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.components.Stats;
 import myTestPackage.renderer.Animation;
+import myTestPackage.utils.AttackTimer;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageStorage;
 
@@ -34,6 +34,9 @@ public final class Player extends Entity implements Serializable {
 		this.coordinates = new Coordinates();
 		this.coordinates = coordinates;
 
+		this.score = 0;
+		this.scoreFont = new Font("TimesRoman", Font.BOLD, 18);
+
 		this.healthPointsBar = new HealthPointsBar(this);
 		this.bulletList = new ArrayList<Bullet>();
 
@@ -43,6 +46,9 @@ public final class Player extends Entity implements Serializable {
 		this.stats.setDamage(5);
 		
 		this.target = null;
+
+		this.attackTimer = new AttackTimer(500, this);
+		this.attackTimer.startAttackTimer();
 		
 		this.action = Action.MOVE;
 		this.setConditionSpellKeys(new ArrayList<KeyboardKey>());
@@ -61,8 +67,10 @@ public final class Player extends Entity implements Serializable {
 	private void initKeyButtons() {
 		KeyboardKey key1 = new KeyboardKey(32/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
 			public void execute() {
-				bulletList.add(new Bullet(getPlayer(), target, 10));
-
+				if (canAttack) {
+					attack();
+					canAttack = false;
+				}
 			}
 		}); 
 		
@@ -147,6 +155,8 @@ public final class Player extends Entity implements Serializable {
 		}
 
 		healthPointsBar.paint(g);
+		g.setFont(scoreFont);
+		g.drawString("score: " + score, 20, 20);
 		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 	
@@ -171,9 +181,6 @@ public final class Player extends Entity implements Serializable {
 				}
 			}
 		}
-
-
-
 	}
 
 	public ConditionMoveKeys getConditionMoveKeys() {
@@ -193,6 +200,6 @@ public final class Player extends Entity implements Serializable {
 	}
 
 	public void attack() {
-
+		bulletList.add(new Bullet(getPlayer(), target, 10));
 	}
 }
