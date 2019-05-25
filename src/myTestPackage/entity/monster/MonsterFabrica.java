@@ -45,7 +45,7 @@ public abstract class MonsterFabrica {
 	public static Monster createGrifon() {
 		Monster grifon = new Monster();
 		grifon.initGraphics(
-				ImageStorage.GRIFON_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE),
+				ImageStorage.GRIFON_TS_DOWN.getSubimage(0, 0, Constants.RESOLUTION_TILE * 2, Constants.RESOLUTION_TILE * 2),
 				ImageStorage.GRIFON_TS_UP,
 				ImageStorage.GRIFON_TS_DOWN,
 				ImageStorage.GRIFON_TS_LEFT,
@@ -64,7 +64,7 @@ public abstract class MonsterFabrica {
 	public static Monster createOgr() {
 		Monster ogr = new Monster();
 		ogr.initGraphics(
-				ImageStorage.OGR_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE),
+				ImageStorage.OGR_TS_DOWN.getSubimage(0, 0, Constants.RESOLUTION_TILE * 2, Constants.RESOLUTION_TILE * 2),
 				ImageStorage.OGR_TS_UP,
 				ImageStorage.OGR_TS_DOWN,
 				ImageStorage.OGR_TS_LEFT,
@@ -83,7 +83,7 @@ public abstract class MonsterFabrica {
 	public static Monster createMetalBoss() {
 		Monster metalBoss = new Monster();
 		metalBoss.initGraphics(
-				ImageStorage.METAL_BOSS_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE),
+				ImageStorage.METAL_BOSS_TS_DOWN.getSubimage(0, 0, Constants.RESOLUTION_TILE * 2, Constants.RESOLUTION_TILE * 2),
 				ImageStorage.METAL_BOSS_TS_UP,
 				ImageStorage.METAL_BOSS_TS_DOWN,
 				ImageStorage.METAL_BOSS_TS_LEFT,
