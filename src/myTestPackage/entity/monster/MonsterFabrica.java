@@ -12,7 +12,7 @@ public abstract class MonsterFabrica {
 				ImageStorage.MONSTER_DODYA_TS_DOWN,
 				ImageStorage.MONSTER_DODYA_TS_LEFT,
 				ImageStorage.MONSTER_DODYA_TS_RIGHT);
-		dodya.setName("dodya");
+		dodya.setName("Dodya");
 
 		dodya.getStats().setRadiusAttack(100);
 		dodya.getStats().setRadiusPursuit(200);
@@ -40,5 +40,62 @@ public abstract class MonsterFabrica {
 		muskuleFear.getStats().setDamage(4);
 		
 		return muskuleFear;
+	}
+	
+	public static Monster createGrifon() {
+		Monster grifon = new Monster();
+		grifon.initGraphics(
+				ImageStorage.GRIFON_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE),
+				ImageStorage.GRIFON_TS_UP,
+				ImageStorage.GRIFON_TS_DOWN,
+				ImageStorage.GRIFON_TS_LEFT,
+				ImageStorage.GRIFON_TS_RIGHT);
+		grifon.setName("Grifon");
+
+		grifon.getStats().setRadiusAttack(200);
+		grifon.getStats().setRadiusPursuit(400);
+		grifon.getStats().setMaxHealthPoints(300);
+		grifon.getStats().setCurrentHealthPoints(300);
+		grifon.getStats().setDamage(15);
+		
+		return grifon;
+	}
+
+	public static Monster createOgr() {
+		Monster ogr = new Monster();
+		ogr.initGraphics(
+				ImageStorage.OGR_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE),
+				ImageStorage.OGR_TS_UP,
+				ImageStorage.OGR_TS_DOWN,
+				ImageStorage.OGR_TS_LEFT,
+				ImageStorage.OGR_TS_RIGHT);
+		ogr.setName("Ogr");
+
+		ogr.getStats().setRadiusAttack(200);
+		ogr.getStats().setRadiusPursuit(400);
+		ogr.getStats().setMaxHealthPoints(300);
+		ogr.getStats().setCurrentHealthPoints(300);
+		ogr.getStats().setDamage(15);
+		
+		return ogr;
+	}
+	
+	public static Monster createMetalBoss() {
+		Monster metalBoss = new Monster();
+		metalBoss.initGraphics(
+				ImageStorage.METAL_BOSS_TS_DOWN.getSubimage(Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE),
+				ImageStorage.METAL_BOSS_TS_UP,
+				ImageStorage.METAL_BOSS_TS_DOWN,
+				ImageStorage.METAL_BOSS_TS_LEFT,
+				ImageStorage.METAL_BOSS_TS_RIGHT);
+		metalBoss.setName("MetalBoss");
+
+		metalBoss.getStats().setRadiusAttack(200);
+		metalBoss.getStats().setRadiusPursuit(400);
+		metalBoss.getStats().setMaxHealthPoints(300);
+		metalBoss.getStats().setCurrentHealthPoints(300);
+		metalBoss.getStats().setDamage(15);
+		
+		return metalBoss;
 	}
 }

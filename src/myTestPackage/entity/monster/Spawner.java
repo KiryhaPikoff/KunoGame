@@ -5,18 +5,42 @@ import myTestPackage.map.Chunk;
 import myTestPackage.utils.Constants;
 
 public class Spawner {
+	
+	private static int numOfMonsters = 2;
+	private static int numOfBoss = 3;
+	private static int bossChances = 0; // чем больше число тем меньше шансов спавна босса
+	
 	public static Monster spawnMonster(Chunk chunk) {
-		int type = (int) ((Math.random() * 100) % 2);
+		int type = (int) ((Math.random() * 100) % (numOfBoss + bossChances));
 		Monster monster = null;
 		
-		switch(type) {
+		switch(type) { // рарный спавн
 			case 0: {
-				monster = MonsterFabrica.createDodya();	
+				monster = MonsterFabrica.createGrifon();	
 				break;
 			}
+			
 			case 1: {
-				monster = MonsterFabrica.createMuskuleFear();	
+				monster = MonsterFabrica.createOgr();	
 				break;
+			}
+			
+			case 2: {
+				monster = MonsterFabrica.createMetalBoss();	
+				break;
+			}
+			
+			default: { // обычный спавн
+				switch(type % numOfMonsters) {			
+					case 0: {
+						monster = MonsterFabrica.createDodya();	
+						break;
+					}
+					case 1: {
+						monster = MonsterFabrica.createMuskuleFear();	
+						break;
+					}
+				}
 			}
 		}
 		

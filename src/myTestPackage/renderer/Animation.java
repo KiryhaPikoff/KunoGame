@@ -12,9 +12,12 @@ public final class Animation implements Serializable {
 	private int currentFrame;
 	private int maxFrames;
 	
+	private int resolutionTile;
+	
 	public Animation(BufferedImage tileSet) {
 		this.tileSet = tileSet;
-		this.maxFrames = tileSet.getWidth() / Constants.RESOLUTION_TILE;
+		this.resolutionTile = tileSet.getHeight();
+		this.maxFrames = tileSet.getWidth() / resolutionTile;
 	}
 	
 	public void update() {
@@ -23,7 +26,7 @@ public final class Animation implements Serializable {
 			this.currentFrame = 0;
 		}
 		
-		this.currentImage = tileSet.getSubimage(this.currentFrame * Constants.RESOLUTION_TILE, 0, Constants.RESOLUTION_TILE, Constants.RESOLUTION_TILE);
+		this.currentImage = tileSet.getSubimage(this.currentFrame * resolutionTile, 0, resolutionTile, resolutionTile);
 	}
 	
 	public BufferedImage getCurrentImage() {
