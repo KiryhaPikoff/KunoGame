@@ -76,6 +76,7 @@ public class Buttons {
         newGameBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("New game btn");
+                focusFrame.requestFocus();
             }
         });
         newGameBtn.setBounds(x, y, 120, 25);
@@ -87,6 +88,7 @@ public class Buttons {
         qaeBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("QAE btn");
+                focusFrame.requestFocus();
             }
         });
         qaeBtn.setBounds(x, y, 120, 25);

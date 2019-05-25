@@ -24,7 +24,7 @@ public class Mover {
     }
 
 	private void initRandTimer() {
-        randTimer = new Timer(1, new ActionListener() {
+        randTimer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (Entity entity : entityList) {
                     entity.changeDirection();

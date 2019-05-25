@@ -8,7 +8,7 @@ public abstract class Constants {
 	
 	public static final int ANIMATION_SPEED = 100;      // чем ближе к нулю - тем быстрее тикает таймер задаёт скорость анимациям
 	public static final int DRAWER_SPEED = 1;           // чем ближе к нулю - тем быстрее тикает таймер задёт скорость перерисовки окна
-	public static final int PHYSIC_SPEED = 50;          // чем ближе к нулю - тем быстрее тикает таймер задёт скорость движения всех объектов
+	public static final int PHYSIC_SPEED = 20;          // чем ближе к нулю - тем быстрее тикает таймер задёт скорость движения всех объектов
 	
 	
 	public static final int SIZE_TILE = 64;    			// размер тайла на экране в пикс

@@ -8,7 +8,7 @@ public class Spawner {
 	
 	private static int numOfMonsters = 2;
 	private static int numOfBoss = 3;
-	private static int bossChances = 0; // чем больше число тем меньше шансов спавна босса
+	private static int bossChances = 5; // чем больше число тем меньше шансов спавна босса
 	
 	public static Monster spawnMonster(Chunk chunk) {
 		int type = (int) ((Math.random() * 100) % (numOfBoss + bossChances));
