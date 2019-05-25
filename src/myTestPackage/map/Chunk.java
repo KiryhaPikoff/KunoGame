@@ -37,8 +37,15 @@ public final class Chunk implements Drawable, Serializable {
 		
 		this.render();
 	}
-	
-	public Tile getTileIJ(int i, int j) {
+
+	public void setChunk(Chunk chunk) {
+		this.arrayTiles = chunk.getArrayTiles();
+		this.coords = chunk.getCoords();
+
+		this.render();
+	}
+
+    public Tile getTileIJ(int i, int j) {
 		return this.arrayTiles[i][j];
 	}
 	
@@ -75,5 +82,13 @@ public final class Chunk implements Drawable, Serializable {
 	
 	public int hashCode() {
 		return 10000000 + this.coords.getI() * 10000 + this.coords.getJ();
+	}
+
+	public Tile[][] getArrayTiles() {
+		return arrayTiles;
+	}
+
+	public void setArrayTiles(Tile[][] arrayTiles) {
+		this.arrayTiles = arrayTiles;
 	}
 }

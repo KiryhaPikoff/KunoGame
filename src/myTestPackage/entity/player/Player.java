@@ -30,6 +30,7 @@ public final class Player extends Entity implements Serializable {
 	private List<Bullet> bulletList;
 
 	public Player(Coordinates coordinates) {
+		this.name = "mainPlayer";
 		this.coordinates = new Coordinates();
 		this.coordinates = coordinates;
 
@@ -54,7 +55,9 @@ public final class Player extends Entity implements Serializable {
 		this.movableZone = new RectangleZone(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT - Constants.SIZE_TILE / 2);
 		this.setDirectionMovement(DirectionMovement.STAND);
 	}
-	
+
+
+
 	private void initKeyButtons() {
 		KeyboardKey key1 = new KeyboardKey(32/* клавиша 1 на клаве сверху */, new KeyboardKeyAction() {
 			public void execute() {

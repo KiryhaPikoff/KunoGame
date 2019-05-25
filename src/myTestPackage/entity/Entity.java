@@ -3,6 +3,7 @@ package myTestPackage.entity;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import myTestPackage.Action;
 import myTestPackage.CircleZone;
@@ -12,6 +13,7 @@ import myTestPackage.RectangleZone;
 import myTestPackage.components.GameInteface.HealthPointsBar;
 import myTestPackage.components.direction.Directed;
 import myTestPackage.components.direction.DirectionMovement;
+import myTestPackage.components.keyboard.KeyboardKey;
 import myTestPackage.entity.components.Stats;
 import myTestPackage.entity.monster.Attacking;
 import myTestPackage.mover.Movable;
@@ -47,6 +49,27 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	protected Animation animRIGHT;
 	
 	protected Entity target;
+
+	public void setEntity(Entity entity) {
+		this.coordinates = new Coordinates();
+		this.coordinates = entity.getCoordinates();
+
+		this.healthPointsBar = new HealthPointsBar(this);
+
+		this.stats = new Stats();
+		this.stats.setMaxHealthPoints(30);
+		this.stats.setCurrentHealthPoints(30);
+		this.stats.setDamage(5);
+
+		this.target = null;
+
+		this.action = Action.MOVE;
+
+		this.setThisCoordZone(new CircleZone(myTestPackage.utils.Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - myTestPackage.utils.Constants.SIZE_TILE / 2, this.coordinates.getY() - myTestPackage.utils.Constants.SIZE_TILE / 2)));
+
+		this.movableZone = new RectangleZone(0, 0, myTestPackage.utils.Constants.WINDOW_WIDTH, myTestPackage.utils.Constants.WINDOW_HEIGHT - myTestPackage.utils.Constants.SIZE_TILE / 2);
+		this.setDirectionMovement(DirectionMovement.STAND);
+	}
 
 	public Coordinates getCoordinates() {
 		return coordinates;
