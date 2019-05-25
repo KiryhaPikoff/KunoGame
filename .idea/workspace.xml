@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="197ccfea-3217-458b-a176-630980197f26" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/saves/tempSave/10010000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/saves/tempSave/10000000.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/saves/tempSave/10000000.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/utils/AttackTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/utils/AttackTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myTestPackage/utils/ImageStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/utils/ImageStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,84 +29,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/utils/AttackTimer.java">
+        <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-              <folding>
-                <element signature="e#568#692#0" expanded="true" />
-                <element signature="e#691#692#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1761">
+              <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
+        <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/Monster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+            <state relative-caret-position="210">
+              <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/Entity.java">
+        <entry file="file://$PROJECT_DIR$/src/myTestPackage/utils/ImageStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-              <folding>
-                <element signature="e#4330#4331#0" expanded="true" />
-                <element signature="e#4349#4350#0" expanded="true" />
-                <element signature="e#4385#4386#0" expanded="true" />
-                <element signature="e#4410#4411#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="485">
+              <caret line="38" column="97" selection-start-line="38" selection-start-column="97" selection-end-line="38" selection-end-column="97" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="101" column="17" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="176" column="54" selection-start-line="176" selection-start-column="54" selection-end-line="176" selection-end-column="54" />
-              <folding>
-                <element signature="e#2199#2270#0" expanded="true" />
-                <element signature="e#2269#2270#0" expanded="true" />
-                <element signature="e#6765#6766#0" expanded="true" />
-                <element signature="e#6850#6851#0" expanded="true" />
-                <element signature="e#7027#7028#0" expanded="true" />
-                <element signature="e#7110#7111#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/Bullet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/mover/Mover.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/resources/images/target_128.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -124,8 +73,16 @@
         <option value="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" />
+        <option value="$PROJECT_DIR$/src/myTestPackage/utils/ImageStorage.java" />
+        <option value="$PROJECT_DIR$/src/myTestPackage/entity/monster/Monster.java" />
       </list>
     </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1260" />
+    <option name="height" value="760" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -149,6 +106,12 @@
               <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
               <item name="KunoGame" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="KunoGame" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
@@ -196,27 +159,6 @@
               <item name="myTestPackage" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
               <item name="player" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KunoGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myTestPackage" type="462c0819:PsiDirectoryNode" />
-              <item name="mover" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KunoGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myTestPackage" type="462c0819:PsiDirectoryNode" />
-              <item name="panel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KunoGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myTestPackage" type="462c0819:PsiDirectoryNode" />
-              <item name="renderer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kuno" type="b2602c69:ProjectViewProjectNode" />
@@ -278,14 +220,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558793628107</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Кулдаун атаки игрока + счёт">
+      <created>1558796991688</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558796991688</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="816" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2710356" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2710356" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -295,7 +244,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290938" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49838188" visible="true" weight="0.32796487" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49838188" visible="true" weight="0.32796487" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -385,7 +334,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Хрень полнейшая" />
-    <option name="LAST_COMMIT_MESSAGE" value="Хрень полнейшая" />
+    <MESSAGE value="Кулдаун атаки игрока + счёт" />
+    <option name="LAST_COMMIT_MESSAGE" value="Кулдаун атаки игрока + счёт" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/Buttons.java">
@@ -432,7 +382,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="73">
           <caret line="176" column="54" selection-start-line="176" selection-start-column="54" selection-end-line="176" selection-end-column="54" />
           <folding>
             <element signature="e#2199#2270#0" expanded="true" />
@@ -445,10 +395,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java">
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/utils/AttackTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="101" column="17" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
+        <state relative-caret-position="272">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="e#568#692#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -465,21 +419,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/utils/AttackTimer.java">
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-          <folding>
-            <element signature="e#568#692#0" expanded="true" />
-            <element signature="e#691#692#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="414">
+          <caret line="101" column="17" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/9BjNAjJJTRg.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/images/target_128.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+        <state relative-caret-position="-1761">
+          <caret line="165" column="20" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/utils/ImageStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="38" column="97" selection-start-line="38" selection-start-column="97" selection-end-line="38" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/Monster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="149" column="9" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
         </state>
       </provider>
     </entry>

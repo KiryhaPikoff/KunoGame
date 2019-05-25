@@ -36,5 +36,5 @@ public abstract class ImageStorage {
 	public static final BufferedImage METAL_BOSS_TS_LEFT = ImageLoader.loadImage("resources/images/metalBoss_left.png");
 	public static final BufferedImage METAL_BOSS_TS_RIGHT = ImageLoader.loadImage("resources/images/metalBoss_right.png");
 
-	public static final BufferedImage TARGET = ImageLoader.loadImage("resources/images/target.png");
+	public static final BufferedImage TARGET = ImageLoader.loadImage("resources/images/target_128.png");
 }

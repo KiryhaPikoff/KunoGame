@@ -162,8 +162,8 @@ public class GameWindow extends JFrame implements Serializable {
 	private void initPhysicTimer() {
 		physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
-				if(testPlayer.getStats().getCurrentHealthPoints() <= 0) {
-					//System.exit(1);
+				if(testPlayer.getStats().getCurrentHealthPoints() <= 0 || testPlayer.getScore() == 500) {
+					System.exit(1);
 				}
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
 					mover.moveObject(testPlayer);

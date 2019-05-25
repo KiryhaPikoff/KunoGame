@@ -134,9 +134,7 @@ public class Monster extends Entity {
 	}
 
 	public void paint(Graphics g) {
-		if(this.isTarget()) {
-			g.drawImage(ImageStorage.TARGET, this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, null);
-		}
+
 		healthPointsBar.paint(g);
 		g.setColor(Color.BLACK);
 		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadiusPursuit() / 2,
@@ -147,7 +145,10 @@ public class Monster extends Entity {
 				this.getCoordinates().getY() - this.getStats().getRadiusAttack() / 2,
 				this.getStats().getRadiusAttack(),
 				this.getStats().getRadiusAttack());
-
+		if(this.isTarget()) {
+			g.drawImage(ImageStorage.TARGET, this.coordinates.getX() - Constants.SIZE_TILE, this.coordinates.getY() - Constants.SIZE_TILE, null);
+		}
 		g.drawImage(this.image, this.getCoordinates().getX() - this.image.getWidth() / 2, this.getCoordinates().getY() - this.image.getWidth() / 2, null);
+
 	}
 }
