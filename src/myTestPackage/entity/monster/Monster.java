@@ -148,6 +148,6 @@ public class Monster extends Entity {
 				this.getStats().getRadiusAttack(),
 				this.getStats().getRadiusAttack());
 
-		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
+		g.drawImage(this.image, this.getCoordinates().getX() - this.image.getWidth() / 2, this.getCoordinates().getY() - this.image.getWidth() / 2, null);
 	}
 }
