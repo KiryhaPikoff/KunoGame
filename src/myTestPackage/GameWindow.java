@@ -9,7 +9,8 @@ import myTestPackage.entity.monster.Spawner;
 import myTestPackage.entity.player.Player;
 import myTestPackage.map.Chunk;
 import myTestPackage.mover.Mover;
-import myTestPackage.panel.LoginScreenPanel;
+import myTestPackage.panel.GameMenu;
+import myTestPackage.panel.StartMenu;
 import myTestPackage.renderer.AnimationUpdater;
 import myTestPackage.renderer.Renderer;
 import myTestPackage.utils.Constants;
@@ -36,12 +37,14 @@ public class GameWindow extends JFrame implements Serializable {
 	private AnimationUpdater animationUpdater;
     private Timer physicTimer;
 
-    private LoginScreenPanel loginScreenPanel;
+    private GameMenu gameMenu;
+    private StartMenu startMenu;
 
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
 
 	private boolean isOpenMenu = false;
+	private boolean isStartMenu = true;
 
 	public GameWindow() {
 		renderer = new Renderer();
@@ -53,17 +56,22 @@ public class GameWindow extends JFrame implements Serializable {
         chunkHashCodeList = new HashSet<Integer>();
         nameFirstChunk = "10000000";
 
-        loginScreenPanel = new LoginScreenPanel(new Coordinates(200, 200));
-        this.getContentPane().add(loginScreenPanel);
-        loginScreenPanel.setVisible(false);
+        gameMenu = new GameMenu(new Coordinates(200, 200));
+        this.getContentPane().add(gameMenu);
+        gameMenu.setVisible(false);
+
+        startMenu = new StartMenu(new Coordinates(200, 200));
+        this.getContentPane().add(startMenu);
+        startMenu.setVisible(true);
+        renderer.addObject(startMenu);
 
         this.initWindow();
-		this.initGameComponents();
+
 		this.initKeyListener();
 		this.initMouseListener();
-		this.initPhysicTimer();
+
 		this.initWindowListener();
-		this.startGame();
+		//this.startGame();
 	}
 
 	private void initWindowListener() {
@@ -149,7 +157,7 @@ public class GameWindow extends JFrame implements Serializable {
 		this.setResizable(true);
 		this.setVisible(true);
 	}
-	
+
 	private void initGameComponents() {
 		this.initFirstChunk();
 		this.spawnPlayer();
@@ -278,6 +286,12 @@ public class GameWindow extends JFrame implements Serializable {
                 		start();
                 		isOpenMenu = false;
 					}
+
+                	if (isStartMenu) {
+                		initGameComponents();
+                		initPhysicTimer();
+                		startGame();
+					}
 				}
 			}
 			public void keyTyped(KeyEvent e) {
@@ -333,14 +347,11 @@ public class GameWindow extends JFrame implements Serializable {
 		mover.start();
 		physicTimer.start();
 		animationUpdater.start();
-		loginScreenPanel.setVisible(false);
-
 	}
 
 	private void start() {
-		loginScreenPanel.setVisible(false);
-		loginScreenPanel.getGameObject();
-		renderer.deleteObject(loginScreenPanel);
+		gameMenu.setVisible(false);
+		renderer.deleteObject(gameMenu);
 
 		for (Monster monster : monsterList) {
 			mover.addEntityToChangeDirectionList(monster);
@@ -354,9 +365,9 @@ public class GameWindow extends JFrame implements Serializable {
 	}
 
 	private void finish() {
-	    loginScreenPanel.setGameObject(testPlayer, monsterList, currentChunk, this);
-	    loginScreenPanel.setVisible(true);
-	    renderer.addObject(loginScreenPanel);
+	    gameMenu.setGameObject(testPlayer, monsterList, currentChunk, this);
+	    gameMenu.setVisible(true);
+	    renderer.addObject(gameMenu);
 
 		for (Monster monster : monsterList) {
 			deleteMonsterInAllComponent(monster);

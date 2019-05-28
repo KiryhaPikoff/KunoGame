@@ -1,8 +1,11 @@
 package myTestPackage.panel;
 
+import myTestPackage.Coordinates;
 import myTestPackage.SaveLoadGame;
 import myTestPackage.entity.Entity;
 import myTestPackage.entity.monster.Monster;
+import myTestPackage.entity.monster.Spawner;
+import myTestPackage.entity.player.Player;
 import myTestPackage.map.Chunk;
 
 import javax.swing.*;
@@ -16,7 +19,7 @@ public class Buttons {
     private JButton saveGameBtn;
     private JButton loadGameBtn;
     private JButton newGameBtn;
-    private JButton qaeBtn;
+    private JButton helpBtn;
 
     private Entity player;
     private List<Monster> monsterList;
@@ -75,7 +78,14 @@ public class Buttons {
         newGameBtn = new JButton("New game");
         newGameBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                System.out.println("New game btn");
+                currentChunk = new Chunk("10000000");
+
+                for (int i = 0; i < 4; i++) {
+                    Monster tempMonster = Spawner.spawnMonster(currentChunk);
+                    monsterList.add(tempMonster);
+                }
+
+                player = new Player(new Coordinates(450, 500));
                 focusFrame.requestFocus();
             }
         });
@@ -83,17 +93,17 @@ public class Buttons {
         return newGameBtn;
     }
 
-    public JButton getButtonQAE(int x, int y) {
-        qaeBtn = new JButton("QAE");
-        qaeBtn.addActionListener(new ActionListener() {
+    public JButton getButtonHelp(int x, int y) {
+        helpBtn = new JButton("Help");
+        helpBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("QAE btn");
                 focusFrame.requestFocus();
             }
         });
-        qaeBtn.setBounds(x, y, 120, 25);
+        helpBtn.setBounds(x, y, 120, 25);
 
-        return qaeBtn;
+        return helpBtn;
     }
 
 
