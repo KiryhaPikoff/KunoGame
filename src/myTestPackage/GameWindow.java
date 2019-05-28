@@ -66,12 +66,11 @@ public class GameWindow extends JFrame implements Serializable {
         renderer.addObject(startMenu);
 
         this.initWindow();
-
+		this.initFirstChunk();
+		this.initGameComponents();
 		this.initKeyListener();
 		this.initMouseListener();
-
 		this.initWindowListener();
-		//this.startGame();
 	}
 
 	private void initWindowListener() {
@@ -140,8 +139,8 @@ public class GameWindow extends JFrame implements Serializable {
 	
 	private void spawnPlayer() {
 		this.testPlayer = new Player(new Coordinates(500, 500));
-		renderer.addObject(testPlayer);
-		animationUpdater.addEntity(this.testPlayer);
+		//renderer.addObject(testPlayer);
+		//animationUpdater.addEntity(this.testPlayer);
 	}
 	
 	private void initFirstChunk() {
@@ -159,14 +158,8 @@ public class GameWindow extends JFrame implements Serializable {
 	}
 
 	private void initGameComponents() {
-		this.initFirstChunk();
-		this.spawnPlayer();
-
-		spawnMonster();
-		spawnMonster();
-		spawnMonster();
-		spawnMonster();
-
+		spawnPlayer();
+		startMenu.setGameObject(testPlayer, monsterList, currentChunk, this);
 	}
 	
 	private void initPhysicTimer() {
@@ -279,18 +272,18 @@ public class GameWindow extends JFrame implements Serializable {
                 }*/
 
                 if (e.getKeyCode() == 27) {
-                	if (!isOpenMenu) {
-                		finish();
-                		isOpenMenu = true;
-					} else {
-                		start();
-                		isOpenMenu = false;
-					}
-
                 	if (isStartMenu) {
-                		initGameComponents();
                 		initPhysicTimer();
-                		startGame();
+                		start();
+                		isStartMenu = false;
+					} else {
+						if (!isOpenMenu) {
+							finish();
+							isOpenMenu = true;
+						} else {
+							start();
+							isOpenMenu = false;
+						}
 					}
 				}
 			}
@@ -300,6 +293,10 @@ public class GameWindow extends JFrame implements Serializable {
 
 		};
 		this.addKeyListener(this.playerKeyListener);
+	}
+
+	private GameWindow getGameWindow() {
+		return this;
 	}
 	
 	private void initMouseListener() {
@@ -352,12 +349,17 @@ public class GameWindow extends JFrame implements Serializable {
 	private void start() {
 		gameMenu.setVisible(false);
 		renderer.deleteObject(gameMenu);
+		renderer.deleteObject(startMenu);
+		startMenu.setVisible(false);
 
 		for (Monster monster : monsterList) {
 			mover.addEntityToChangeDirectionList(monster);
 			animationUpdater.addEntity(monster);
 			renderer.addObject(monster);
 		}
+
+		animationUpdater.addEntity(testPlayer);
+		renderer.addObject(testPlayer);
 
 		mover.start();
 		physicTimer.start();
@@ -372,6 +374,10 @@ public class GameWindow extends JFrame implements Serializable {
 		for (Monster monster : monsterList) {
 			deleteMonsterInAllComponent(monster);
 		}
+
+
+		renderer.deleteObject(testPlayer);
+		animationUpdater.deleteEntity(testPlayer);
 
 		mover.stop();
 		physicTimer.stop();

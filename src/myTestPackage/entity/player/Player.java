@@ -31,11 +31,9 @@ public final class Player extends Entity implements Serializable {
 
 	public Player(Coordinates coordinates) {
 		this.name = "mainPlayer";
-
-
 		this.scoreFont = new Font("TimesRoman", Font.BOLD, 18);
 
-		this.healthPointsBar = new HealthPointsBar(this);
+
 		this.bulletList = new ArrayList<Bullet>();
 
 		this.stats = new Stats();
@@ -46,7 +44,7 @@ public final class Player extends Entity implements Serializable {
 		this.stats.setScore(0);
 		
 		this.target = null;
-
+		this.healthPointsBar = new HealthPointsBar(this);
 		this.attackTimer = new AttackTimer(500);
 		this.attackTimer.initAttackSpeed(this);
 		this.attackTimer.startAttackTimer();

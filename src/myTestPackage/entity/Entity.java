@@ -52,16 +52,18 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	protected Entity target;
 
 	public void setEntity(Entity entity) {
-		this.stats.setCoordinates(entity.stats.getCoordinates());
-
-		this.healthPointsBar = new HealthPointsBar(this);
-
 		this.stats = new Stats();
+		this.stats.setCoordinates(new Coordinates(450,500));
 		this.stats.setMaxHealthPoints(30);
 		this.stats.setCurrentHealthPoints(30);
 		this.stats.setDamage(5);
+		this.stats.setScore(0);
 
 		this.target = null;
+		this.healthPointsBar = new HealthPointsBar(this);
+		this.attackTimer = new AttackTimer(500);
+		this.attackTimer.initAttackSpeed(this);
+		this.attackTimer.startAttackTimer();
 
 		this.action = Action.MOVE;
 

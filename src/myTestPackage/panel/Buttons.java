@@ -78,14 +78,13 @@ public class Buttons {
         newGameBtn = new JButton("New game");
         newGameBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                currentChunk = new Chunk("10000000");
-
+                currentChunk.setChunk(new Chunk("10000000"));
+                monsterList.clear();
                 for (int i = 0; i < 4; i++) {
                     Monster tempMonster = Spawner.spawnMonster(currentChunk);
                     monsterList.add(tempMonster);
                 }
-
-                player = new Player(new Coordinates(450, 500));
+                player.setEntity(new Player(new Coordinates(450, 500)));
                 focusFrame.requestFocus();
             }
         });
