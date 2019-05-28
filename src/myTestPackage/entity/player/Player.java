@@ -31,30 +31,31 @@ public final class Player extends Entity implements Serializable {
 
 	public Player(Coordinates coordinates) {
 		this.name = "mainPlayer";
-		this.coordinates = new Coordinates();
-		this.coordinates = coordinates;
 
-		this.score = 0;
+
 		this.scoreFont = new Font("TimesRoman", Font.BOLD, 18);
 
 		this.healthPointsBar = new HealthPointsBar(this);
 		this.bulletList = new ArrayList<Bullet>();
 
 		this.stats = new Stats();
+		this.stats.setCoordinates(new Coordinates(450,500));
 		this.stats.setMaxHealthPoints(30);
 		this.stats.setCurrentHealthPoints(30);
 		this.stats.setDamage(5);
+		this.stats.setScore(0);
 		
 		this.target = null;
 
-		this.attackTimer = new AttackTimer(500, this);
+		this.attackTimer = new AttackTimer(500);
+		this.attackTimer.initAttackSpeed(this);
 		this.attackTimer.startAttackTimer();
 		
 		this.action = Action.MOVE;
 		this.setConditionSpellKeys(new ArrayList<KeyboardKey>());
 		this.initKeyButtons();
 		
-		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
+		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.stats.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - Constants.SIZE_TILE / 2)));
 		
 		this.initAnimations();
 		this.initMoveKeys();
@@ -147,7 +148,7 @@ public final class Player extends Entity implements Serializable {
 	public void paint(Graphics g) {
 		if(this.isTarget()) {
 			g.setColor(new Color(69, 200, 36));
-			g.drawOval(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2, Constants.SIZE_TILE, Constants.SIZE_TILE);
+			g.drawOval(this.stats.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - Constants.SIZE_TILE / 2, Constants.SIZE_TILE, Constants.SIZE_TILE);
 		}
 
 		for (Bullet elem : bulletList) {
@@ -156,24 +157,24 @@ public final class Player extends Entity implements Serializable {
 
 		healthPointsBar.paint(g);
 		g.setFont(scoreFont);
-		g.drawString("score: " + score, 20, 20);
-		g.drawImage(this.image, this.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
+		g.drawString("score: " + stats.getScore(), 20, 20);
+		g.drawImage(this.image, this.stats.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - Constants.SIZE_TILE / 2, null);
 	}
 	
 	public void move() {
 		if(this.action == Action.MOVE) {			
-			this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
-			this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
+			this.stats.getCoordinates().setPointXY(this.stats.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.stats.getCoordinates().getY() + this.directionMovement.getOffsetY());
+			this.getThisCoordZone().updateCoordinates(new Coordinates(this.stats.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - Constants.SIZE_TILE / 2));
 		}
 
 		if (target != null) {
 			int i = 0;
 			while (i < bulletList.size()) {
 				if (target.getAttackZone().contains(bulletList.get(i).getCoordinates().getX(), bulletList.get(i).getCoordinates().getY())) {
-					target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - stats.getDamage());
+					target.stats().setCurrentHealthPoints(target.stats().getCurrentHealthPoints() - stats.getDamage());
 					bulletList.remove(i);
 				} else {
-					if (target.getStats().getCurrentHealthPoints() <= 0) {
+					if (target.stats().getCurrentHealthPoints() <= 0) {
 						target.setAction(Action.DEAD);
 					}
 					bulletList.get(i).move();

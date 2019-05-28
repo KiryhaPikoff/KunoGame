@@ -15,15 +15,15 @@ public class Bullet {
     public Bullet(Entity startEntity, Entity finishEntity, Integer speed) {
         this.startEntity = startEntity;
         this.finishEntity = finishEntity;
-        this.coordinates = new myTestPackage.Coordinates(startEntity.getCoordinates().getX(), startEntity.getCoordinates().getY());
+        this.coordinates = new Coordinates(startEntity.stats().getCoordinates().getX(), startEntity.stats().getCoordinates().getY());
         this.speed = speed;
         this.sizeBullet = 10;
     }
 
     public void move() {
         if (finishEntity != null) {
-            Integer dx = (finishEntity.getCoordinates().getX() + (Constants.SIZE_TILE / 2)) - startEntity.getCoordinates().getX();
-            Integer dy = (finishEntity.getCoordinates().getY() + (Constants.SIZE_TILE / 2)) - startEntity.getCoordinates().getY();
+            Integer dx = (finishEntity.stats().getCoordinates().getX() + (Constants.SIZE_TILE / 2)) - startEntity.stats().getCoordinates().getX();
+            Integer dy = (finishEntity.stats().getCoordinates().getY() + (Constants.SIZE_TILE / 2)) - startEntity.stats().getCoordinates().getY();
 
             this.getCoordinates().setX((int) (this.getCoordinates().getX() + (this.speed * dx) / Math.sqrt((double) (dx * dx + dy * dy))));
             this.getCoordinates().setY((int) (this.getCoordinates().getY() + (this.speed * dy) / Math.sqrt((double) (dx * dx + dy * dy))));

@@ -27,8 +27,6 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	protected boolean isTarget = false;
 	protected boolean canAttack = false;
 
-	protected int score;
-
 	protected Font scoreFont;
 	
 	protected CircleZone thisCoordZone; // зона для выделения по кликам
@@ -43,7 +41,6 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	protected Action action;
 	
 	protected Stats stats;
-	protected Coordinates coordinates;
 	protected DirectionMovement directionMovement;
 
 	protected transient BufferedImage image;
@@ -55,8 +52,7 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 	protected Entity target;
 
 	public void setEntity(Entity entity) {
-		this.coordinates = new Coordinates();
-		this.coordinates = entity.getCoordinates();
+		this.stats.setCoordinates(entity.stats.getCoordinates());
 
 		this.healthPointsBar = new HealthPointsBar(this);
 
@@ -69,20 +65,11 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 
 		this.action = Action.MOVE;
 
-		this.setThisCoordZone(new CircleZone(myTestPackage.utils.Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - myTestPackage.utils.Constants.SIZE_TILE / 2, this.coordinates.getY() - myTestPackage.utils.Constants.SIZE_TILE / 2)));
+		this.setThisCoordZone(new CircleZone(myTestPackage.utils.Constants.SIZE_TILE / 2, new Coordinates(this.stats.getCoordinates().getX() - myTestPackage.utils.Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - myTestPackage.utils.Constants.SIZE_TILE / 2)));
 
 		this.movableZone = new RectangleZone(0, 0, myTestPackage.utils.Constants.WINDOW_WIDTH, myTestPackage.utils.Constants.WINDOW_HEIGHT - myTestPackage.utils.Constants.SIZE_TILE / 2);
 		this.setDirectionMovement(DirectionMovement.STAND);
 	}
-
-	public Coordinates getCoordinates() {
-		return coordinates;
-	}
-
-	public void setCoordinates(Coordinates coordinates) {
-		this.coordinates = coordinates;
-	}
-
 	public DirectionMovement getDirectionMovement() {
 		return directionMovement;
 	}
@@ -123,7 +110,7 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 		this.isTarget = isTarget;
 	}
 
-	public Stats getStats() {
+	public Stats stats() {
 		return stats;
 	}
 
@@ -179,11 +166,7 @@ public abstract class Entity implements Directed, Drawable, Movable, Animated, S
 		this.canAttack = canAttack;
 	}
 
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
+	public Stats getStats() {
+		return stats;
 	}
 }

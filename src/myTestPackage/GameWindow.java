@@ -41,6 +41,8 @@ public class GameWindow extends JFrame implements Serializable {
 	private KeyListener playerKeyListener;
 	private MouseListener playerMouseListener;
 
+	private boolean isOpenMenu = false;
+
 	public GameWindow() {
 		renderer = new Renderer();
 		renderer.start();
@@ -117,7 +119,7 @@ public class GameWindow extends JFrame implements Serializable {
 		mover.deleteEntity(monster);
 		animationUpdater.deleteEntity(monster);
 		monster.getAttackTimer().stopAttackTimer();
-		testPlayer.setScore(testPlayer.getScore() + monster.getScore());
+		testPlayer.getStats().setScore(testPlayer.getStats().getScore() + monster.getStats().getScore());
 		this.monsterList.remove(monster);
 	}
 
@@ -162,7 +164,7 @@ public class GameWindow extends JFrame implements Serializable {
 	private void initPhysicTimer() {
 		physicTimer = new Timer(Constants.PHYSIC_SPEED, new ActionListener() { /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 			public void actionPerformed(ActionEvent e) {
-				if(testPlayer.getStats().getCurrentHealthPoints() <= 0 || testPlayer.getScore() == 500) {
+				if(testPlayer.stats().getCurrentHealthPoints() <= 0 || testPlayer.getStats().getScore() == 500) {
 					System.exit(1);
 				}
 				if (CollisionChecker.canMove(testPlayer, currentChunk)) {
@@ -257,15 +259,26 @@ public class GameWindow extends JFrame implements Serializable {
 					}
 				}
 
-                if (e.getKeyCode() == 112) {
+                /*if (e.getKeyCode() == 112) {
 					System.out.println(e.getKeyCode());
                     start();
+
                 }
 
                 if (e.getKeyCode() == 113) {
 					System.out.println(e.getKeyCode());
 					finish();
-                }
+                }*/
+
+                if (e.getKeyCode() == 27) {
+                	if (!isOpenMenu) {
+                		finish();
+                		isOpenMenu = true;
+					} else {
+                		start();
+                		isOpenMenu = false;
+					}
+				}
 			}
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
@@ -330,7 +343,6 @@ public class GameWindow extends JFrame implements Serializable {
 		renderer.deleteObject(loginScreenPanel);
 
 		for (Monster monster : monsterList) {
-			System.out.println(monster.toString());
 			mover.addEntityToChangeDirectionList(monster);
 			animationUpdater.addEntity(monster);
 			renderer.addObject(monster);

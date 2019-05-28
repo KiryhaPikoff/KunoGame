@@ -1,6 +1,7 @@
 package myTestPackage;
 
 import myTestPackage.entity.Entity;
+import myTestPackage.entity.components.Stats;
 import myTestPackage.entity.monster.Monster;
 import myTestPackage.entity.monster.MonsterFabrica;
 import myTestPackage.map.Chunk;
@@ -16,14 +17,14 @@ public abstract class SaveLoadGame {
 
     public static void saveMonster(List<Monster> monsterList, Chunk currentChunk) {
         try {
-            List<Coordinates> coordMonsterList = new ArrayList<Coordinates>();
+            List<Stats> statsMonster = new ArrayList<Stats>();
 
             for (Monster monster : monsterList) {
-                coordMonsterList.add(monster.getCoordinates());
+                statsMonster.add(monster.getStats());
             }
 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("resources/saves/tempSave/" + currentChunk.hashCode() + ".txt")));
-            objectOutputStream.writeObject(coordMonsterList);
+            objectOutputStream.writeObject(statsMonster);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,11 +37,30 @@ public abstract class SaveLoadGame {
         objectInputStream = new ObjectInputStream(new FileInputStream(new File("resources/saves/tempSave/" + currentChunk.hashCode() + ".txt")));
 
 
-        List<Coordinates> coordMonsterList = ((List<Coordinates>) objectInputStream.readObject());
+        List<Stats> statsList = ((List<Stats>) objectInputStream.readObject());
 
-        for (Coordinates coordMonster : coordMonsterList) {
-            Monster monster = MonsterFabrica.createDodya();
-            monster.setCoordinates(coordMonster);
+        for (Stats stats : statsList) {
+            Monster monster = null;
+            switch (stats.getTypeMonsters()) {
+
+                case GRIFON:
+                    monster = MonsterFabrica.createGrifon();
+                    break;
+                case OGR:
+                    monster = MonsterFabrica.createOgr();
+                    break;
+                case METALLBOSS:
+                    monster = MonsterFabrica.createMetalBoss();
+                    break;
+                case DODYA:
+                    monster = MonsterFabrica.createDodya();
+                    break;
+                case MUSKULEFEARE:
+                    monster = MonsterFabrica.createMuskuleFear();
+                    break;
+            }
+
+            monster.setStats(stats);
             monsterList.add(monster);
         }
 
@@ -52,19 +72,19 @@ public abstract class SaveLoadGame {
 
         file = new File("resources/saves/globalSave/player.txt");
         objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-        objectOutputStream.writeObject(player.getCoordinates());
+        objectOutputStream.writeObject(player.getStats());
 
         file = new File("resources/saves/globalSave/currentChunk.txt");
         objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
         objectOutputStream.writeObject(String.valueOf(currentChunk.hashCode()));
 
-        file = new File("resources/saves/globalSave/monsterCoordList.txt");
-        List<Coordinates> coordMonsterList = new ArrayList<Coordinates>();
+        file = new File("resources/saves/globalSave/monsterStatsList.txt");
+        List<Stats> monsterStatsList = new ArrayList<Stats>();
         for (Monster monster : monsterList) {
-            coordMonsterList.add(monster.getCoordinates());
+            monsterStatsList.add(monster.getStats());
         }
         objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-        objectOutputStream.writeObject(coordMonsterList);
+        objectOutputStream.writeObject(monsterStatsList);
 
     }
 
@@ -74,7 +94,7 @@ public abstract class SaveLoadGame {
 
         file = new File("resources/saves/globalSave/player.txt");
         objectInputStream = new ObjectInputStream(new FileInputStream(file));
-        player.setCoordinates((Coordinates) objectInputStream.readObject());
+        player.setStats((Stats) objectInputStream.readObject());
 
         file = new File("resources/saves/globalSave/currentChunk.txt");
         objectInputStream = new ObjectInputStream(new FileInputStream(file));
@@ -82,12 +102,31 @@ public abstract class SaveLoadGame {
         currentChunk.setChunk(tempChunk);
 
         monsterList.clear();
-        file = new File("resources/saves/globalSave/monsterCoordList.txt");
+        file = new File("resources/saves/globalSave/monsterStatsList.txt");
         objectInputStream = new ObjectInputStream(new FileInputStream(file));
-        List<Coordinates> coordMonsterList = ((List<Coordinates>) objectInputStream.readObject());
-        for (Coordinates coordMonster : coordMonsterList) {
-            Monster monster = MonsterFabrica.createDodya();
-            monster.setCoordinates(coordMonster);
+        List<Stats> monsterStatsList = ((List<Stats>) objectInputStream.readObject());
+        for (Stats stats : monsterStatsList) {
+            Monster monster = null;
+            switch (stats.getTypeMonsters()) {
+
+                case GRIFON:
+                    monster = MonsterFabrica.createGrifon();
+                    break;
+                case OGR:
+                    monster = MonsterFabrica.createOgr();
+                    break;
+                case METALLBOSS:
+                    monster = MonsterFabrica.createMetalBoss();
+                    break;
+                case DODYA:
+                    monster = MonsterFabrica.createDodya();
+                    break;
+                case MUSKULEFEARE:
+                    monster = MonsterFabrica.createMuskuleFear();
+                    break;
+            }
+
+            monster.setStats(stats);
             monsterList.add(monster);
         }
 

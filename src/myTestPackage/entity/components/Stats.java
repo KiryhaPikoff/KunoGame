@@ -1,8 +1,17 @@
 package myTestPackage.entity.components;
 
+import myTestPackage.Coordinates;
+import myTestPackage.entity.monster.TypeMonsters;
+
 import java.io.Serializable;
 
 public class Stats implements Serializable {
+	private Coordinates coordinates;
+
+	private TypeMonsters typeMonsters;
+
+	protected int score;
+
 	private int currentHealthPoints;
 	private int maxHealthPoints;
 
@@ -13,6 +22,30 @@ public class Stats implements Serializable {
 	
 	public Stats() {
 		
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public TypeMonsters getTypeMonsters() {
+		return typeMonsters;
+	}
+
+	public void setTypeMonsters(TypeMonsters typeMonsters) {
+		this.typeMonsters = typeMonsters;
+	}
+
+	public Coordinates getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
 	}
 
 	public int getCurrentHealthPoints() {

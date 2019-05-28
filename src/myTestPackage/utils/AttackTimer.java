@@ -11,13 +11,12 @@ public class AttackTimer {
     private Integer attackSpeed;
     private boolean isStart;
 
-    public AttackTimer(Integer attackSpeed, Entity entity) {
+    public AttackTimer(Integer attackSpeed) {
         this.attackSpeed = attackSpeed;
-        this.startAttackSpeed(entity);
         this.isStart = false;
     }
 
-    private void startAttackSpeed(final Entity entity) {
+    public void initAttackSpeed(final Entity entity) {
         this.attackTimer = new Timer(attackSpeed, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 entity.setCanAttack(true);
@@ -25,18 +24,25 @@ public class AttackTimer {
         });
     }
 
+    public void initAttackMonster(final Entity monster) {
+        this.attackTimer = new Timer(attackSpeed, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                monster.attack();
+            }
+        });
+    }
+
     public void startAttackTimer() {
         if (!this.isStart) {
             attackTimer.start();
+            isStart = true;
         }
-
-        isStart = true;
     }
     public void stopAttackTimer() {
         if (this.isStart) {
             attackTimer.stop();
+            isStart = false;
         }
-        isStart = false;
     }
 
 }

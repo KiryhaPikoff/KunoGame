@@ -24,21 +24,20 @@ import java.awt.image.BufferedImage;
 public class Monster extends Entity {
 
 	Monster() {
-		this.coordinates = new  Coordinates();
 		this.stats = new Stats();
 		this.target = null;
 		this.action = Action.MOVE;
 
-		this.attackTimer = new AttackTimer(2000, this);
+		this.attackTimer = new AttackTimer(1000);
+		this.attackTimer.initAttackMonster(this);
 
 		this.healthPointsBar = new HealthPointsBar(this);
 
+		this.initCoordinates();
 		this.initPursuitZone();
 		this.initAttackZone();
 
-		this.initCoordinates();
-		
-		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2)));
+		this.setThisCoordZone(new CircleZone(Constants.SIZE_TILE / 2, new Coordinates(this.stats.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - Constants.SIZE_TILE / 2)));
 		
 		this.initMovableZone();
 		this.setDirectionMovement(DirectionMovement.STAND);
@@ -54,7 +53,7 @@ public class Monster extends Entity {
 	}
 	
 	private void initCoordinates() {
-		this.coordinates = new Coordinates(450, 500);
+		this.stats.setCoordinates(new Coordinates());
 	}
 	
 	private void initMovableZone() {
@@ -62,21 +61,21 @@ public class Monster extends Entity {
 	}
 
 	private void initPursuitZone() {
-		this.pursuitZone = new Ellipse2D.Float(this.getCoordinates().getX() - this.getStats().getRadiusPursuit() / 2,
-												this.getCoordinates().getY() - this.getStats().getRadiusPursuit() / 2,
-													this.getStats().getRadiusPursuit(),
-													this.getStats().getRadiusPursuit());
+		this.pursuitZone = new Ellipse2D.Float(this.stats.getCoordinates().getX() - this.stats.getRadiusPursuit() / 2,
+												this.stats.getCoordinates().getY() - this.stats.getRadiusPursuit() / 2,
+													this.stats.getRadiusPursuit(),
+													this.stats.getRadiusPursuit());
 	}
 	private void initAttackZone() {
-		this.attackZone = new Ellipse2D.Float(this.getCoordinates().getX() - this.getStats().getRadiusAttack() / 2,
-												this.getCoordinates().getY() - this.getStats().getRadiusAttack() / 2,
-													this.getStats().getRadiusAttack(),
-													this.getStats().getRadiusAttack());
+		this.attackZone = new Ellipse2D.Float(this.stats.getCoordinates().getX() - this.stats.getRadiusAttack() / 2,
+												this.stats.getCoordinates().getY() - this.stats.getRadiusAttack() / 2,
+													this.stats.getRadiusAttack(),
+													this.stats.getRadiusAttack());
 	}
 	
 	public void move() {
-		this.getCoordinates().setPointXY(this.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.getCoordinates().getY() + this.directionMovement.getOffsetY());
-		this.getThisCoordZone().updateCoordinates(new Coordinates(this.coordinates.getX() - Constants.SIZE_TILE / 2, this.coordinates.getY() - Constants.SIZE_TILE / 2));
+		this.stats.getCoordinates().setPointXY(this.stats.getCoordinates().getX() + this.directionMovement.getOffsetX(), this.stats.getCoordinates().getY() + this.directionMovement.getOffsetY());
+		this.getThisCoordZone().updateCoordinates(new Coordinates(this.stats.getCoordinates().getX() - Constants.SIZE_TILE / 2, this.stats.getCoordinates().getY() - Constants.SIZE_TILE / 2));
 		this.initPursuitZone();
 		this.initAttackZone();
 	}
@@ -90,7 +89,7 @@ public class Monster extends Entity {
 	}
 
 	public void attack() {
-		target.getStats().setCurrentHealthPoints(target.getStats().getCurrentHealthPoints() - this.getStats().getDamage());
+		target.stats().setCurrentHealthPoints(target.stats().getCurrentHealthPoints() - this.stats().getDamage());
 	}
 
 	public void controlAttackTimer() {
@@ -137,18 +136,18 @@ public class Monster extends Entity {
 
 		healthPointsBar.paint(g);
 		g.setColor(Color.BLACK);
-		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadiusPursuit() / 2,
-				this.getCoordinates().getY() - this.getStats().getRadiusPursuit() / 2,
-				this.getStats().getRadiusPursuit(),
-				this.getStats().getRadiusPursuit());
-		g.drawOval(this.getCoordinates().getX() - this.getStats().getRadiusAttack() / 2,
-				this.getCoordinates().getY() - this.getStats().getRadiusAttack() / 2,
-				this.getStats().getRadiusAttack(),
-				this.getStats().getRadiusAttack());
+		g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusPursuit() / 2,
+				this.stats.getCoordinates().getY() - this.stats().getRadiusPursuit() / 2,
+				this.stats().getRadiusPursuit(),
+				this.stats().getRadiusPursuit());
+		g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusAttack() / 2,
+				this.stats.getCoordinates().getY() - this.stats().getRadiusAttack() / 2,
+				this.stats().getRadiusAttack(),
+				this.stats().getRadiusAttack());
 		if(this.isTarget()) {
-			g.drawImage(ImageStorage.TARGET, this.coordinates.getX() - Constants.SIZE_TILE, this.coordinates.getY() - Constants.SIZE_TILE, null);
+			g.drawImage(ImageStorage.TARGET, this.stats.getCoordinates().getX() - Constants.SIZE_TILE, this.stats.getCoordinates().getY() - Constants.SIZE_TILE, null);
 		}
-		g.drawImage(this.image, this.getCoordinates().getX() - this.image.getWidth() / 2, this.getCoordinates().getY() - this.image.getWidth() / 2, null);
+		g.drawImage(this.image, this.stats.getCoordinates().getX() - this.image.getWidth() / 2, this.stats.getCoordinates().getY() - this.image.getWidth() / 2, null);
 
 	}
 }

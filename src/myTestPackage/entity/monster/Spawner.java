@@ -8,7 +8,7 @@ public class Spawner {
 	
 	private static int numOfMonsters = 2;
 	private static int numOfBoss = 3;
-	private static int bossChances = 5; // чем больше число тем меньше шансов спавна босса
+	private static int bossChances = 10; // чем больше число тем меньше шансов спавна босса
 	
 	public static Monster spawnMonster(Chunk chunk) {
 		int type = (int) ((Math.random() * 100) % (numOfBoss + bossChances));
@@ -16,28 +16,29 @@ public class Spawner {
 		
 		switch(type) { // рарный спавн
 			case 0: {
-				monster = MonsterFabrica.createGrifon();	
+				monster = MonsterFabrica.createGrifon();
+
 				break;
 			}
-			
+
 			case 1: {
-				monster = MonsterFabrica.createOgr();	
+				monster = MonsterFabrica.createOgr();
 				break;
 			}
-			
+
 			case 2: {
-				monster = MonsterFabrica.createMetalBoss();	
+				monster = MonsterFabrica.createMetalBoss();
 				break;
 			}
-			
+
 			default: { // обычный спавн
-				switch(type % numOfMonsters) {			
+				switch(type % numOfMonsters) {
 					case 0: {
-						monster = MonsterFabrica.createDodya();	
+						monster = MonsterFabrica.createDodya();
 						break;
 					}
 					case 1: {
-						monster = MonsterFabrica.createMuskuleFear();	
+						monster = MonsterFabrica.createMuskuleFear();
 						break;
 					}
 				}
@@ -51,7 +52,7 @@ public class Spawner {
 			y = (int) ((Math.random() * 10000) % (Constants.WINDOW_HEIGHT - 100) + 50);
 		} while (x % Constants.SIZE_TILE != 0 && y % Constants.SIZE_TILE != 0 && !chunk.getTileXY(x, y).getTileType().isPassable());
 		
-		monster.setCoordinates(new Coordinates(x, y));
+		monster.stats().setCoordinates(new Coordinates(x, y));
 		
 		return monster;
 	}
