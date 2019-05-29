@@ -172,10 +172,12 @@ public final class Player extends Entity implements Serializable {
 					target.stats().setCurrentHealthPoints(target.stats().getCurrentHealthPoints() - stats.getDamage());
 					bulletList.remove(i);
 				} else {
-					if (target.stats().getCurrentHealthPoints() <= 0) {
+					if (target.stats().getCurrentHealthPoints() <= 0 && target.getAction() != Action.DEAD) {
 						target.setAction(Action.DEAD);
+						this.stats.setScore(this.stats.getScore() + target.stats().getScore());
+					} else {
+						bulletList.get(i).move();
 					}
-					bulletList.get(i).move();
 					i++;
 				}
 			}
