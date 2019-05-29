@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="197ccfea-3217-458b-a176-630980197f26" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/saves/globalSave/currentChunk.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/saves/globalSave/monsterCoordList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/saves/globalSave/player.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/saves/tempSave/10000000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myTestPackage/panel/Buttons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/panel/Buttons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,23 +18,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="359" column="8" selection-start-line="359" selection-start-column="8" selection-end-line="359" selection-end-column="8" />
-              <folding>
-                <element signature="e#8459#8460#0" expanded="true" />
-                <element signature="e#8476#8477#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/Buttons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
+            <state relative-caret-position="1241">
               <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1961">
-              <caret line="155" column="24" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
+            <state relative-caret-position="663">
+              <caret line="60" column="59" selection-start-line="32" selection-start-column="8" selection-end-line="60" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -68,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/GameMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="51" column="59" lean-forward="true" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
+            <state relative-caret-position="697">
+              <caret line="51" column="59" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/SaveLoadGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="1598">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/Spawner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-544">
+            <state relative-caret-position="68">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
@@ -101,8 +84,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="255">
+              <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="956">
+              <caret line="104" column="52" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -119,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myTestPackage/components/GameInteface/HealthPointsBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
+            <state relative-caret-position="272">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
@@ -141,7 +133,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/myTestPackage/utils/AttackTimer.java" />
-        <option value="$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/utils/ImageStorage.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/entity/monster/Monster.java" />
         <option value="$PROJECT_DIR$/src/ControlGameMonster.java" />
@@ -152,8 +143,9 @@
         <option value="$PROJECT_DIR$/src/myTestPackage/panel/StartMenu.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/panel/Buttons.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java" />
-        <option value="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" />
         <option value="$PROJECT_DIR$/src/myTestPackage/GameWindow.java" />
+        <option value="$PROJECT_DIR$/src/myTestPackage/entity/Entity.java" />
+        <option value="$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java" />
       </list>
     </option>
   </component>
@@ -352,14 +344,28 @@
       <option name="project" value="LOCAL" />
       <updated>1559069246551</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Кнопка new Game">
+      <created>1559071717412</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559071717413</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="197ccfea-3217-458b-a176-630980197f26" name="Default Changelist" comment="" />
+      <created>1559108230746</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559108230746</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2786753" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2786753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -369,14 +375,14 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290938" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49838188" visible="true" weight="0.32750398" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49838188" visible="true" weight="0.32750398" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32750398" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50242716" side_tool="true" weight="0.32796487" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.4714495" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.47058824" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4975728" weight="0.32750398" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -461,7 +467,8 @@
     <MESSAGE value="Хрень полнейшая" />
     <MESSAGE value="Кулдаун атаки игрока + счёт" />
     <MESSAGE value="Не работуещее говно" />
-    <option name="LAST_COMMIT_MESSAGE" value="Не работуещее говно" />
+    <MESSAGE value="Кнопка new Game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Кнопка new Game" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/mover/Mover.java">
@@ -493,13 +500,6 @@
             <element signature="e#568#692#0" expanded="true" />
             <element signature="e#691#692#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -537,23 +537,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/ControlGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/ControlGame.java" />
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/Panel.java" />
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/StartMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -568,30 +553,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/Spawner.java">
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/SaveLoadGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2482">
+          <caret line="169" column="37" selection-start-line="169" selection-start-column="37" selection-end-line="169" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/Buttons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
+        <state relative-caret-position="1241">
           <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="60" column="59" selection-start-line="32" selection-start-column="8" selection-end-line="60" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -604,32 +586,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myTestPackage/panel/GameMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="51" column="59" lean-forward="true" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
+        <state relative-caret-position="697">
+          <caret line="51" column="59" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/components/GameInteface/HealthPointsBar.java">
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/SaveLoadGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="1598">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/player/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/Spawner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1961">
-          <caret line="155" column="24" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -640,14 +618,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myTestPackage/GameWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/components/GameInteface/HealthPointsBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="359" column="8" selection-start-line="359" selection-start-column="8" selection-end-line="359" selection-end-column="8" />
-          <folding>
-            <element signature="e#8459#8460#0" expanded="true" />
-            <element signature="e#8476#8477#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/myTestPackage/entity/monster/MonsterFabrica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="956">
+          <caret line="104" column="52" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
         </state>
       </provider>
     </entry>

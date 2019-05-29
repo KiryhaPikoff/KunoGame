@@ -59,8 +59,8 @@ public abstract class MonsterFabrica {
 		grifon.stats().setTypeMonsters(TypeMonsters.GRIFON);
 		grifon.stats().setRadiusAttack(200);
 		grifon.stats().setRadiusPursuit(400);
-		grifon.stats().setMaxHealthPoints(300);
-		grifon.stats().setCurrentHealthPoints(300);
+		grifon.stats().setMaxHealthPoints(100);
+		grifon.stats().setCurrentHealthPoints(100);
 		grifon.stats().setDamage(8);
 		grifon.getStats().setScore(20);
 		
@@ -80,8 +80,8 @@ public abstract class MonsterFabrica {
 		ogr.stats().setTypeMonsters(TypeMonsters.OGR);
 		ogr.stats().setRadiusAttack(200);
 		ogr.stats().setRadiusPursuit(400);
-		ogr.stats().setMaxHealthPoints(300);
-		ogr.stats().setCurrentHealthPoints(300);
+		ogr.stats().setMaxHealthPoints(100);
+		ogr.stats().setCurrentHealthPoints(100);
 		ogr.stats().setDamage(8);
 		ogr.getStats().setScore(20);
 		
@@ -101,8 +101,8 @@ public abstract class MonsterFabrica {
 		metalBoss.stats().setTypeMonsters(TypeMonsters.METALLBOSS);
 		metalBoss.stats().setRadiusAttack(200);
 		metalBoss.stats().setRadiusPursuit(400);
-		metalBoss.stats().setMaxHealthPoints(300);
-		metalBoss.stats().setCurrentHealthPoints(300);
+		metalBoss.stats().setMaxHealthPoints(100);
+		metalBoss.stats().setCurrentHealthPoints(100);
 		metalBoss.stats().setDamage(8);
 		metalBoss.getStats().setScore(20);
 		
