@@ -17,10 +17,10 @@ public abstract class MonsterFabrica {
 		dodya.stats().setTypeMonsters(TypeMonsters.DODYA);
 		dodya.stats().setRadiusAttack(100);
 		dodya.stats().setRadiusPursuit(200);
-		dodya.stats().setMaxHealthPoints(16);
-		dodya.stats().setCurrentHealthPoints(16);
+		dodya.stats().setMaxHealthPoints(20);
+		dodya.stats().setCurrentHealthPoints(21);
 		dodya.stats().setDamage(2);
-		dodya.getStats().setScore(5);
+		dodya.getStats().setScore(7);
 		
 		return dodya;
 	}
@@ -57,7 +57,7 @@ public abstract class MonsterFabrica {
 		grifon.setName("Grifon");
 
 		grifon.stats().setTypeMonsters(TypeMonsters.GRIFON);
-		grifon.stats().setRadiusAttack(200);
+		grifon.stats().setRadiusAttack(250);
 		grifon.stats().setRadiusPursuit(400);
 		grifon.stats().setMaxHealthPoints(100);
 		grifon.stats().setCurrentHealthPoints(100);
@@ -78,12 +78,12 @@ public abstract class MonsterFabrica {
 		ogr.setName("Ogr");
 
 		ogr.stats().setTypeMonsters(TypeMonsters.OGR);
-		ogr.stats().setRadiusAttack(200);
-		ogr.stats().setRadiusPursuit(400);
-		ogr.stats().setMaxHealthPoints(100);
-		ogr.stats().setCurrentHealthPoints(100);
-		ogr.stats().setDamage(8);
-		ogr.getStats().setScore(20);
+		ogr.stats().setRadiusAttack(150);
+		ogr.stats().setRadiusPursuit(300);
+		ogr.stats().setMaxHealthPoints(150);
+		ogr.stats().setCurrentHealthPoints(150);
+		ogr.stats().setDamage(10);
+		ogr.getStats().setScore(25);
 		
 		return ogr;
 	}
@@ -101,10 +101,10 @@ public abstract class MonsterFabrica {
 		metalBoss.stats().setTypeMonsters(TypeMonsters.METALLBOSS);
 		metalBoss.stats().setRadiusAttack(200);
 		metalBoss.stats().setRadiusPursuit(400);
-		metalBoss.stats().setMaxHealthPoints(100);
-		metalBoss.stats().setCurrentHealthPoints(100);
-		metalBoss.stats().setDamage(8);
-		metalBoss.getStats().setScore(20);
+		metalBoss.stats().setMaxHealthPoints(200);
+		metalBoss.stats().setCurrentHealthPoints(200);
+		metalBoss.stats().setDamage(9);
+		metalBoss.getStats().setScore(30);
 		
 		return metalBoss;
 	}

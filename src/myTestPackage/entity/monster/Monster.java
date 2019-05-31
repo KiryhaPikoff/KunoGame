@@ -136,14 +136,14 @@ public class Monster extends Entity {
 
 		healthPointsBar.paint(g);
 		g.setColor(Color.BLACK);
-		g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusPursuit() / 2,
+	/*	g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusPursuit() / 2,
 				this.stats.getCoordinates().getY() - this.stats().getRadiusPursuit() / 2,
 				this.stats().getRadiusPursuit(),
 				this.stats().getRadiusPursuit());
 		g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusAttack() / 2,
 				this.stats.getCoordinates().getY() - this.stats().getRadiusAttack() / 2,
 				this.stats().getRadiusAttack(),
-				this.stats().getRadiusAttack());
+				this.stats().getRadiusAttack());  */
 		if(this.isTarget()) {
 			g.drawImage(ImageStorage.TARGET, this.stats.getCoordinates().getX() - Constants.SIZE_TILE, this.stats.getCoordinates().getY() - Constants.SIZE_TILE, null);
 		}
