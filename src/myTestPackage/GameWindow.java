@@ -25,6 +25,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+/*
+ * GameWindow объединение всех объектов, систем и компонентов программы
+ * 
+ * Author: Pikov Kirill && Syaman Sergey
+ */
+
 public class GameWindow extends JFrame implements Serializable {
 	private String nameFirstChunk;
 	private Chunk currentChunk;

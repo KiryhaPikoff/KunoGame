@@ -4,6 +4,12 @@ import myTestPackage.utils.Constants;
 
 import java.io.Serializable;
 
+/*
+ * Coordinates сохранение координат и операции над ними в удобной форме
+ * 
+ * Author: Syaman Sergey
+ */
+
 public final class Coordinates implements Serializable {
 	private int x;	// координата х в окне (в пикселях)
 	private int y;	// координата y в окне (в пикселях)

@@ -12,6 +12,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/*
+ * GameMenu меню приостановки игры в процессе её работы
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class GameMenu extends JPanel implements Drawable {
     private Coordinates coordinates;
     private int widthPanel;

@@ -6,6 +6,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+ * AttackTimer создание таймера атаки
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class AttackTimer {
     private Timer attackTimer;
     private Integer attackSpeed;

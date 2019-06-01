@@ -16,6 +16,12 @@ import myTestPackage.map.Chunk;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 
+/*
+ * Renderer система для отрисовки объектов по таймеру
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class Renderer extends JPanel {
 	Timer drawTimer;
 

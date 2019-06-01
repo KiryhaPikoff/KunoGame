@@ -21,8 +21,13 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 
-public class Monster extends Entity {
+/*
+ * Monster объект которому противопостоит игрок - враг
+ * 
+ * Author: Pikov Kirill && Syaman Sergey
+ */
 
+public class Monster extends Entity {
 	Monster() {
 		this.stats = new Stats();
 		this.target = null;
@@ -133,17 +138,8 @@ public class Monster extends Entity {
 	}
 
 	public void paint(Graphics g) {
-
 		healthPointsBar.paint(g);
 		g.setColor(Color.BLACK);
-	/*	g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusPursuit() / 2,
-				this.stats.getCoordinates().getY() - this.stats().getRadiusPursuit() / 2,
-				this.stats().getRadiusPursuit(),
-				this.stats().getRadiusPursuit());
-		g.drawOval(this.stats.getCoordinates().getX() - this.stats().getRadiusAttack() / 2,
-				this.stats.getCoordinates().getY() - this.stats().getRadiusAttack() / 2,
-				this.stats().getRadiusAttack(),
-				this.stats().getRadiusAttack());  */
 		if(this.isTarget()) {
 			g.drawImage(ImageStorage.TARGET, this.stats.getCoordinates().getX() - Constants.SIZE_TILE, this.stats.getCoordinates().getY() - Constants.SIZE_TILE, null);
 		}

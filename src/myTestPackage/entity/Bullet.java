@@ -5,6 +5,12 @@ import myTestPackage.utils.Constants;
 
 import java.awt.*;
 
+/*
+ * Bullet пуля, наносящая урон врагам
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class Bullet {
     private Coordinates coordinates;
     private Entity startEntity;
@@ -22,11 +28,15 @@ public class Bullet {
 
     public void move() {
         if (finishEntity != null) {
-            Integer dx = (finishEntity.stats().getCoordinates().getX() + (Constants.SIZE_TILE / 2)) - startEntity.stats().getCoordinates().getX();
-            Integer dy = (finishEntity.stats().getCoordinates().getY() + (Constants.SIZE_TILE / 2)) - startEntity.stats().getCoordinates().getY();
+            Integer dx = (finishEntity.stats().getCoordinates().getX() + (Constants.SIZE_TILE / 2))
+            		- startEntity.stats().getCoordinates().getX();
+            Integer dy = (finishEntity.stats().getCoordinates().getY() + (Constants.SIZE_TILE / 2))
+            		- startEntity.stats().getCoordinates().getY();
 
-            this.getCoordinates().setX((int) (this.getCoordinates().getX() + (this.speed * dx) / Math.sqrt((double) (dx * dx + dy * dy))));
-            this.getCoordinates().setY((int) (this.getCoordinates().getY() + (this.speed * dy) / Math.sqrt((double) (dx * dx + dy * dy))));
+            this.getCoordinates().setX((int) (this.getCoordinates().getX() + 
+            		(this.speed * dx) / Math.sqrt((double) (dx * dx + dy * dy))));
+            this.getCoordinates().setY((int) (this.getCoordinates().getY() + 
+            		(this.speed * dy) / Math.sqrt((double) (dx * dx + dy * dy))));
         }
     }
 

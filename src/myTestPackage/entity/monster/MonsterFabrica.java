@@ -3,6 +3,12 @@ package myTestPackage.entity.monster;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageStorage;
 
+/*
+ * MonsterFabrica создание экземпляров класса монстр с уже конкретными параметрами
+ * 
+ * Author: Pikov Kirill
+ */
+
 public abstract class MonsterFabrica {
 	public static Monster createDodya() {
 		Monster dodya = new Monster();

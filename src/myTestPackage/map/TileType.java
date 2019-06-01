@@ -4,8 +4,13 @@ import java.awt.Image;
 
 import myTestPackage.utils.ImageLoader;
 
+/*
+ * TileType типы тайлов
+ * 
+ * Author: Pikov Kirill
+ */
+
 public enum TileType {
-	
 	ground("ground", ImageLoader.loadImage("resources/images/ground64.png"), true),
 	water("water", ImageLoader.loadImage("resources/images/water64.png"), false),
 	road("road", ImageLoader.loadImage("resources/images/road64.png"), true),

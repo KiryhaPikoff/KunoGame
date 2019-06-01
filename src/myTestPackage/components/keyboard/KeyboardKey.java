@@ -2,6 +2,12 @@ package myTestPackage.components.keyboard;
 
 import java.io.Serializable;
 
+/*
+ * KeyboardKey класс клавиши
+ * 
+ * Author: Pikov Kirill
+ */
+
 public final class KeyboardKey implements KeyboardKeyAction, Serializable {
 	private final int id; // номер клавиши
 	private final KeyboardKeyAction action; 

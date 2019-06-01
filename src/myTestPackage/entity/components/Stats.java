@@ -5,6 +5,12 @@ import myTestPackage.entity.monster.TypeMonsters;
 
 import java.io.Serializable;
 
+/*
+ * Stats характеристики одушевлённых объектов
+ * 
+ * Author: Pikov Kirill && Syaman Sergey
+ */
+
 public class Stats implements Serializable {
 	private Coordinates coordinates;
 

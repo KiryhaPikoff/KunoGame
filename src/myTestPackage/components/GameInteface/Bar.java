@@ -4,6 +4,12 @@ import myTestPackage.entity.Entity;
 
 import java.awt.*;
 
+/*
+ * Bar класс, который характеризует все наследуемы классы, что они являются барами
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class Bar {
     protected Entity target;
     protected int currentValue;

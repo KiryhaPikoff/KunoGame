@@ -23,8 +23,13 @@ import myTestPackage.utils.AttackTimer;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageStorage;
 
-public final class Player extends Entity implements Serializable {
+/*
+ * Player игровой персонаж
+ * 
+ * Author: Syaman Sergey
+ */
 
+public final class Player extends Entity implements Serializable {
 	private ConditionMoveKeys conditionMoveKeys;
 	private List<KeyboardKey> conditionSpellKeys;
 	private List<Bullet> bulletList;

@@ -12,6 +12,12 @@ import myTestPackage.entity.Entity;
 import myTestPackage.map.Chunk;
 import myTestPackage.utils.Constants;
 
+/*
+ * Mover система для передвижения объектов
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class Mover {
 	private List<Entity> entityList = new ArrayList<Entity>();
 	public void moveObject(Movable object) {

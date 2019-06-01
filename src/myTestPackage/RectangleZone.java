@@ -3,8 +3,13 @@ package myTestPackage;
 import java.awt.Rectangle;
 import java.io.Serializable;
 
+/*
+ * RectangleZone прямоугольная зона, аналогия с CircleZone
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class RectangleZone implements Serializable {
-	
 	private int x;
 	private int y;
 	private int width;
@@ -20,8 +25,4 @@ public class RectangleZone implements Serializable {
 	public boolean inZone(int x, int y) {
 		return x > this.x && x < this.width && y > this.y && y < this.height;
 	}
-	
-/*	public boolean inZone(Coordinates coordinates) {
-		return this.rect.contains(coordinates.getX(), coordinates.getY());
-	}*/
 }

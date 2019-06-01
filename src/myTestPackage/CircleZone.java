@@ -2,8 +2,13 @@ package myTestPackage;
 
 import java.io.Serializable;
 
+/*
+ * CircleZone круглая зона, проверка на входимость в радиус зоны
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class CircleZone implements Serializable {
-	
 	private Coordinates coordinates; 
 	private int radius;
 	

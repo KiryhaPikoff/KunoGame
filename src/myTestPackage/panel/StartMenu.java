@@ -10,6 +10,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/*
+ * StartMenu меню которое выскакивает при запуске игры
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class StartMenu extends JPanel implements Drawable {
     private Coordinates coordinates;
     private int widthPanel;

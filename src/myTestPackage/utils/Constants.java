@@ -1,5 +1,11 @@
 package myTestPackage.utils;
 
+/*
+ * Constants глобальные константы, настройки игры
+ * 
+ * Author: Pikov Kirill
+ */
+
 public abstract class Constants {
 	public static final int WINDOW_POZITION_X = 0;		// На сколько окно с игрой смещено по Х от левого верхнего угла моника
 	public static final int WINDOW_POZITION_Y = 0;		// На сколько окно с игрой смещено по У от левого верхнего угла моника

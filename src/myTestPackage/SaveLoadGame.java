@@ -10,6 +10,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * SaveLoadGame сохранение и загрузка игры
+ * 
+ * Author: Syaman Sergey
+ */
+
 public abstract class SaveLoadGame {
     public  SaveLoadGame() {
 
@@ -18,11 +24,9 @@ public abstract class SaveLoadGame {
     public static void saveMonster(List<Monster> monsterList, Chunk currentChunk) {
         try {
             List<Stats> statsMonster = new ArrayList<Stats>();
-
             for (Monster monster : monsterList) {
                 statsMonster.add(monster.getStats());
             }
-
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File("resources/saves/tempSave/" + currentChunk.hashCode() + ".txt")));
             objectOutputStream.writeObject(statsMonster);
         } catch (IOException e) {
@@ -31,18 +35,12 @@ public abstract class SaveLoadGame {
     }
 
     public static void loadMonster(List<Monster> monsterList, Chunk currentChunk) throws IOException, ClassNotFoundException {
-
         ObjectInputStream objectInputStream;
-
         objectInputStream = new ObjectInputStream(new FileInputStream(new File("resources/saves/tempSave/" + currentChunk.hashCode() + ".txt")));
-
-
         List<Stats> statsList = ((List<Stats>) objectInputStream.readObject());
-
         for (Stats stats : statsList) {
             Monster monster = null;
             switch (stats.getTypeMonsters()) {
-
                 case GRIFON:
                     monster = MonsterFabrica.createGrifon();
                     break;
@@ -59,7 +57,6 @@ public abstract class SaveLoadGame {
                     monster = MonsterFabrica.createMuskuleFear();
                     break;
             }
-
             monster.setStats(stats);
             monsterList.add(monster);
         }

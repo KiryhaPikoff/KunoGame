@@ -13,6 +13,12 @@ import myTestPackage.components.direction.DirectionMovement;
 import myTestPackage.utils.ExcelLoader;
 import myTestPackage.utils.ImageLoader;
 
+/*
+ * Chunk участок глобальной карты
+ * 
+ * Author: Pikov Kirill
+ */
+
 public final class Chunk implements Drawable, Serializable {
 	private Tile[][] arrayTiles;
 	private Coordinates coords = new Coordinates();

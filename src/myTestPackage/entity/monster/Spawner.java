@@ -4,8 +4,13 @@ import myTestPackage.Coordinates;
 import myTestPackage.map.Chunk;
 import myTestPackage.utils.Constants;
 
+/*
+ * Spawner создание случайного монстра
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class Spawner {
-	
 	private static int numOfMonsters = 2;
 	private static int numOfBoss = 3;
 	private static int bossChances = 10; // чем больше число тем меньше шансов спавна босса
@@ -50,7 +55,8 @@ public class Spawner {
 		do {
 			x = (int) ((Math.random() * 10000) % (Constants.WINDOW_WIDTH - 100 ) + 50);
 			y = (int) ((Math.random() * 10000) % (Constants.WINDOW_HEIGHT - 100) + 50);
-		} while (x % Constants.SIZE_TILE != 0 && y % Constants.SIZE_TILE != 0 && !chunk.getTileXY(x, y).getTileType().isPassable());
+		} while (x % Constants.SIZE_TILE != 0 && y % Constants.SIZE_TILE != 0 && 
+				!chunk.getTileXY(x, y).getTileType().isPassable());
 		
 		monster.stats().setCoordinates(new Coordinates(x, y));
 		

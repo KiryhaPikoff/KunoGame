@@ -21,8 +21,13 @@ import myTestPackage.renderer.Animated;
 import myTestPackage.renderer.Animation;
 import myTestPackage.utils.AttackTimer;
 
+/*
+ * Entity Некая сущность, харакатеризующая все одушевлённые объекты
+ * 
+ * Author: Syaman Sergey
+ */
+
 public abstract class Entity implements Directed, Drawable, Movable, Animated, Serializable, Attacking {
-	
 	protected String name;
 	protected boolean isTarget = false;
 	protected boolean canAttack = false;

@@ -7,6 +7,12 @@ import myTestPackage.utils.Constants;
 import myTestPackage.Coordinates;
 import myTestPackage.Drawable;
 
+/*
+ * Tile картинка или плиточка из которых состоит чанк
+ * 
+ * Author: Pikov Kirill
+ */
+
 public final class Tile implements Drawable, Serializable {
 	private TileType type;
 	private Coordinates coords;

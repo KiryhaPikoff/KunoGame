@@ -15,6 +15,12 @@ import myTestPackage.map.Tile;
 import myTestPackage.map.TileType;
 import myTestPackage.utils.Constants;
 
+/*
+ * ExcelLoader выгрузка данных из Excel таблицы
+ * 
+ * Author: Pikov Kirill
+ */
+
 public abstract class ExcelLoader {
 	private static XSSFWorkbook currentExcelBook = null;
 	private static FileInputStream inputExcelFile = null;
@@ -33,7 +39,7 @@ public abstract class ExcelLoader {
 			currentExcelBook = new XSSFWorkbook (inputExcelFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			System.out.println("Ошибка. Excel " + nameFile + " file не найден или путь указан неверно.");
+ 			System.out.println("Ошибка. Excel " + nameFile + " file не найден или путь указан неверно.");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Ошибка считывания файла: " + nameFile);

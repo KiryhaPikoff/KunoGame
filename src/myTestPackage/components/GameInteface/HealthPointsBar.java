@@ -6,6 +6,12 @@ import myTestPackage.utils.Constants;
 
 import java.awt.*;
 
+/*
+ * HealthPointsBar полоска здоровья
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class HealthPointsBar extends Bar implements Drawable{
 
     public HealthPointsBar(Entity entity) {

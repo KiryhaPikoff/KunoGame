@@ -1,5 +1,11 @@
 package myTestPackage.components.direction;
 
+/*
+ * DirectionRandomizer установка рандомного направления 
+ * 
+ * Author: Pikov Kirill
+ */
+
 public abstract class DirectionRandomizer {
 	public static DirectionMovement rand() {
 		int temp = (int) ((Math.random() * 100) % 9);

@@ -1,5 +1,11 @@
 package myTestPackage.components.direction;
 
+/*
+ * DirectionMovement перечисление напрвлений движения
+ * 
+ * Author: Pikov Kirill
+ */
+
 public enum DirectionMovement {
 	STAND(0, 0),
 	

@@ -15,6 +15,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.List;
 
+/*
+ * Buttons кнопки для взаимодействия с игрой
+ * 
+ * Author: Syaman Sergey
+ */
+
 public class Buttons {
     private JButton saveGameBtn;
     private JButton loadGameBtn;

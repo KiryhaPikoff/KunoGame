@@ -10,6 +10,12 @@ import javax.swing.Timer;
 import myTestPackage.entity.Entity;
 import myTestPackage.utils.Constants;
 
+/*
+ * Animation система для обновления анимации по таймеру
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class AnimationUpdater {
 	private List<Entity> animList;
 	Timer animTimer;

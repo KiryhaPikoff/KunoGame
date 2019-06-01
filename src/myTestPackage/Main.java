@@ -2,6 +2,12 @@ package myTestPackage;
 import javax.swing.*;
 import java.awt.*;
 
+/*
+ * Main класс запуска игры
+ * 
+ * Author: Pikov Kirill && Syaman Sergey
+ */
+
 public class Main {
 
 	public Main() {

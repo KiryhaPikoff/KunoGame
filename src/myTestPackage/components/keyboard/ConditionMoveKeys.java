@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * ConditionMoveKeys клавиши движения
+ * 
+ * Author: Pikov Kirill
+ */
+
 public final class ConditionMoveKeys extends ConditionKeys implements Serializable {
-	
 	private final KeyboardKey UP;
 	private final KeyboardKey DOWN;
 	private final KeyboardKey LEFT;

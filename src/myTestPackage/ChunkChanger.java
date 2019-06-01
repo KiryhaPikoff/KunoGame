@@ -6,8 +6,13 @@ import myTestPackage.map.Chunk;
 import myTestPackage.map.TileType;
 import myTestPackage.utils.Constants;
 
+/*
+ * ChunkChanger смена текущего чанка на новый 
+ * 
+ * Author: Pikov Kirill
+ */
+
 public class ChunkChanger {
-	
 	public static DirectionMovement canChangeChunk(Chunk chunk, Player player) { /* возвращает направление смены чанка */
 		if(chunk.getTileXY(player.stats().getCoordinates().getX(), player.stats().getCoordinates().getY()).getTileType() == TileType.door) {
 			if(player.stats().getCoordinates().getX() >= Constants.SIZE_TILE * Constants.WIDTH_CHUNK - 5) {

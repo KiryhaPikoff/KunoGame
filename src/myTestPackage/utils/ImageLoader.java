@@ -6,6 +6,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/*
+ * ImageLoader упрощение для загрузки всех картинок, которые будут использованы в программе
+ * 
+ * Author: Pikov Kirill
+ */
+
 public abstract class ImageLoader {
 	public static BufferedImage loadImage(String nameFile) {
 		BufferedImage img = null;

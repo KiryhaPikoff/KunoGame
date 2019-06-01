@@ -2,9 +2,13 @@ package myTestPackage.components.direction;
 
 import myTestPackage.entity.Entity;
 
+/*
+ * DirectionPursuit смена направления в сторону игрока если тот попадает в зону
+ * 
+ * Author: Syaman Sergey
+ */
+
 public abstract class DirectionPursuit {
-
-
     public static DirectionMovement chase(Entity monster,Entity target) {
         DirectionMovement directionMovement = DirectionMovement.STAND;
 
@@ -21,10 +25,6 @@ public abstract class DirectionPursuit {
                 target.stats().getCoordinates().getX() < monster.stats().getCoordinates().getX()) { directionMovement = DirectionMovement.SOUTH_WEST; }
         if (target.stats().getCoordinates().getY() > monster.stats().getCoordinates().getY() &&
                 target.stats().getCoordinates().getX() > monster.stats().getCoordinates().getX()) { directionMovement = DirectionMovement.SOUTH_EAST; }
-
-
-
-
 
         return directionMovement;
     }

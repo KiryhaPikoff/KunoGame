@@ -6,6 +6,12 @@ import java.io.Serializable;
 import myTestPackage.utils.Constants;
 import myTestPackage.utils.ImageLoader;
 
+/*
+ * Animation смена кадра отрисовки (анимация)
+ * 
+ * Author: Pikov Kirill
+ */
+
 public final class Animation implements Serializable {
 	private transient BufferedImage tileSet;
 	private transient BufferedImage currentImage;

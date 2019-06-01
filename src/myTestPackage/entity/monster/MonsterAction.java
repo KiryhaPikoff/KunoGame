@@ -2,6 +2,12 @@ package myTestPackage.entity.monster;
 
 import myTestPackage.entity.Entity;
 
+/*
+ * MonsterAction схема взаимодействия монстра и игрока
+ * 
+ * Author: Syaman Sergey
+ */
+
 public abstract class MonsterAction {
     public static void interaction(Entity monster, Entity player) {
         if (monster.getPursuitZone().contains(player.stats().getCoordinates().getX(), player.stats().getCoordinates().getY())) {
